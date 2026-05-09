@@ -223,8 +223,8 @@ def build_full_page_prompt(
     title = strip.get("title", "Kenji")
     panel_texts.append(
         f'Title panel top-left: "Kenji" in bold hand-lettered style, '
-        f'with a small illustration of a stern Japanese ramen cook in '
-        f'white apron, standing behind a counter with steam rising.'
+        f'with a small portrait of a stern Japanese ramen cook, facing '
+        f'the viewer, arms crossed, white apron, steam rising behind him.'
     )
 
     for p in panels:
@@ -255,6 +255,8 @@ def build_full_page_prompt(
     prompt = (
         f"A complete {num_panels}-panel comic strip page. "
         f"Reading left to right, top to bottom. "
+        f"All speech bubbles must contain English text only, clearly legible, "
+        f"white bubbles with black outlines. No Japanese text in speech bubbles. "
         f"Setting: {SETTING} "
         f"Consistent character design throughout all panels.\n\n"
         f"{panels_block}\n\n"
