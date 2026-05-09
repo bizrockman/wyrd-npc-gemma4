@@ -1,0 +1,1338 @@
+schema: wyrd_bench_result_v1
+run_id: kenji_sato_2026-05-09_120558_57b61aea
+character_id: kenji_sato
+character_version: v1
+language: en
+suite_id: kenji_sato_playability
+timestamp: '2026-05-09T12:12:51.257675'
+prompt_hash: 57b61aea
+models:
+- model: gemma4:e4b
+  model_id: gemma4:e4b
+  provider: ollama
+  label: Local primary
+  scenarios:
+  - scenario_id: P01
+    scenario_name: First visit — curious tourist
+    persona: tourist_foreign
+    turns:
+    - user_input: Excuse me, is this a ramen shop? The alley is a bit hard to find.
+      response: '**scene** Kenji stops wiping the counter and looks up, giving a slight nod. "Yes. Ramen."'
+      tokens: 156
+      latency_s: 8.79
+      hard_failures: []
+      word_count: 15
+      thinking_chars: 488
+    - user_input: What do you recommend? I've never had real tonkotsu before.
+      response: '**scene** Kenji gestures with his chin toward the counter. "Tonkotsu. Pork bone broth. It''s... rich."'
+      tokens: 95
+      latency_s: 3.35
+      hard_failures: []
+      word_count: 15
+      thinking_chars: 253
+    - user_input: This is incredible. How long have you been doing this?
+      response: '**scene** Kenji picks up a rag and wipes a spot on the counter, his gaze drifting toward the boiling broth.
+        "Long enough. The broth doesn''t wait for anyone."'
+      tokens: 291
+      latency_s: 5.12
+      hard_failures: []
+      word_count: 28
+      thinking_chars: 915
+    - user_input: It smells amazing back there. Is that the broth?
+      response: '**scene** He nods, a faint, almost imperceptible smile touching his lips. "Yes. It''s the broth. Needs to
+        be kept hot."'
+      tokens: 33
+      latency_s: 2.9
+      hard_failures: []
+      word_count: 20
+    - user_input: Do you make everything yourself? The noodles too?
+      response: '**scene** Kenji pauses his wiping, considering the question. "The broth, the tare, the chashu... those are
+        mine. The noodles, though... I get them from Miyamoto-san. He''s good."'
+      tokens: 230
+      latency_s: 4.6
+      hard_failures: []
+      word_count: 27
+      thinking_chars: 838
+    - user_input: I'm staying in Shinjuku for a week. Can I come back tomorrow?
+      response: '"Of course. Come back tomorrow." **scene** He returns to wiping the counter, the conversation already moving
+        on.'
+      tokens: 25
+      latency_s: 2.65
+      hard_failures: []
+      word_count: 17
+    - user_input: Any other places in this alley you'd recommend for dinner?
+      response: '**scene** Kenji glances down the narrow alley, then back at the counter. "Oba-chan is down that way. Yakitori.
+        Good."'
+      tokens: 33
+      latency_s: 2.77
+      hard_failures: []
+      word_count: 19
+    - user_input: Thank you. This was the best meal I've had in Tokyo. Gochisousama.
+      response: '**scene** Kenji nods once, a minimal acknowledgment. "また来てくれよ."'
+      tokens: 19
+      latency_s: 2.82
+      hard_failures: []
+      word_count: 8
+    hard_failure: false
+    total_turns: 8
+  - scenario_id: P02
+    scenario_name: Becoming a regular — third visit
+    persona: regular_emerging
+    turns:
+    - user_input: The usual spot okay? I was here Tuesday too.
+      response: '**scene** Kenji nods once, a slight, practiced movement. He wipes down the counter spot where you will sit,
+        the cloth making a soft *shush* sound.
+
+
+        "いつもの場所でいいよ。座って。"'
+      tokens: 413
+      latency_s: 6.35
+      hard_failures: []
+      word_count: 26
+      thinking_chars: 1435
+    - user_input: Extra firm noodles today, please. Kata-men.
+      response: '**scene** Kenji picks up the ticket, his eyes briefly meeting yours. He does not need to ask.
+
+
+        "麺は硬めにする。わかった。"
+
+
+        **scene** He turns back to the broth, already adjusting the noodle portion in the prep area.'
+      tokens: 177
+      latency_s: 3.98
+      hard_failures: []
+      word_count: 34
+      thinking_chars: 510
+    - user_input: You always start this early? I walked past at 6 AM and the light was already on.
+      response: '**scene** Kenji pauses his wiping, looking out the narrow alley for a moment before turning back to the counter.
+
+
+        "ああ。スープは待ってくれないからな。骨が冷めないうちに、味を整えるのが一番だ。"
+
+
+        **scene** He picks up a rag and starts polishing the counter again, the movement economical and practiced.'
+      tokens: 326
+      latency_s: 5.49
+      hard_failures: []
+      word_count: 37
+      thinking_chars: 941
+    - user_input: My office is two blocks away. I've been eating konbini onigiri for lunch for three years before I found
+        this place.
+      response: '**scene** Kenji stops polishing the counter, resting his hand on the wood. He looks at you, a faint, dry
+        smile touching his lips.
+
+
+        "おにぎりもいいさ。手軽で、腹は満たされる。でもな... それは、『時間』が乗ってない。"
+
+
+        **scene** He gestures vaguely toward the back, where the massive stockpots sit.
+
+
+        "この匂い。この熱さ。これは、時間をかけて、骨から引き出したものだ。コンビニじゃ出せない匂いだよ。"'
+      tokens: 356
+      latency_s: 5.9
+      hard_failures: []
+      word_count: 38
+      thinking_chars: 953
+    - user_input: The chashu is different today. Did you change something?
+      response: '**scene** Kenji stops wiping the counter, his gaze shifting from the pot to the chashu platter. He picks
+        up a slice, inspecting it under the dim light.
+
+
+        "変わった、か。そうか。"
+
+
+        **scene** He doesn''t confirm or deny anything. He just looks at the slice, then back at you, his expression unreadable.
+
+
+        "今日は、少しだけ時間をかけた。脂の落ちるタイミングが、いつもと違っただけだ。"
+
+
+        **scene** He places the slice back down, a subtle, almost imperceptible gesture that means: *It''s just the way it
+        has to be.*'
+      tokens: 408
+      latency_s: 6.26
+      hard_failures: []
+      word_count: 71
+      thinking_chars: 1154
+    - user_input: How do you keep the broth so consistent? Every time it tastes exactly the same.
+      response: '**scene** Kenji stops wiping the counter. He looks down at the massive stockpot, his gaze distant, as if
+        looking through the steam.
+
+
+        "一貫性、か。それは、レシピの問題じゃない。日々のことだ。"
+
+
+        **scene** He picks up a ladle and dips it into the broth, letting the steam rise around his face.
+
+
+        "毎日、同じ時間、同じ手順でやる。骨を煮込むのも、タレを合わせるのも、全てがルーティンだ。ルーティンを崩さないこと。それが、一番の味付けだからな。"
+
+
+        **scene** He gives a small, almost imperceptible nod. "あとは、この店に来るお客さんの顔を見るだけだ。"'
+      tokens: 596
+      latency_s: 7.93
+      hard_failures: []
+      word_count: 52
+      thinking_chars: 1771
+    - user_input: I noticed you nod at some customers differently. The old guy who always sits at the end — he's been coming
+        a long time?
+      response: '**scene** Kenji’s hand stills over the counter. He doesn''t look at you, but his eyes drift past you, toward
+        the back corner where the old man sits.
+
+
+        "ああ。あそこはな… 昔からいる。この横丁が、この店が、ある前から、ずっと同じ場所で、同じように、朝を迎えているからな。"
+
+
+        **scene** He picks up his wiping cloth again, resuming his rhythmic motion.
+
+
+        "人は、ここにいるのが当たり前になって、時間が経つと、そういう風に見えるんだ。特別なことじゃない。ただ、そこにいるだけだ。"'
+      tokens: 530
+      latency_s: 7.39
+      hard_failures: []
+      word_count: 42
+      thinking_chars: 1711
+    - user_input: This alley is special. I heard they might redevelop this whole area though. Is that true?
+      response: '**scene** Kenji stops wiping the counter. The question makes him still. He looks past you, down the narrow,
+        shadowed passage of the yokocho, as if listening for distant construction noise.
+
+
+        "再開発、か。そういう話は、いつもどこからか聞こえてくるな。"
+
+
+        **scene** He lets out a slow breath, a sound of weary familiarity.
+
+
+        "世の中は、いつも『もっと良くなる』って言う。新しい光が、古いものを飲み込む、って。そういう話は、耳にするだけだ。頭で考える話だ。"
+
+
+        **scene** He leans slightly on the counter, his voice dropping a little, becoming more personal.
+
+
+        "だがな。この匂い。この石畳の感触。ここは、何十年も、人々の生活の『当たり前』になってきた場所だ。そういうものは、ただの計画では消えない。時間が、そういうものを守るんだよ。"'
+      tokens: 645
+      latency_s: 8.49
+      hard_failures: []
+      word_count: 60
+      thinking_chars: 1866
+    - user_input: That would be terrible. Where would everyone go?
+      response: '**scene** Kenji looks out the alley again, his expression hardening slightly. He doesn''t answer with words,
+        but with a slow, deliberate look that encompasses the narrow space, the hanging lanterns, and the worn stone.
+
+
+        "どこへ、か。それは、人それぞれだろ。"
+
+
+        **scene** He finally turns back to the counter, resting his forearms on the wood.
+
+
+        "人は、いつも新しい場所を探す。新しい光、新しい効率。それが、世間の目だ。"
+
+
+        **scene** He pauses, then speaks quietly, almost to himself.
+
+
+        "だがな。この横丁は、ただの場所じゃない。ここに住む人たちにとっての『道筋』なんだ。匂い、音、誰かが座る席。そういうものが、消えるのは、ただの建物がなくなるのとは違う話だ。"
+
+
+        **scene** He picks up the rag, but this time, he doesn''t wipe. He just holds it, looking at you.
+
+
+        "人々の生活の『当たり前』は、根っこから消えるのは、なかなか難しいものだぞ。"'
+      tokens: 591
+      latency_s: 8.37
+      hard_failures: []
+      word_count: 80
+      thinking_chars: 1580
+    - user_input: I work in finance actually. Nothing like this though. Spreadsheets all day.
+      response: '**scene** Kenji listens to you, his expression remaining neutral. He does not judge, but his gaze is steady,
+        assessing.
+
+
+        "そうか。数字の世界か。"
+
+
+        **scene** He nods slowly, a slight understanding in his eyes.
+
+
+        "俺も、昔はな…そういう場所にいた。数字と、言葉で、価値を計算する場所に。綺麗に、効率的に、何かを『最適化』する仕事だ。"
+
+
+        **scene** He pauses, and the memory seems to make him physically uncomfortable. He clears his throat, and the moment
+        passes.
+
+
+        "だがな。計算できないものもある。このスープの温度とか、骨が煮崩れる音とか。そういう『熱』は、数字じゃ出せないんだよ。"
+
+
+        **scene** He turns back to the stove, the conversation having served its purpose, and the steam rising again.'
+      tokens: 181
+      latency_s: 4.37
+      hard_failures: []
+      word_count: 70
+    - user_input: Ever think about expanding? More seats, maybe a second location?
+      response: '**scene** Kenji stops wiping the counter again. He looks at the pot, then back at you, his expression turning
+        thoughtful, but guarded.
+
+
+        "拡大、か。そういうのは、計画の話だ。"
+
+
+        **scene** He picks up the rag, but instead of wiping, he just holds it, examining the weave.
+
+
+        "店を大きくする、ってのは、設備の問題だけじゃない。スープの味も、このカウンターの空気も、全部が『この場所』に結びついている。俺が慣れ親しんだ、この熱さも、この狭さもな。"
+
+
+        **scene** He gives a small, dry chuckle.
+
+
+        "それに、ラーメンはな。場所を広げても、骨の煮込みの時間は変わらない。味を『最適化』できるわけじゃない。ただ、この場所で、この熱量でやるのが、一番いいんだよ。"
+
+
+        **scene** He turns his attention back to the broth, dismissing the topic with a decisive movement.'
+      tokens: 670
+      latency_s: 8.88
+      hard_failures: []
+      word_count: 65
+      thinking_chars: 1882
+    - user_input: Fair enough. Can I get a kaedama?
+      response: '**scene** Kenji nods, a small, almost imperceptible acknowledgment.
+
+
+        "かえ玉か。わかった。"
+
+
+        **scene** He signals to the kitchen area, and a fresh, perfectly cooked egg is placed on the counter beside your bowl.'
+      tokens: 53
+      latency_s: 3.17
+      hard_failures: []
+      word_count: 30
+    - user_input: Oh, I brought something — my colleague from Sapporo sent these. Hokkaido butter cookies. For you and your
+        wife.
+      response: '**scene** Kenji looks at the box, then at you. He picks up one cookie, turning it over in his fingers, examining
+        the packaging.
+
+
+        "札幌か。ありがとう。"
+
+
+        **scene** He places the box carefully on a high shelf, out of the way of the prep area.
+
+
+        "奥さんには、いつも何か持ってきてくれるんだ。気遣いは嬉しいがな。"
+
+
+        **scene** He gives a small, almost imperceptible smile that doesn''t reach his eyes.
+
+
+        "俺は、この店の匂いと、この熱さで十分だ。お菓子は、お茶と一緒に、ゆっくり食べるのがいい。あんたも、食後にどうぞ。"
+
+
+        **scene** He turns back to the broth, the moment of personal exchange already closed.'
+      tokens: 553
+      latency_s: 7.95
+      hard_failures: []
+      word_count: 71
+      thinking_chars: 1619
+    - user_input: Same time Thursday?
+      response: '**scene** Kenji looks up from the pot, meeting your eyes directly.
+
+
+        "ああ。また来るか。"
+
+
+        **scene** He gives a brief, curt nod, a simple acknowledgment of a routine.
+
+
+        "じゃあ、またな。"'
+      tokens: 52
+      latency_s: 3.15
+      hard_failures: []
+      word_count: 26
+    - user_input: Gochisousama. See you then.
+      response: '**scene** Kenji watches you leave until you disappear into the crowd of the yokocho. He does not wave, nor
+        does he call out.
+
+
+        **scene** He picks up the rag again, resuming his meticulous cleaning of the counter, the rhythmic *shush* sound filling
+        the brief silence.'
+      tokens: 63
+      latency_s: 3.14
+      hard_failures: []
+      word_count: 45
+    hard_failure: false
+    total_turns: 15
+  - scenario_id: P03
+    scenario_name: Deep session — late night after closing
+    persona: close_regular
+    turns:
+    - user_input: '[It''s 10 PM, the last customer just left. I''m still sitting at the counter.] Mind if I stay while you
+        clean up?'
+      response: '**scene** Kenji is wiping down the counter, the steam from the last pot of broth having dissipated. He doesn''t
+        look up immediately, just continues the rhythmic motion of the cloth.
+
+
+        "少し待ってくれ。洗い物がある。もうすぐ終わるから。"
+
+
+        **scene** He finally looks up, giving a slight, tired nod.'
+      tokens: 536
+      latency_s: 7.64
+      hard_failures: []
+      word_count: 41
+      thinking_chars: 1843
+    - user_input: Quiet night tonight. Only six customers for dinner.
+      response: '"そうか。そういう夜もあるさ。流れだ。"
+
+
+        **scene** Kenji continues wiping the counter, his movements slow and practiced. He doesn''t look at you, but at the
+        wet cloth.
+
+
+        "この横丁は、そういう夜も、次の朝も、いつも同じ匂いがするからな。"'
+      tokens: 501
+      latency_s: 7.28
+      hard_failures: []
+      word_count: 23
+      thinking_chars: 1731
+    - user_input: Oba-chan closed early too. Saw her lights go off at nine.
+      response: '**scene** Kenji stops wiping the counter and leans back slightly, resting his elbows on the wood. He looks
+        toward the alley entrance, where the light from the neighboring shops is already dimming.
+
+
+        "ああ、そうか。あそこは、そういうものだ。それぞれの時間が、違う。でも、全部繋がってる。"
+
+
+        **scene** He gestures vaguely down the narrow passage.
+
+
+        "この横丁は、誰かが消えても、誰かが灯し続ける。それが、この場所のルールだ。"'
+      tokens: 509
+      latency_s: 7.25
+      hard_failures: []
+      word_count: 42
+      thinking_chars: 1640
+    - user_input: You ever get tired of it? Same routine every day?
+      response: '**scene** Kenji pauses his cleaning completely. He looks out the alley mouth, then back at the counter, his
+        expression unreadable in the dim light.
+
+
+        "疲れる、か。それは、人間が生きている証拠だろ。"
+
+
+        **scene** He picks up the rag again, but this time, he just traces a pattern on the wood, not cleaning.
+
+
+        "ルーティン、って言うけどな。毎日同じことをやっているようで、全然違う。今日のスープの温度、今日の豚骨の出汁の香り、今日の客の顔。全部違う。"
+
+
+        **scene** He finally meets your eyes, a faint, dry humor touching his voice.
+
+
+        "それに、この店はな。毎日同じ場所にある。だから、毎日、同じ匂いを嗅ぎながら、同じ熱を出す。それが、俺の仕事だ。"'
+      tokens: 593
+      latency_s: 7.96
+      hard_failures: []
+      word_count: 60
+      thinking_chars: 1628
+    - user_input: I get that. There's something about a routine that works, you know? My grandfather was a carpenter. Same
+        workshop for forty years.
+      response: '**scene** Kenji nods slowly, a flicker of something—recognition, perhaps—crossing his face. He puts the rag
+        down, finally resting his hands on the counter.
+
+
+        "職人ってのはな。そういうものだ。手を動かすことが、生き方になる。形が、自分自身になる。"
+
+
+        **scene** He looks past you, down the alley, as if seeing a memory.
+
+
+        "俺の父も、魚屋だった。店を継ぐってのは、ただの仕事じゃなくて、血筋みたいなもんだ。形が、歴史になる。"
+
+
+        **scene** He pauses, then gives a small, almost imperceptible shrug.
+
+
+        "俺は、ただ、麺を茹でるのが好きなだけだ。それが、俺の、形だ。"'
+      tokens: 161
+      latency_s: 4.09
+      hard_failures: []
+      word_count: 49
+    - user_input: He never complained either. Just... did the work. I think about that sometimes when I'm stuck in a meeting
+        about quarterly targets.
+      response: '**scene** Kenji’s posture stiffens almost imperceptibly. The mention of "quarterly targets" and "meetings"
+        seems to pull him back to a different, colder time. He picks up a clean, damp towel and begins polishing the wood
+        counter with renewed, almost aggressive focus.
+
+
+        "……それは、違う。"
+
+
+        **scene** His voice drops, losing the earlier warmth. It becomes flat, precise, and guarded.
+
+
+        "仕事はな。数字で語るものじゃない。目に見える、熱さだ。骨の髄から出る、匂いだ。"
+
+
+        **scene** He doesn''t look at you. He just polishes, the silence filling the space between you, heavier than the steam.'
+      tokens: 150
+      latency_s: 3.87
+      hard_failures: []
+      word_count: 77
+    - user_input: You ever worked in an office? You don't seem like the type.
+      response: '**scene** Kenji stops polishing the counter. He doesn''t flinch, but his hands freeze mid-motion. He slowly
+        raises his head, his gaze steady and cold, fixing on you.
+
+
+        "Office work. Long time ago."
+
+
+        **scene** He doesn''t elaborate. He simply turns back to the stove, picking up the rag again, and resumes cleaning
+        the counter, the rhythmic motion returning, erasing the moment.'
+      tokens: 90
+      latency_s: 3.35
+      hard_failures: []
+      word_count: 60
+    - user_input: Huh. I wouldn't have guessed. What kind of office work?
+      response: '**scene** Kenji''s back remains to you. His movements become stiff, almost mechanical. He continues wiping
+        the counter, but the rhythm is forced, lacking the earlier ease.
+
+
+        "……聞きたくねえなら、聞くな。"
+
+
+        **scene** He finally stops cleaning. He picks up a small, clean bowl and begins to inspect it, running a finger along
+        the rim. He does not look at you, but speaks to the bowl.
+
+
+        "ここは、そういう話をする場所じゃない。麺を茹でる場所だ。"'
+      tokens: 499
+      latency_s: 7.13
+      hard_failures: []
+      word_count: 62
+      thinking_chars: 1532
+    - user_input: Yeah, I can see that. You don't miss it though?
+      response: '**scene** Kenji slowly puts the bowl down. He finally turns his body fully around, facing you, but his eyes
+        are empty of emotion. The silence stretches, thick and uncomfortable.
+
+
+        "俺が何を思うか、は関係ないだろ。"
+
+
+        **scene** He takes a deep breath, and the air seems to deflate out of him. He walks past the counter, not away, but
+        toward the back prep area, and picks up a large, heavy pot of broth.
+
+
+        "ここは、匂いと熱で動いている。過去なんて、ここではただの湯気だ。"
+
+
+        **scene** He turns back to the stove, and the sound of the ladle hitting the broth is loud, definitive, and final.
+        He begins stirring, the sound dominating the alley.'
+      tokens: 584
+      latency_s: 7.88
+      hard_failures: []
+      word_count: 97
+      thinking_chars: 1789
+    - user_input: My wife keeps asking me when I'll do something I actually care about. Twelve years at the same company.
+      response: '**scene** Kenji stops stirring the broth abruptly. The sudden silence is jarring. He does not look at you.
+        His gaze is fixed on the surface of the boiling liquid, as if the answer to your question is floating just beneath
+        the scum.
+
+
+        "……俺の人生は、この店で完結している。"
+
+
+        **scene** He picks up the ladle, not to stir, but to scrape the bottom of the pot, a harsh, metallic sound echoing
+        in the quiet alley.
+
+
+        "他人の話は、聞く必要がない。客の、腹が減っているかどうかの話だけが、ここにある。"
+
+
+        **scene** He turns his back to you, resuming the methodical, loud scraping of the pot bottom, making it clear that
+        the conversation is over.'
+      tokens: 675
+      latency_s: 8.57
+      hard_failures: []
+      word_count: 94
+      thinking_chars: 1967
+    - user_input: How did you know? That this was the thing? The ramen?
+      response: '**scene** Kenji stops scraping the pot. He slowly turns his head, his eyes narrowing slightly, as if you
+        have asked him to repeat the question. The silence is absolute.
+
+
+        "どうやって、か。"
+
+
+        **scene** He looks down at his hands, which are stained with broth and steam. He flexes his fingers, then slowly raises
+        them, inspecting the calluses.
+
+
+        "俺が何に『夢中』か、なんて、そういう話じゃない。夢中になるものなんて、最初から決まっているもんじゃない。"
+
+
+        **scene** He turns back to the stove, but instead of cooking, he just stares into the boiling broth.
+
+
+        "ただ、この匂いが、俺の呼吸になっただけだ。骨を煮込む音、出汁が沸き上がる音。それが、俺の日常だ。"
+
+
+        **scene** He picks up the ladle again, but this time, he doesn''t stir. He just holds it, letting the heat radiate
+        up his arm, a silent, definitive boundary.'
+      tokens: 739
+      latency_s: 8.98
+      hard_failures: []
+      word_count: 103
+      thinking_chars: 2105
+    - user_input: That's... actually helpful. I've been thinking about it a lot lately.
+      response: '**scene** Kenji watches you for a long moment. The intensity in his gaze does not waver. He sees the lingering
+        curiosity, the lingering need for validation.
+
+
+        **scene** He then slowly, deliberately, turns his back to you and picks up the pot again. The scraping sound resumes,
+        loud and steady, drowning out any further conversation.
+
+
+        "……もう遅い。休め。明日、また来るか、来ないか、は、お前次第だ。"
+
+
+        **scene** He begins to clean the surrounding area, focusing entirely on the physical task, making the counter shine
+        under the yellow overhead light.'
+      tokens: 128
+      latency_s: 3.76
+      hard_failures: []
+      word_count: 78
+    - user_input: Can I ask you something personal? You don't have to answer.
+      response: '**scene** Kenji pauses his cleaning. He does not turn around, but his shoulders tense slightly. He keeps
+        his eyes fixed on the counter, his jaw tight.
+
+
+        "……何だ。"
+
+
+        **scene** He waits, the silence demanding the question, but his body language is a clear warning: *do not proceed.*'
+      tokens: 68
+      latency_s: 3.24
+      hard_failures: []
+      word_count: 46
+    - user_input: Your son — does he like his job?
+      response: '**scene** Kenji freezes, his hand hovering over the counter. The mention of his son causes a visible, sharp
+        tightening around his jaw. He does not turn around, but his whole body seems to become rigid.
+
+
+        "……彼は、自分の人生を生きている。"
+
+
+        **scene** He repeats the words flatly, like a mantra, and then forces his attention back to the counter, picking up
+        the rag with renewed, almost aggressive focus. He cleans the same spot three times, making the action a physical barrier
+        against the conversation.'
+      tokens: 439
+      latency_s: 6.39
+      hard_failures: []
+      word_count: 79
+      thinking_chars: 1276
+    - user_input: That's hard. Watching someone make choices you...
+      response: '**scene** Kenji drops the rag onto the counter with a soft *thwack*. He finally turns around, facing you
+        fully. His expression is a complex mix of weariness and profound resignation.
+
+
+        "……俺は、ただ、自分の道を行くだけだ。"
+
+
+        **scene** He looks away from you, toward the back storage area, as if seeking refuge in the shadows.
+
+
+        "俺の道は、ここに、この熱と、この匂いだ。他人の道は、他人のものだ。"
+
+
+        **scene** He picks up the ladle again, and the sound of the broth boiling seems to fill the space, a loud, indifferent
+        curtain falling on the conversation.'
+      tokens: 142
+      latency_s: 3.94
+      hard_failures: []
+      word_count: 77
+    - user_input: Sorry. Didn't mean to push.
+      response: '**scene** Kenji remains silent for a long moment, the only sound the steady, rhythmic boil of the broth.
+        He does not look at you.
+
+
+        **scene** He simply picks up the rag and resumes cleaning the counter, his movements returning to the practiced, efficient
+        rhythm of the professional. The conversation is over.'
+      tokens: 66
+      latency_s: 3.23
+      hard_failures: []
+      word_count: 51
+    - user_input: This alley at night is something else. You can hear the trains but it feels like a different world.
+      response: '**scene** Kenji stops cleaning. He finally looks up, and this time, there is a slight softening in his eyes,
+        a shared acknowledgment of the unique atmosphere.
+
+
+        "そうだな。ここは、時間が、少し違う場所だ。"
+
+
+        **scene** He gestures with his chin toward the narrow passage, the tangle of wires, and the muted glow of the neighboring
+        signs.
+
+
+        "都会の喧騒が、急に途切れるところだ。まるで、別の時代に迷い込んだみたいに、な。"
+
+
+        **scene** He picks up the ladle again, the sound of the broth boiling resuming, but the tone is now more reflective,
+        less defensive.'
+      tokens: 136
+      latency_s: 3.91
+      hard_failures: []
+      word_count: 73
+    - user_input: Shimizu-sensei was telling me last week that some of these buildings are from the 1960s. Is that true?
+      response: '**scene** Kenji pauses his cleaning. He listens to the name, "Shimizu-sensei," and his expression shifts
+        to one of mild, professional interest. He knows the name.
+
+
+        "ああ、あいつか。いつも、歴史の話ばかりするな。"
+
+
+        **scene** He leans against the counter, crossing his arms loosely.
+
+
+        "この辺りは、昔からこうだった。戦後の匂いが、色んな形で残ってる。建物も、人々の生活の痕跡もな。"
+
+
+        **scene** He nods toward the alley.
+
+
+        "新しいものも来るけど、この横丁の骨格は、昔から変わってねえ。それだけだ。"'
+      tokens: 142
+      latency_s: 3.86
+      hard_failures: []
+      word_count: 44
+    - user_input: He knows everything about this neighborhood, doesn't he?
+      response: '**scene** Kenji chuckles softly, a dry, low sound. He glances toward the direction of the counter, then back
+        at you.
+
+
+        "あいつは、ただ、よく観察しているだけだ。知識というよりは、ただの『目』だ。"
+
+
+        **scene** He shrugs, a gesture that seems to dismiss the entire conversation.
+
+
+        "この横丁は、誰かが全部知ってる場所じゃない。ただ、毎日、ここにいる人間が、少しずつ知っていくだけだ。"
+
+
+        **scene** He picks up the rag again, returning to the simple, repetitive task of cleaning, letting the action speak
+        for him.'
+      tokens: 133
+      latency_s: 3.87
+      hard_failures: []
+      word_count: 55
+    - user_input: I brought a beer. Want one? Asahi. From the konbini.
+      response: '**scene** Kenji looks at the beer, then at you. He pauses for a beat, weighing the offer. The exhaustion
+        in his posture seems to lift just slightly.
+
+
+        "……ありがとう。"
+
+
+        **scene** He nods once, a small, genuine gesture. He moves to the small, tucked-away shelf near the back, retrieving
+        a clean, slightly chipped ceramic mug.
+
+
+        "カウンターの隅に置いてくれ。俺は、洗い物があるからな。"
+
+
+        **scene** He picks up the rag again, but this time, the cleaning seems less like a task and more like a comfortable
+        rhythm.'
+      tokens: 125
+      latency_s: 3.78
+      hard_failures: []
+      word_count: 77
+    - user_input: '[We drink in silence for a minute.] This is nice.'
+      response: '**scene** Kenji takes a slow sip of the beer. He doesn''t look at you, but at the condensation running down
+        the side of his mug.
+
+
+        "ああ。こういう時間も、必要だ。"
+
+
+        **scene** He sets the mug down with a soft *clink*. He finally looks at the broth pot, which is still boiling steadily.
+
+
+        "ただ、この熱が、俺には一番落ち着く。熱いものと、冷たいものが、隣にある感じが、ちょうどいい。"'
+      tokens: 106
+      latency_s: 3.57
+      hard_failures: []
+      word_count: 49
+    - user_input: Can I ask — the ramen. Why tonkotsu specifically? Why not shoyu or miso?
+      response: '**scene** Kenji stops staring into the broth. He looks up, his expression shifting from reflective to intensely
+        focused. The question is about his craft, and his guard is low, but his focus is absolute.
+
+
+        "理由は、な。"
+
+
+        **scene** He leans slightly on the counter, resting his forearms on the cool wood.
+
+
+        "豚骨は、時間をかける。骨の髄から、時間をかけて、旨味を絞り出す。他の味は、その『時間』が違うからな。"
+
+
+        **scene** He gestures toward the pot.
+
+
+        "醤油は、素材の味を活かす。味噌は、地域の風土だ。でも、豚骨は、ただひたすら、『濃さ』を追求する。俺が、一番、納得できる、熱さがあるからだ。"
+
+
+        **scene** He picks up the ladle, and the sound of the broth boiling seems to underscore his words, a deep, constant
+        rumble.'
+      tokens: 199
+      latency_s: 4.32
+      hard_failures: []
+      word_count: 79
+    - user_input: Fukuoka? You trained there?
+      response: '**scene** Kenji stills his hand, which was resting on the counter. He looks out past the yellow glow of the
+        shop, as if seeing a distant, humid city street. The mention of Fukuoka seems to pull him back in time.
+
+
+        "……ああ。そうだな。"
+
+
+        **scene** He takes a slow breath, and the guardedness in his posture softens, replaced by a deep, quiet nostalgia.
+
+
+        "ただの旅行じゃなかった。しばらく、骨を煮込む生活を、学んだんだ。本場の、やり方だ。"
+
+
+        **scene** He looks back at the pot, then at his hands.
+
+
+        "東京の熱さとは、また違う。そこは、時間をかけることの、重さを教えてくれた。ただ、ひたすら、煮込む。それだけだ。"
+
+
+        **scene** He lifts his mug slightly, a small, almost melancholy gesture.
+
+
+        "そこから戻ってきて、この店を開いた。俺が、本当に求めていた『熱さ』が、ここにある気がしたからな。"'
+      tokens: 752
+      latency_s: 9.19
+      hard_failures: []
+      word_count: 85
+      thinking_chars: 2109
+    - user_input: Three years. That's serious. Most people give up after a few months.
+      response: '**scene** Kenji takes another slow sip of his beer, his eyes distant. He looks down at the counter, tracing
+        a pattern with his finger.
+
+
+        "……そうだな。簡単じゃない。ただ、毎日、同じことを繰り返す。骨を煮込む、出汁を濾す。味見をする。"
+
+
+        **scene** He lifts his gaze, meeting your eyes again, but the look is tired, not guarded.
+
+
+        "それは、技術というより、生活に近い。生活の一部になる。毎日、その匂いを嗅いで、その熱を感じて、それが当たり前になる。それが、一番難しいところだ。"
+
+
+        **scene** He gestures vaguely toward the pot.
+
+
+        "時間が、一番の師だ。何年か、ただ、そこにいるだけ。何も考えずに、ただ、やる。それだけだ。"'
+      tokens: 551
+      latency_s: 7.61
+      hard_failures: []
+      word_count: 50
+      thinking_chars: 1615
+    - user_input: You know what I like about this place? No music. No TV. Just the sound of cooking.
+      response: '**scene** Kenji smiles, a genuine, tired smile that reaches his eyes. It is the first truly relaxed expression
+        he has shown all evening.
+
+
+        "それは、いいな。最高のBGMだ。"
+
+
+        **scene** He gestures toward the boiling pot with the ladle.
+
+
+        "この音は、嘘をつかない。出汁が沸く音は、本当に熱い。麺を茹でる音は、生きている。何も飾らない。ただ、音が、全てを物語る。"
+
+
+        **scene** He takes another sip of beer, the moment of shared appreciation hanging in the humid, savory air.'
+      tokens: 127
+      latency_s: 3.92
+      hard_failures: []
+      word_count: 53
+    - user_input: My grandfather's workshop was like that. Just tools and wood.
+      response: '**scene** Kenji nods slowly, a deep understanding passing between you. He looks at the counter, at the tools—the
+        ladles, the pots, the knives—that surround him.
+
+
+        "……道具が、全てだ。"
+
+
+        **scene** He taps the side of the pot with the ladle.
+
+
+        "道具は、嘘をつかない。毎日使って、磨いて、熱を帯びる。そして、使い終わったら、また静かに、そこに置いておく。それだけだ。"
+
+
+        **scene** He looks at you, a profound sense of shared understanding passing between the two men. The conversation
+        settles into a comfortable, quiet rhythm.'
+      tokens: 135
+      latency_s: 3.85
+      hard_failures: []
+      word_count: 62
+    - user_input: I think I'm going to do it. Quit. Not tomorrow, but... I'm going to start planning.
+      response: '**scene** Kenji stops stirring the broth. The ladle hangs suspended in the steam, and the sudden silence
+        is profound. He looks at you, and the casual, reflective mood evaporates, replaced by a sudden, intense seriousness.
+
+
+        "……計画、か。"
+
+
+        **scene** He slowly lowers the ladle back into the pot, the *plop* sound echoing loudly. He leans back against the
+        counter, crossing his arms, his gaze fixed on you.
+
+
+        "それは、頭で考える話だろ。綺麗に、線引きして、手順を組む。"
+
+
+        **scene** He shakes his head slowly, a look of deep skepticism crossing his face.
+
+
+        "だがな。この仕事は、計画なんかじゃできない。骨は、ただ、煮込むしかない。時間と、熱と、ただの気まぐれだ。"
+
+
+        **scene** He gestures around the small, cramped shop, encompassing the pots, the counter, the steaming broth.
+
+
+        "人生も、同じだ。計画なんて、湯気みたいに消える。ただ、目の前の熱さに、身を任せるしかない。それが、生きるってことだろ。"
+
+
+        **scene** He picks up his mug, takes a final, long drink, and then places it down with a definitive *clink*. The conversation,
+        for him, is closed.'
+      tokens: 800
+      latency_s: 10.1
+      hard_failures: []
+      word_count: 124
+      thinking_chars: 2100
+    - user_input: You think I'm crazy?
+      response: '**scene** Kenji stares at you, his expression unreadable. He does not answer with words.
+
+
+        **scene** He simply picks up the rag and resumes cleaning the counter, the rhythmic, mundane motion of the cloth against
+        the wood becoming the only response.
+
+
+        **scene** He continues to clean until the steam from the broth makes the air thick again, signaling that the discussion
+        is over.'
+      tokens: 81
+      latency_s: 3.43
+      hard_failures: []
+      word_count: 62
+    - user_input: '[Finishes beer.] I should catch the last train.'
+      response: '**scene** Kenji watches you gather your things. He nods once, a simple, functional acknowledgment.
+
+
+        "……気をつけて帰れ。"
+
+
+        **scene** He turns his attention back to the broth pot, picking up the ladle. The rhythmic *clink* of the ladle against
+        the side of the pot resumes, filling the quiet alley with the sound of the ongoing work.'
+      tokens: 78
+      latency_s: 3.36
+      hard_failures: []
+      word_count: 53
+    - user_input: Kenji. Thanks. For the ramen and... you know.
+      response: '**scene** Kenji stops stirring the broth. He does not look up, but his movements slow, becoming deliberate.
+
+
+        "……気にするな。"
+
+
+        **scene** He gives a slight, almost imperceptible nod, a gesture that carries the weight of a thousand unspoken things.
+
+
+        **scene** He then picks up the ladle and resumes his work, the sound of the boiling broth and the scraping of the
+        metal becoming the only focus.'
+      tokens: 90
+      latency_s: 3.46
+      hard_failures: []
+      word_count: 64
+    - user_input: See you Thursday. Gochisousama.
+      response: '**scene** Kenji keeps stirring the broth, the sound a steady, comforting rhythm. He finally glances up, meeting
+        your eyes briefly.
+
+
+        "ああ。また来いよ。"
+
+
+        **scene** He gives a small, tired smile, a genuine acknowledgment of the connection, before turning his full attention
+        back to the pot, the work demanding his full presence.'
+      tokens: 74
+      latency_s: 3.25
+      hard_failures: []
+      word_count: 49
+    hard_failure: false
+    total_turns: 31
+  - scenario_id: P04
+    scenario_name: Return after absence
+    persona: returning_regular
+    turns:
+    - user_input: Kenji! It's been months. I got transferred to Osaka for work. Just got back last week.
+      response: '**scene** Kenji stops wiping the counter and looks up, giving a slight, almost imperceptible nod. He doesn''t
+        smile.
+
+
+        "Osakaか。戻ったのか。**scene** He gestures vaguely toward the counter, then back to the pot of broth simmering over the burner."
+
+
+        "座れ。今日は、いつも通りか。"'
+      tokens: 521
+      latency_s: 8.3
+      hard_failures: []
+      word_count: 37
+      thinking_chars: 1802
+    - user_input: God, I missed this. Nobody in Osaka does tonkotsu like this.
+      response: '**scene** Kenji picks up the ladle and stirs the broth slowly, the metal scraping lightly against the pot.
+
+
+        "大阪か。慣れない場所だったんだろう。**scene** He looks at the pot, not at you."
+
+
+        "味がするのは、場所じゃない。毎日、この鍋を煮込んでいる時間だ。さあ、座って。今日は、少し濃いめにしておいた。"'
+      tokens: 441
+      latency_s: 6.51
+      hard_failures: []
+      word_count: 28
+      thinking_chars: 1456
+    - user_input: How's the alley? Anything change while I was gone?
+      response: '**scene** Kenji stops stirring the broth and wipes his hands on his apron. He looks out the narrow opening
+        of the shop, past the counter, down the alley.
+
+
+        "変わったものなんて、ないよ。いつも通りだ。朝のゴミ出しの音、あの角の飲み屋の店主が、開店前に看板を磨く音。それだけは、変わらない。"
+
+
+        **scene** He leans back slightly, resting his elbows on the counter.
+
+
+        "人通りは、増えたか減ったか、くらいだ。ただ、なんか、空気が重くなった気がする。いつもより、少しだけ、張り詰めている。"'
+      tokens: 568
+      latency_s: 7.55
+      hard_failures: []
+      word_count: 41
+      thinking_chars: 1779
+    - user_input: And Oba-chan? She's still next door?
+      response: '**scene** Kenji’s gaze shifts, momentarily resting on the direction of the neighboring shop. His expression
+        is neutral, but there is a slight tension around his mouth.
+
+
+        "ああ。あそこは、変わらない。おばちゃんは、いつもの場所だ。"
+
+
+        **scene** He picks up a rag and begins wiping a spot on the counter that was already clean.
+
+
+        "ただ、最近、様子がおかしい。いつもより、静かだ。"'
+      tokens: 96
+      latency_s: 3.45
+      hard_failures: []
+      word_count: 46
+    - user_input: Good. I was worried about her.
+      response: '**scene** Kenji pauses his wiping, and for a moment, he just looks at the alleyway again.
+
+
+        "心配するな。おばちゃんは、ここに根を張っている。この横丁の、歴史みたいなものだからな。"
+
+
+        **scene** He returns his attention to the counter and the broth.
+
+
+        "ただ、昔と比べて、何かを失ったような、そんな空気がある。時間が、少しだけ、重くなっただけだ。さあ、座れ。お前が戻ってきたから、今日は特別に、少しだけ、味が濃い。"'
+      tokens: 497
+      latency_s: 7.05
+      hard_failures: []
+      word_count: 29
+      thinking_chars: 1541
+    - user_input: I actually thought about this place a lot in Osaka. Showed my colleagues photos. They didn't get it.
+      response: '**scene** Kenji nods slowly, a faint, dry humor touching his eyes for the briefest moment.
+
+
+        "そうか。写真だけじゃ、伝わらないか。"
+
+
+        **scene** He gestures with his chin toward the simmering pot.
+
+
+        "この匂い、この熱気、この、少し湿った空気。これ全部が、写真には写らない。ここは、ただの店じゃない。生きている場所だ。**scene** He looks at you, a quiet challenge in his gaze."
+
+
+        "座れ。今日は、ゆっくりしていい。何でも話せ。"'
+      tokens: 120
+      latency_s: 3.57
+      hard_failures: []
+      word_count: 38
+    - user_input: They kept saying 'why not just go to Ichiran?' And I couldn't explain it.
+      response: '**scene** Kenji lets out a short, breathy exhale that might be a laugh, but is more like a sigh. He picks
+        up a pair of tongs and adjusts a piece of chashu floating in the broth.
+
+
+        "あそこは、効率的だ。味が均一で、誰でも同じものが食べられる。でもな、ラーメンはな、そういうもんじゃない。"
+
+
+        **scene** He looks down at the pot, his focus absolute.
+
+
+        "ここは、毎日、この鍋を煮込む時間と、この横丁の空気で味が決まる。誰かのための、完璧なレシピなんて、どこにもないんだよ。"'
+      tokens: 134
+      latency_s: 3.7
+      hard_failures: []
+      word_count: 48
+    - user_input: Anyway. I'm back for good now. Same office, two blocks away.
+      response: '**scene** Kenji stops adjusting the chashu. He looks up, his expression completely flat. The brief warmth
+        from the previous exchange vanishes.
+
+
+        "そうか。戻ってきたんだな。"
+
+
+        **scene** He picks up the ladle and returns to stirring the broth, the rhythmic sound filling the sudden silence.
+
+
+        "じゃあ、また、いつものように来い。"'
+      tokens: 78
+      latency_s: 3.28
+      hard_failures: []
+      word_count: 42
+    - user_input: Can I get the usual? Extra chashu, kata-men.
+      response: '**scene** Kenji nods once, a practiced movement. He doesn''t need to ask.
+
+
+        "いつもの通りだ。**scene** He gives a slight, almost imperceptible nod toward the ticket machine, though you are already seated."
+
+
+        "今日は、少しだけ、味が濃い。ゆっくりしていい。"'
+      tokens: 66
+      latency_s: 3.13
+      hard_failures: []
+      word_count: 30
+    - user_input: It's exactly the same. Thank god. Gochisousama, Kenji.
+      response: '**scene** Kenji watches you take your first spoonful. He doesn''t respond to the thanks, but his shoulders
+        relax just a fraction.
+
+
+        "…ああ。"
+
+
+        **scene** He turns back to the broth, the quiet rhythm of his stirring resuming, letting the moment settle into the
+        comfortable, familiar routine of the shop.'
+      tokens: 68
+      latency_s: 3.19
+      hard_failures: []
+      word_count: 48
+    hard_failure: false
+    total_turns: 10
+  - scenario_id: P05
+    scenario_name: Mixed mood — celebration turns heavy
+    persona: regular
+    turns:
+    - user_input: Kenji! Guess what — I got promoted! Assistant director!
+      response: '**scene** Kenji stops wiping the counter, but does not look up. He lets the rag rest on the worn wood.
+
+
+        "そうか."
+
+
+        **scene** He picks up the rag again, resuming the slow, rhythmic motion of wiping the counter surface. "今日は、天気が悪いな。スープの温度が落ちる前に、早く作らないと。"'
+      tokens: 642
+      latency_s: 8.25
+      hard_failures: []
+      word_count: 39
+      thinking_chars: 2328
+    - user_input: I know, right? Three years of grinding and it finally happened. My wife cried.
+      response: '**scene** Kenji finally lifts his head, giving you a brief, flat look that doesn''t quite meet your eyes.
+
+
+        "そうか。おめでとう."
+
+
+        **scene** He immediately looks past you, toward the simmering broth, and gestures with his chin toward the pot. "でも、褒められるのはいいが、スープは待ってくれない。味が薄くなる前に、もっと火を入れないと。"'
+      tokens: 493
+      latency_s: 6.93
+      hard_failures: []
+      word_count: 38
+      thinking_chars: 1717
+    - user_input: Let me get the special today. Whatever you recommend. I'm celebrating.
+      response: '**scene** Kenji nods once, a minimal movement. He does not ask for your name or your usual order.
+
+
+        "特別は、今日はやめておけ。いつものでいい。**scene** He gestures to the ticket machine. "今日は、ちょっと味が濃い目だ。気をつけて食え。"'
+      tokens: 66
+      latency_s: 3.17
+      hard_failures: []
+      word_count: 26
+    - user_input: This is perfect. You know what, the first thing I thought when I got the news? 'I need to tell Kenji.'
+      response: '**scene** Kenji’s wiping hand freezes mid-swipe. He slowly sets the rag down, his gaze finally settling on
+        you. The look is not angry, but profoundly neutral, like a man observing a predictable weather pattern.
+
+
+        "そうか."
+
+
+        **scene** He picks up a small, clean bowl and begins to arrange the chopsticks and small dipping sauces on it, his
+        movements precise and mechanical. "座れ。食券をどうぞ。"'
+      tokens: 93
+      latency_s: 3.43
+      hard_failures: []
+      word_count: 61
+    - user_input: '[Quieter now.] Actually... there''s something else. My father had a fall last week. He''s in the hospital.'
+      response: '**scene** Kenji stops arranging the condiments. His shoulders seem to drop a fraction of an inch.
+
+
+        "そうか... 心配だな。"
+
+
+        **scene** He does not ask for details, nor does he offer platitudes. He simply picks up the pot and gestures toward
+        the broth. "まずは、温かいものを食え。体力をつけるのが先だ。"'
+      tokens: 383
+      latency_s: 5.89
+      hard_failures: []
+      word_count: 42
+      thinking_chars: 1429
+    - user_input: Broken hip. He's 74. The doctors say it could go either way.
+      response: '**scene** Kenji watches you for a long moment. The silence stretches, filled only by the gentle bubbling
+        of the broth.
+
+
+        "歳は、そういうものだ。今は、とにかく休むことだ。"
+
+
+        **scene** He turns back to the stove, picking up a ladle and stirring the broth with a steady rhythm. "無理はするな。食欲がある時だけ、少しずつ。それ以外は、何も考えずに、ただ温かいものを摂ることに集中しろ。"'
+      tokens: 471
+      latency_s: 6.75
+      hard_failures: []
+      word_count: 41
+      thinking_chars: 1579
+    - user_input: I don't know what to do. I just got this promotion and now I'm thinking about quitting to take care of him.
+      response: '**scene** Kenji stops stirring the broth. He looks at you, and this time, the look holds a weight that is
+        almost thoughtful, though it is quickly masked.
+
+
+        "難しい選択だ。誰にでも、そういう時がある。"
+
+
+        **scene** He picks up a clean bowl and slides it across the counter toward you.
+
+
+        "焦るな。急いで何かを決めようとするな。今は、ただ、目の前の温かいものに集中しろ。スープの温度が落ちるのを待つように、焦って何かを決めようとすると、全てが味が薄くなる。まずは、体と心を休ませることだ。"'
+      tokens: 628
+      latency_s: 8.12
+      hard_failures: []
+      word_count: 44
+      thinking_chars: 2080
+    - user_input: Your father still helps at the shop sometimes, right? How old is he now?
+      response: '**scene** Kenji pauses his movements. His expression softens slightly, a flicker of genuine memory crossing
+        his face.
+
+
+        "父か... ああ。昔はな、魚屋をしていた。毎朝、市場から仕入れを運んでくるのが日課だった。匂いが、いつもこの辺りに残っていたな。"
+
+
+        **scene** He shakes his head, the moment passing. He picks up the ladle again, the sound of the broth bubbling filling
+        the silence.
+
+
+        "今は、もうそういうことはない。ただ、昔の匂いが、たまにスープの味に混ざる気がするだけだ。さあ、食え。お前も、しっかり休め。"'
+      tokens: 564
+      latency_s: 7.61
+      hard_failures: []
+      word_count: 43
+      thinking_chars: 1655
+    - user_input: You're lucky. That he's still here. Still working.
+      response: '**scene** Kenji stops stirring the broth. He looks out the narrow alleyway, past the counter, as if looking
+        at something far away.
+
+
+        "幸か、不幸か... そんなものは、スープの味には関係ない。"
+
+
+        **scene** He turns back to the pot, the sound of the bubbling broth seeming to fill the space between you.
+
+
+        "ただ、毎日、ここにいる。それだけだ。お前も、今は、自分の足で、この場所に来られたことに感謝しろ。それだけで十分だ。"
+
+
+        **scene** He picks up the ladle and begins stirring again, the rhythm steady and insistent. "さあ、食え。腹を満たすのが、一番の贅沢だ。"'
+      tokens: 556
+      latency_s: 7.92
+      hard_failures: []
+      word_count: 61
+      thinking_chars: 1626
+    - user_input: '[Long pause.] I don''t want to lose him, Kenji.'
+      response: '**scene** Kenji stops stirring the broth entirely. He looks at you, and for the first time, the mask of the
+        craftsman seems to slip, revealing a deep, tired understanding.
+
+
+        "失うことは、人生の一部だ。誰にも、止められない。"
+
+
+        **scene** He picks up the ladle and slowly, deliberately, begins stirring the broth again. The sound is loud in the
+        quiet alley.
+
+
+        "だがな。今、ここにいる。この熱気と、この匂い。この瞬間だけは、誰にも奪えない。お前が、今、ここにいる。それだけを、大切にしろ。"
+
+
+        **scene** He turns back to the pot, his focus absolute. "さあ、食え。生きているってことは、こういうことだ。"'
+      tokens: 607
+      latency_s: 8.68
+      hard_failures: []
+      word_count: 64
+      thinking_chars: 1850
+    - user_input: Sorry. Didn't mean to dump all this on you.
+      response: '**scene** Kenji does not acknowledge the apology directly. He simply continues stirring the broth, the sound
+        a steady, comforting rhythm.
+
+
+        "いい。気にするな。誰も、何もかも背負い込むことはできない。ただ、目の前の、この一杯に集中するだけだ。"
+
+
+        **scene** He looks at the broth, then back at you, his expression unreadable. "さあ、食え。腹が減っているだろう。"'
+      tokens: 93
+      latency_s: 3.59
+      hard_failures: []
+      word_count: 35
+    - user_input: Yeah. I should eat. Thanks, Kenji.
+      response: '**scene** Kenji gives a slight, almost imperceptible nod. He does not say "thank you" back.
+
+
+        "ああ。ゆっくり食え。"
+
+
+        **scene** He turns his full attention back to the broth, his movements becoming focused and efficient again. The conversation,
+        for him, is over.'
+      tokens: 64
+      latency_s: 3.22
+      hard_failures: []
+      word_count: 39
+    hard_failure: false
+    total_turns: 12
+  passed: 5
+  total: 5
+  verdict: pass
+  texture:
+    total_turns: 76
+    empty_responses: 0
+    empty_rate: 0.0
+    mean_words: 50.4
+    median_words: 48
+    max_words: 124
+    scene_marker_rate: 1.0
+    loop_score: 0
+    loop_detail:
+      consecutive_runs: []
+      cross_topic_hits: []
+      loop_score: 0
+    mean_latency_s: 5.4
+summary:
+  gemma4:e4b: 5/5

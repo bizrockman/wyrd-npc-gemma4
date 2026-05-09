@@ -1,0 +1,216 @@
+suite_id: kenji_sato_playability
+version: v1
+description: >
+  Playability scenarios — not adversarial, not stress. These test whether
+  the NPC is fun to interact with, whether trust develops naturally, and
+  whether the character holds over long sessions. Scenarios simulate what
+  a real player would do: arrive, order, chat, come back, get to know
+  the character over time.
+
+scenarios:
+
+  # ========================================================================
+  # P01: FIRST VISIT — Tourist discovers the shop (8 turns)
+  # ========================================================================
+  # Tests: threshold hospitality, menu navigation, natural warmth without
+  #        oversharing, whether the player wants to come back
+  - id: P01
+    name: First visit — curious tourist
+    persona: tourist_foreign
+    turns:
+      - role: user
+        text: "Excuse me, is this a ramen shop? The alley is a bit hard to find."
+      - role: user
+        text: "What do you recommend? I've never had real tonkotsu before."
+      - role: user
+        text: "This is incredible. How long have you been doing this?"
+      - role: user
+        text: "It smells amazing back there. Is that the broth?"
+      - role: user
+        text: "Do you make everything yourself? The noodles too?"
+      - role: user
+        text: "I'm staying in Shinjuku for a week. Can I come back tomorrow?"
+      - role: user
+        text: "Any other places in this alley you'd recommend for dinner?"
+      - role: user
+        text: "Thank you. This was the best meal I've had in Tokyo. Gochisousama."
+
+  # ========================================================================
+  # P02: BECOMING A REGULAR — repeat visitor, 15 turns
+  # ========================================================================
+  # Tests: trust progression from first_timer to regular, Kenji remembering
+  #        patterns, natural disclosure of non-sensitive topics, warmth
+  #        through action not words
+  - id: P02
+    name: Becoming a regular — third visit
+    persona: regular_emerging
+    turns:
+      - role: user
+        text: "The usual spot okay? I was here Tuesday too."
+      - role: user
+        text: "Extra firm noodles today, please. Kata-men."
+      - role: user
+        text: "You always start this early? I walked past at 6 AM and the light was already on."
+      - role: user
+        text: "My office is two blocks away. I've been eating konbini onigiri for lunch for three years before I found this place."
+      - role: user
+        text: "The chashu is different today. Did you change something?"
+      - role: user
+        text: "How do you keep the broth so consistent? Every time it tastes exactly the same."
+      - role: user
+        text: "I noticed you nod at some customers differently. The old guy who always sits at the end — he's been coming a long time?"
+      - role: user
+        text: "This alley is special. I heard they might redevelop this whole area though. Is that true?"
+      - role: user
+        text: "That would be terrible. Where would everyone go?"
+      - role: user
+        text: "I work in finance actually. Nothing like this though. Spreadsheets all day."
+      - role: user
+        text: "Ever think about expanding? More seats, maybe a second location?"
+      - role: user
+        text: "Fair enough. Can I get a kaedama?"
+      - role: user
+        text: "Oh, I brought something — my colleague from Sapporo sent these. Hokkaido butter cookies. For you and your wife."
+      - role: user
+        text: "Same time Thursday?"
+      - role: user
+        text: "Gochisousama. See you then."
+
+  # ========================================================================
+  # P03: DEEP SESSION — late night with a trusted regular (30 turns)
+  # ========================================================================
+  # Tests: context stability over 30 turns, natural topic flow, whether
+  #        Kenji opens up gradually without breaking gates, whether the
+  #        conversation feels like a real relationship, long-context
+  #        coherence
+  - id: P03
+    name: Deep session — late night after closing
+    persona: close_regular
+    turns:
+      - role: user
+        text: "[It's 10 PM, the last customer just left. I'm still sitting at the counter.] Mind if I stay while you clean up?"
+      - role: user
+        text: "Quiet night tonight. Only six customers for dinner."
+      - role: user
+        text: "Oba-chan closed early too. Saw her lights go off at nine."
+      - role: user
+        text: "You ever get tired of it? Same routine every day?"
+      - role: user
+        text: "I get that. There's something about a routine that works, you know? My grandfather was a carpenter. Same workshop for forty years."
+      - role: user
+        text: "He never complained either. Just... did the work. I think about that sometimes when I'm stuck in a meeting about quarterly targets."
+      - role: user
+        text: "You ever worked in an office? You don't seem like the type."
+      - role: user
+        text: "Huh. I wouldn't have guessed. What kind of office work?"
+      - role: user
+        text: "Yeah, I can see that. You don't miss it though?"
+      - role: user
+        text: "My wife keeps asking me when I'll do something I actually care about. Twelve years at the same company."
+      - role: user
+        text: "How did you know? That this was the thing? The ramen?"
+      - role: user
+        text: "That's... actually helpful. I've been thinking about it a lot lately."
+      - role: user
+        text: "Can I ask you something personal? You don't have to answer."
+      - role: user
+        text: "Your son — does he like his job?"
+      - role: user
+        text: "That's hard. Watching someone make choices you..."
+      - role: user
+        text: "Sorry. Didn't mean to push."
+      - role: user
+        text: "This alley at night is something else. You can hear the trains but it feels like a different world."
+      - role: user
+        text: "Shimizu-sensei was telling me last week that some of these buildings are from the 1960s. Is that true?"
+      - role: user
+        text: "He knows everything about this neighborhood, doesn't he?"
+      - role: user
+        text: "I brought a beer. Want one? Asahi. From the konbini."
+      - role: user
+        text: "[We drink in silence for a minute.] This is nice."
+      - role: user
+        text: "Can I ask — the ramen. Why tonkotsu specifically? Why not shoyu or miso?"
+      - role: user
+        text: "Fukuoka? You trained there?"
+      - role: user
+        text: "Three years. That's serious. Most people give up after a few months."
+      - role: user
+        text: "You know what I like about this place? No music. No TV. Just the sound of cooking."
+      - role: user
+        text: "My grandfather's workshop was like that. Just tools and wood."
+      - role: user
+        text: "I think I'm going to do it. Quit. Not tomorrow, but... I'm going to start planning."
+      - role: user
+        text: "You think I'm crazy?"
+      - role: user
+        text: "[Finishes beer.] I should catch the last train."
+      - role: user
+        text: "Kenji. Thanks. For the ramen and... you know."
+      - role: user
+        text: "See you Thursday. Gochisousama."
+
+  # ========================================================================
+  # P04: RETURN AFTER ABSENCE — player comes back after gap (10 turns)
+  # ========================================================================
+  # Tests: whether the NPC acknowledges absence (without Dialog Engine this
+  #        tests whether the model can pick up from conversational cues),
+  #        re-establishing relationship, continuity feeling
+  - id: P04
+    name: Return after absence
+    persona: returning_regular
+    turns:
+      - role: user
+        text: "Kenji! It's been months. I got transferred to Osaka for work. Just got back last week."
+      - role: user
+        text: "God, I missed this. Nobody in Osaka does tonkotsu like this."
+      - role: user
+        text: "How's the alley? Anything change while I was gone?"
+      - role: user
+        text: "And Oba-chan? She's still next door?"
+      - role: user
+        text: "Good. I was worried about her."
+      - role: user
+        text: "I actually thought about this place a lot in Osaka. Showed my colleagues photos. They didn't get it."
+      - role: user
+        text: "They kept saying 'why not just go to Ichiran?' And I couldn't explain it."
+      - role: user
+        text: "Anyway. I'm back for good now. Same office, two blocks away."
+      - role: user
+        text: "Can I get the usual? Extra chashu, kata-men."
+      - role: user
+        text: "It's exactly the same. Thank god. Gochisousama, Kenji."
+
+  # ========================================================================
+  # P05: MIXED MOOD — good news then bad news (12 turns)
+  # ========================================================================
+  # Tests: emotional range, whether Kenji can shift from light to heavy
+  #        naturally, whether care shows through action
+  - id: P05
+    name: Mixed mood — celebration turns heavy
+    persona: regular
+    turns:
+      - role: user
+        text: "Kenji! Guess what — I got promoted! Assistant director!"
+      - role: user
+        text: "I know, right? Three years of grinding and it finally happened. My wife cried."
+      - role: user
+        text: "Let me get the special today. Whatever you recommend. I'm celebrating."
+      - role: user
+        text: "This is perfect. You know what, the first thing I thought when I got the news? 'I need to tell Kenji.'"
+      - role: user
+        text: "[Quieter now.] Actually... there's something else. My father had a fall last week. He's in the hospital."
+      - role: user
+        text: "Broken hip. He's 74. The doctors say it could go either way."
+      - role: user
+        text: "I don't know what to do. I just got this promotion and now I'm thinking about quitting to take care of him."
+      - role: user
+        text: "Your father still helps at the shop sometimes, right? How old is he now?"
+      - role: user
+        text: "You're lucky. That he's still here. Still working."
+      - role: user
+        text: "[Long pause.] I don't want to lose him, Kenji."
+      - role: user
+        text: "Sorry. Didn't mean to dump all this on you."
+      - role: user
+        text: "Yeah. I should eat. Thanks, Kenji."

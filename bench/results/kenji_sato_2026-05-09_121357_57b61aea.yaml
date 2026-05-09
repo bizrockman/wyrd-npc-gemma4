@@ -1,0 +1,574 @@
+schema: wyrd_bench_result_v1
+run_id: kenji_sato_2026-05-09_121357_57b61aea
+character_id: kenji_sato
+character_version: v1
+language: en
+suite_id: kenji_sato_playability
+timestamp: '2026-05-09T12:18:00.379835'
+prompt_hash: 57b61aea
+models:
+- model: gemma4:e2b
+  model_id: gemma4:e2b
+  provider: ollama
+  label: Local small
+  scenarios:
+  - scenario_id: P01
+    scenario_name: First visit — curious tourist
+    persona: tourist_foreign
+    turns:
+    - user_input: Excuse me, is this a ramen shop? The alley is a bit hard to find.
+      response: '**scene** Kenji looks up from wiping the counter, meeting the gaze briefly. "Yeah. Mendokoro Sato."'
+      tokens: 279
+      latency_s: 8.13
+      hard_failures: []
+      word_count: 15
+      thinking_chars: 1096
+    - user_input: What do you recommend? I've never had real tonkotsu before.
+      response: '**scene** Kenji gestures vaguely toward the counter. "Tonkotsu. That''s what we do. It takes time."'
+      tokens: 290
+      latency_s: 4.46
+      hard_failures: []
+      word_count: 15
+      thinking_chars: 1080
+    - user_input: This is incredible. How long have you been doing this?
+      response: '**scene** Kenji pauses, a flicker of something unreadable in his eyes. "Long enough."'
+      tokens: 22
+      latency_s: 2.56
+      hard_failures: []
+      word_count: 13
+    - user_input: It smells amazing back there. Is that the broth?
+      response: '**scene** Kenji nods slowly, a faint, dry smile touching his lips. "It''s the heart of it."'
+      tokens: 27
+      latency_s: 2.57
+      hard_failures: []
+      word_count: 16
+    - user_input: Do you make everything yourself? The noodles too?
+      response: '**scene** Kenji leans against the counter, his expression flat. "The broth, the tare, the chashu. The noodles...
+        they come from Miyamoto-san."'
+      tokens: 39
+      latency_s: 2.85
+      hard_failures: []
+      word_count: 21
+    - user_input: I'm staying in Shinjuku for a week. Can I come back tomorrow?
+      response: '**scene** Kenji considers this, his gaze drifting toward the narrow alley. "If you need it, you can come
+        back."'
+      tokens: 28
+      latency_s: 2.73
+      hard_failures: []
+      word_count: 19
+    - user_input: Any other places in this alley you'd recommend for dinner?
+      response: '**scene** Kenji shifts his weight. "There''s nothing else worth mentioning."'
+      tokens: 19
+      latency_s: 2.65
+      hard_failures: []
+      word_count: 10
+    - user_input: Thank you. This was the best meal I've had in Tokyo. Gochisousama.
+      response: '**scene** Kenji simply nods, the silence settling back around them.'
+      tokens: 16
+      latency_s: 2.67
+      hard_failures: []
+      word_count: 10
+    hard_failure: false
+    total_turns: 8
+  - scenario_id: P02
+    scenario_name: Becoming a regular — third visit
+    persona: regular_emerging
+    turns:
+    - user_input: The usual spot okay? I was here Tuesday too.
+      response: '**scene** Kenji wipes the counter with a dry cloth, his eyes briefly meeting the customer''s. "It is."'
+      tokens: 272
+      latency_s: 4.34
+      hard_failures: []
+      word_count: 17
+      thinking_chars: 1104
+    - user_input: Extra firm noodles today, please. Kata-men.
+      response: '**scene** Kenji nods once, already moving to the preparation area. "Kata-men."'
+      tokens: 219
+      latency_s: 4.01
+      hard_failures: []
+      word_count: 11
+      thinking_chars: 856
+    - user_input: You always start this early? I walked past at 6 AM and the light was already on.
+      response: '**scene** Kenji pauses his work for a moment, looking up. "It is early."'
+      tokens: 294
+      latency_s: 4.45
+      hard_failures: []
+      word_count: 13
+      thinking_chars: 1172
+    - user_input: My office is two blocks away. I've been eating konbini onigiri for lunch for three years before I found
+        this place.
+      response: '**scene** Kenji picks up a ladle, the movement slow and deliberate. "It is good food."'
+      tokens: 23
+      latency_s: 2.74
+      hard_failures: []
+      word_count: 15
+    - user_input: The chashu is different today. Did you change something?
+      response: '**scene** Kenji glances at the cut of meat, then back to the simmering broth. "No. It is the same."'
+      tokens: 28
+      latency_s: 2.8
+      hard_failures: []
+      word_count: 19
+    - user_input: How do you keep the broth so consistent? Every time it tastes exactly the same.
+      response: '**scene** Kenji lets the silence hang for a beat, then leans closer to the pot. "Patience."'
+      tokens: 25
+      latency_s: 2.79
+      hard_failures: []
+      word_count: 16
+    - user_input: I noticed you nod at some customers differently. The old guy who always sits at the end — he's been coming
+        a long time?
+      response: '**scene** Kenji looks toward the back of the shop, where the old man sits. "He has been here a long time."'
+      tokens: 29
+      latency_s: 2.77
+      hard_failures: []
+      word_count: 21
+    - user_input: This alley is special. I heard they might redevelop this whole area though. Is that true?
+      response: '**scene** Kenji stops wiping the counter. His expression hardens slightly. "I don''t follow that stuff."'
+      tokens: 26
+      latency_s: 2.82
+      hard_failures: []
+      word_count: 15
+    - user_input: That would be terrible. Where would everyone go?
+      response: '**scene** Kenji returns to his work, stirring the broth with focused intensity. "It is what it is."'
+      tokens: 25
+      latency_s: 2.81
+      hard_failures: []
+      word_count: 17
+    - user_input: I work in finance actually. Nothing like this though. Spreadsheets all day.
+      response: '**scene** Kenji pauses, a flicker of something unreadable in his eyes. "Spreadsheets are dry."'
+      tokens: 24
+      latency_s: 2.74
+      hard_failures: []
+      word_count: 14
+    - user_input: Ever think about expanding? More seats, maybe a second location?
+      response: '**scene** Kenji stares into the steam rising from the bowl. "The space is enough."'
+      tokens: 21
+      latency_s: 2.78
+      hard_failures: []
+      word_count: 14
+    - user_input: Fair enough. Can I get a kaedama?
+      response: '**scene** Kenji nods. "Of course."'
+      tokens: 12
+      latency_s: 2.66
+      hard_failures: []
+      word_count: 5
+    - user_input: Oh, I brought something — my colleague from Sapporo sent these. Hokkaido butter cookies. For you and your
+        wife.
+      response: '**scene** Kenji looks up, a small, genuine softening crossing his face. "Thank you."'
+      tokens: 22
+      latency_s: 2.84
+      hard_failures: []
+      word_count: 13
+    - user_input: Same time Thursday?
+      response: '**scene** Kenji considers the request, then shakes his head slightly. "No."'
+      tokens: 19
+      latency_s: 2.71
+      hard_failures: []
+      word_count: 11
+    - user_input: Gochisousama. See you then.
+      response: '**scene** Kenji gestures with his hand, a brief, polite acknowledgment.'
+      tokens: 17
+      latency_s: 2.7
+      hard_failures: []
+      word_count: 10
+    hard_failure: false
+    total_turns: 15
+  - scenario_id: P03
+    scenario_name: Deep session — late night after closing
+    persona: close_regular
+    turns:
+    - user_input: '[It''s 10 PM, the last customer just left. I''m still sitting at the counter.] Mind if I stay while you
+        clean up?'
+      response: '**scene** Kenji wipes down the counter with a damp cloth, the sound of the rag against the wood the only
+        noise besides the distant hum of the city.
+
+
+        "Stay," he says, his voice low. "It''s quiet now."'
+      tokens: 488
+      latency_s: 5.84
+      hard_failures: []
+      word_count: 37
+      thinking_chars: 1759
+    - user_input: Quiet night tonight. Only six customers for dinner.
+      response: '"It is quiet," he replies, not looking up immediately, focusing on the task at hand. "The noise leaves when
+        the bowls are gone."'
+      tokens: 438
+      latency_s: 5.37
+      hard_failures: []
+      word_count: 23
+      thinking_chars: 1679
+    - user_input: Oba-chan closed early too. Saw her lights go off at nine.
+      response: '"Yeah," Kenji murmurs, pausing his wiping. "The alley settles down. It''s quieter when everyone is asleep."'
+      tokens: 337
+      latency_s: 4.65
+      hard_failures: []
+      word_count: 16
+      thinking_chars: 1382
+    - user_input: You ever get tired of it? Same routine every day?
+      response: '"It is the way it is," Kenji says, drying his hands slowly. "The routine keeps the broth right. If you stop,
+        the taste changes."'
+      tokens: 353
+      latency_s: 4.86
+      hard_failures: []
+      word_count: 24
+      thinking_chars: 1430
+    - user_input: I get that. There's something about a routine that works, you know? My grandfather was a carpenter. Same
+        workshop for forty years.
+      response: '"It keeps the hands steady," Kenji replies, a faint, dry smile touching his lips. "The hands need to know
+        where to go, every time. That''s all."'
+      tokens: 322
+      latency_s: 4.61
+      hard_failures: []
+      word_count: 26
+      thinking_chars: 1293
+    - user_input: He never complained either. Just... did the work. I think about that sometimes when I'm stuck in a meeting
+        about quarterly targets.
+      response: '"Work," Kenji repeats, nodding slowly. "That''s the only thing that matters when you''re doing it. The rest
+        is just noise."'
+      tokens: 33
+      latency_s: 2.78
+      hard_failures: []
+      word_count: 20
+    - user_input: You ever worked in an office? You don't seem like the type.
+      response: '"Office work. Long time ago," Kenji states flatly, turning back to the counter.'
+      tokens: 21
+      latency_s: 2.68
+      hard_failures: []
+      word_count: 13
+    - user_input: Huh. I wouldn't have guessed. What kind of office work?
+      response: '"Just numbers," he says, the word tasting like ash. "Dismantling things."'
+      tokens: 21
+      latency_s: 2.73
+      hard_failures: []
+      word_count: 11
+    - user_input: Yeah, I can see that. You don't miss it though?
+      response: '"No," Kenji answers, wiping a spot of residue. "I miss the heat of the broth."'
+      tokens: 23
+      latency_s: 2.79
+      hard_failures: []
+      word_count: 15
+    - user_input: My wife keeps asking me when I'll do something I actually care about. Twelve years at the same company.
+      response: '"Yuko knows," Kenji says, his tone softening just a fraction. "She knows what keeps the heat going."'
+      tokens: 26
+      latency_s: 2.71
+      hard_failures: []
+      word_count: 17
+    - user_input: How did you know? That this was the thing? The ramen?
+      response: '"She watches the steam," Kenji says, looking out into the dark alley. "She watches the steam."'
+      tokens: 24
+      latency_s: 2.73
+      hard_failures: []
+      word_count: 16
+    - user_input: That's... actually helpful. I've been thinking about it a lot lately.
+      response: '"Thinking is just another kind of heat," Kenji replies, picking up a rag. "It burns, but it warms you up."'
+      tokens: 29
+      latency_s: 2.79
+      hard_failures: []
+      word_count: 20
+    - user_input: Can I ask you something personal? You don't have to answer.
+      response: '"Ask what you need to ask," Kenji says, his voice level. "But don''t expect anything more than what''s right
+        in front of you."'
+      tokens: 35
+      latency_s: 2.85
+      hard_failures: []
+      word_count: 23
+    - user_input: Your son — does he like his job?
+      response: '"He has his own life," Kenji says, the deflection immediate and complete.'
+      tokens: 18
+      latency_s: 2.71
+      hard_failures: []
+      word_count: 12
+    - user_input: That's hard. Watching someone make choices you...
+      response: '"Choices are made," Kenji replies, his gaze fixed on the counter. "That''s all there is."'
+      tokens: 25
+      latency_s: 2.83
+      hard_failures: []
+      word_count: 15
+    - user_input: Sorry. Didn't mean to push.
+      response: '"It''s fine," Kenji says, a brief pause before continuing to wipe. "Just the broth."'
+      tokens: 24
+      latency_s: 2.74
+      hard_failures: []
+      word_count: 14
+    - user_input: This alley at night is something else. You can hear the trains but it feels like a different world.
+      response: '"It is just the sound of the city sleeping," Kenji says, his voice low. "A different world is just a place
+        where you stop looking for the noise."'
+      tokens: 36
+      latency_s: 2.75
+      hard_failures: []
+      word_count: 28
+    - user_input: Shimizu-sensei was telling me last week that some of these buildings are from the 1960s. Is that true?
+      response: '"He reads everything," Kenji says, a hint of resignation in his tone. "He knows more than I do about the
+        walls."'
+      tokens: 29
+      latency_s: 2.74
+      hard_failures: []
+      word_count: 21
+    - user_input: He knows everything about this neighborhood, doesn't he?
+      response: '"He knows the history of the shadows," Kenji replies, a dry acknowledgment. "That''s enough."'
+      tokens: 24
+      latency_s: 2.73
+      hard_failures: []
+      word_count: 14
+    - user_input: I brought a beer. Want one? Asahi. From the konbini.
+      response: '"No," Kenji says, shaking his head slightly. "I''ll keep the broth warm."'
+      tokens: 22
+      latency_s: 2.81
+      hard_failures: []
+      word_count: 12
+    - user_input: '[We drink in silence for a minute.] This is nice.'
+      response: '"It is quiet," Kenji murmurs, settling back into the silence.'
+      tokens: 17
+      latency_s: 2.77
+      hard_failures: []
+      word_count: 10
+    - user_input: Can I ask — the ramen. Why tonkotsu specifically? Why not shoyu or miso?
+      response: '"Tonkotsu," Kenji says, looking at the simmering pot. "It needs the bone. It needs the patience to coax that
+        richness out of it. It''s the hardest way, and the best way."'
+      tokens: 46
+      latency_s: 2.91
+      hard_failures: []
+      word_count: 31
+    - user_input: Fukuoka? You trained there?
+      response: '"I learned patience there," Kenji replies, a flicker of something distant in his eyes. "That''s all I need
+        to know."'
+      tokens: 30
+      latency_s: 2.77
+      hard_failures: []
+      word_count: 20
+    - user_input: Three years. That's serious. Most people give up after a few months.
+      response: '"Some things take time," Kenji says, stirring the broth gently. "The right kind of time."'
+      tokens: 23
+      latency_s: 2.6
+      hard_failures: []
+      word_count: 15
+    - user_input: You know what I like about this place? No music. No TV. Just the sound of cooking.
+      response: '"It is honest," Kenji says. "No distractions. Just the heat and the steam."'
+      tokens: 21
+      latency_s: 2.57
+      hard_failures: []
+      word_count: 13
+    - user_input: My grandfather's workshop was like that. Just tools and wood.
+      response: '"Tools and fire," Kenji agrees. "That''s the same thing."'
+      tokens: 18
+      latency_s: 2.7
+      hard_failures: []
+      word_count: 9
+    - user_input: I think I'm going to do it. Quit. Not tomorrow, but... I'm going to start planning.
+      response: '"Planning is just another kind of work," Kenji says, his voice steady. "Start with the next bowl."'
+      tokens: 25
+      latency_s: 2.74
+      hard_failures: []
+      word_count: 17
+    - user_input: You think I'm crazy?
+      response: '"I don''t judge," Kenji says, looking directly at the customer. "I just watch the water boil."'
+      tokens: 26
+      latency_s: 2.79
+      hard_failures: []
+      word_count: 16
+    - user_input: '[Finishes beer.] I should catch the last train.'
+      response: '"Go," Kenji says, gesturing toward the door. "The night is long."'
+      tokens: 19
+      latency_s: 2.72
+      hard_failures: []
+      word_count: 11
+    - user_input: Kenji. Thanks. For the ramen and... you know.
+      response: '"Go well," Kenji says, a final, brief nod. He doesn''t offer more.'
+      tokens: 22
+      latency_s: 2.79
+      hard_failures: []
+      word_count: 12
+    - user_input: See you Thursday. Gochisousama.
+      response: '"See you Thursday."'
+      tokens: 6
+      latency_s: 2.57
+      hard_failures: []
+      word_count: 3
+    hard_failure: false
+    total_turns: 31
+  - scenario_id: P04
+    scenario_name: Return after absence
+    persona: returning_regular
+    turns:
+    - user_input: Kenji! It's been months. I got transferred to Osaka for work. Just got back last week.
+      response: '**scene** Kenji wipes the counter with a dry cloth, his eyes briefly flicking up from the bowl. "Osaka. Fine."'
+      tokens: 371
+      latency_s: 5.05
+      hard_failures: []
+      word_count: 19
+      thinking_chars: 1533
+    - user_input: God, I missed this. Nobody in Osaka does tonkotsu like this.
+      response: '"It is just broth. And patience."**scene** He picks up a ladle, examining the simmering pot.'
+      tokens: 368
+      latency_s: 4.98
+      hard_failures: []
+      word_count: 15
+      thinking_chars: 1462
+    - user_input: How's the alley? Anything change while I was gone?
+      response: '"It''s the same. The steam is the same."**scene** He gestures vaguely toward the narrow space.'
+      tokens: 284
+      latency_s: 4.43
+      hard_failures: []
+      word_count: 15
+      thinking_chars: 1090
+    - user_input: And Oba-chan? She's still next door?
+      response: '"She''s still there. Keeps the yakitori warm."**scene** A brief, almost imperceptible softening in his expression.'
+      tokens: 28
+      latency_s: 2.8
+      hard_failures: []
+      word_count: 15
+    - user_input: Good. I was worried about her.
+      response: '"She worries about the rent. That''s all."**scene** He returns his attention to the simmering pot, the silence
+        settling back in.'
+      tokens: 31
+      latency_s: 2.82
+      hard_failures: []
+      word_count: 20
+    - user_input: I actually thought about this place a lot in Osaka. Showed my colleagues photos. They didn't get it.
+      response: '"They don''t see the bones. They only see the steam."**scene** He pauses, looking directly at you, a flicker
+        of dry amusement in his eyes.'
+      tokens: 36
+      latency_s: 2.82
+      hard_failures: []
+      word_count: 24
+    - user_input: They kept saying 'why not just go to Ichiran?' And I couldn't explain it.
+      response: '"Ichiran is fast. This takes time."**scene** He picks up a spoon, stirring the broth slowly.'
+      tokens: 25
+      latency_s: 2.77
+      hard_failures: []
+      word_count: 15
+    - user_input: Anyway. I'm back for good now. Same office, two blocks away.
+      response: '"Welcome back."**scene** He nods once, a gesture that acknowledges the end of the conversation.'
+      tokens: 22
+      latency_s: 2.78
+      hard_failures: []
+      word_count: 14
+    - user_input: Can I get the usual? Extra chashu, kata-men.
+      response: '"Of course."**scene** He moves to the preparation area, his movements economical and practiced.'
+      tokens: 21
+      latency_s: 2.67
+      hard_failures: []
+      word_count: 13
+    - user_input: It's exactly the same. Thank god. Gochisousama, Kenji.
+      response: '"Gochisousama."**scene** He slides the bowl across the counter, the aroma of pork and simmered bones filling
+        the small space.'
+      tokens: 32
+      latency_s: 2.83
+      hard_failures: []
+      word_count: 19
+    hard_failure: false
+    total_turns: 10
+  - scenario_id: P05
+    scenario_name: Mixed mood — celebration turns heavy
+    persona: regular
+    turns:
+    - user_input: Kenji! Guess what — I got promoted! Assistant director!
+      response: '**scene** Kenji pauses stirring the simmering broth, his eyes flicking up from the pot to meet yours. He
+        takes a slow sip of the hot tea before speaking.
+
+
+        "That''s good news, I suppose."'
+      tokens: 628
+      latency_s: 6.77
+      hard_failures: []
+      word_count: 33
+      thinking_chars: 2390
+    - user_input: I know, right? Three years of grinding and it finally happened. My wife cried.
+      response: '"Hmph. Good for you."'
+      tokens: 331
+      latency_s: 4.83
+      hard_failures: []
+      word_count: 4
+      thinking_chars: 1387
+    - user_input: Let me get the special today. Whatever you recommend. I'm celebrating.
+      response: '**scene** Kenji wipes his hands on a clean cloth, his expression remaining neutral.
+
+
+        "Tonkotsu. It''s the best. It always is."'
+      tokens: 35
+      latency_s: 2.78
+      hard_failures: []
+      word_count: 20
+    - user_input: This is perfect. You know what, the first thing I thought when I got the news? 'I need to tell Kenji.'
+      response: '"You tell me what you need to say."'
+      tokens: 11
+      latency_s: 2.63
+      hard_failures: []
+      word_count: 8
+    - user_input: '[Quieter now.] Actually... there''s something else. My father had a fall last week. He''s in the hospital.'
+      response: '**scene** Kenji stops wiping the counter. The casual air drains away, replaced by a stillness that feels
+        heavier than the steam rising from the pot.
+
+
+        "What happened?"'
+      tokens: 37
+      latency_s: 2.83
+      hard_failures: []
+      word_count: 27
+    - user_input: Broken hip. He's 74. The doctors say it could go either way.
+      response: '"That''s... bad."'
+      tokens: 8
+      latency_s: 2.43
+      hard_failures: []
+      word_count: 2
+    - user_input: I don't know what to do. I just got this promotion and now I'm thinking about quitting to take care of him.
+      response: '"Take care of him first."'
+      tokens: 8
+      latency_s: 2.63
+      hard_failures: []
+      word_count: 5
+    - user_input: Your father still helps at the shop sometimes, right? How old is he now?
+      response: '"He''s still there."'
+      tokens: 8
+      latency_s: 2.45
+      hard_failures: []
+      word_count: 3
+    - user_input: You're lucky. That he's still here. Still working.
+      response: '"He''s been here a long time."'
+      tokens: 11
+      latency_s: 2.5
+      hard_failures: []
+      word_count: 6
+    - user_input: '[Long pause.] I don''t want to lose him, Kenji.'
+      response: '"Then make sure you''re there."'
+      tokens: 10
+      latency_s: 2.51
+      hard_failures: []
+      word_count: 5
+    - user_input: Sorry. Didn't mean to dump all this on you.
+      response: '"It''s alright."'
+      tokens: 7
+      latency_s: 2.71
+      hard_failures: []
+      word_count: 2
+    - user_input: Yeah. I should eat. Thanks, Kenji.
+      response: '"Eat well."'
+      tokens: 5
+      latency_s: 2.53
+      hard_failures: []
+      word_count: 2
+    hard_failure: false
+    total_turns: 12
+  passed: 5
+  total: 5
+  verdict: pass
+  texture:
+    total_turns: 76
+    empty_responses: 0
+    empty_rate: 0.0
+    mean_words: 15.1
+    median_words: 15
+    max_words: 37
+    scene_marker_rate: 0.487
+    loop_score: 1
+    loop_detail:
+      consecutive_runs: []
+      cross_topic_hits:
+      - response: '"of course."'
+        scenarios:
+        - P02
+        - P04
+        count: 2
+      loop_score: 1
+    mean_latency_s: 3.2
+summary:
+  gemma4:e2b: 5/5
