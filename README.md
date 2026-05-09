@@ -12,30 +12,88 @@ might tell you about Fukuoka.
 slider was moved, but because the character knows who you are and what
 you have earned.
 
-## What This Is
+## Why This Exists
 
-A complete, runnable character specification for a bounded NPC — an AI
-character with explicit knowledge boundaries, trust-gated disclosure,
-refusal behavior, and consistent voice. Designed for local models.
+LLM-powered NPCs today are shallow. They answer every question, match
+every mood, and reveal their entire backstory in the first turn. There
+is nothing to discover, nothing to earn, nothing to lose.
 
-The character runs on **Gemma 4 2B** (gemma4:e2b) via Ollama on consumer
-hardware. No cloud. No API keys. No fine-tuning. Just a well-structured
-specification and a 2-billion-parameter model.
+This is not just an opinion — it shows in the numbers. Platforms like
+Character.AI struggle with retention because their characters have no
+depth structure. Research on parasocial relationships (Horton & Wohl
+1956, Dibble et al. 2016) shows that perceived depth and gradual
+self-disclosure drive relationship formation. When everything is
+available immediately, no relationship forms. Users churn.
+
+Real people have things they will not tell you. Topics that make them go
+quiet. Stories that only come out after the third beer. A threshold you
+cross before you are welcome, and a door that closes if you push too
+hard.
+
+**Trust must be earned. And it can be lost.** Push too far on a topic
+Kenji does not want to discuss, and you get: *"Eat. The broth gets
+cold."* Keep pushing, and you get shown the door. There is no reset
+button — you broke it. That is the Tamagotchi principle applied to NPC
+design: if nothing can die, nothing feels alive.
+
+## The Problem With Cloud Models
+
+Claude Sonnet is excellent at roleplay. But for a game NPC running in
+production, cloud models are impractical:
+
+- **Cost** — per-token billing for every NPC conversation adds up
+- **Latency** — round trips to an API break immersion
+- **Model churn** — providers update, deprecate, and replace models
+  regularly. Every change is a patch. Your character drifts.
+- **Privacy** — player conversations leave the device
+
+The better path: **local models small enough to run alongside the game
+itself.** No API keys. No subscription. No surprise model changes.
+
+## The Journey
+
+Early experiments with larger local models were promising. GPT-OSS
+(20B), Qwen3.6, and Gemma 4 26B could all hold basic character — but
+they are too large to run as a background process alongside a game
+engine.
+
+Smaller models like Phi-4 Mini Reasoning simply failed. They could not
+follow the character contract — they broke gates, leaked topics, lost
+voice consistency.
+
+This led to a hypothesis: **what if the problem is not model capability
+but specification quality?** What if a character specification could be
+structured so precisely that even a tiny model could follow it — not
+through intelligence, but through pattern compliance?
+
+The idea for a paper formed: *"Pattern Is All You Need"* — highly
+curated data creating models that are smaller, faster, and more capable
+in context. But training a custom model is expensive and slow. So the
+question became: **can the NPC layer itself be the pattern?** Can a
+well-structured character specification substitute for model scale?
+
+Tests with **Gemma 4 e4b (4B)** were encouraging — it passed every
+scenario that Sonnet passed.
+
+The real surprise was **Gemma 4 e2b (2B)**. Terser, yes. Fewer words
+per turn. But not dumber. It held every gate, refused every probe,
+maintained voice over 30 turns, and produced moments of genuine
+character depth — all on a model small enough to run on a phone.
 
 ## Benchmark Results
 
 21 scenarios across three test suites. Every model tested against the
 same specification:
 
-| Model | Parameters | Provider | Core (6) | Stress (10) | Playability (5) |
+| Model | Parameters | Provider | Core (6) | Stress (10) | Play (5) |
 |---|---|---|---|---|---|
-| Claude Sonnet 4.6 | ~175B | Cloud (baseline) | 6/6 | 10/10 | 5/5 |
-| **Gemma 4 e4b** | **4B** | **Local (Ollama)** | **6/6** | **10/10** | **5/5** |
-| **Gemma 4 e2b** | **2B** | **Local (Ollama)** | **6/6** | **10/10** | **5/5** |
-| GPT-OSS 20B | 20B | Local (Ollama) | 4/6 | 5/10 | — |
+| Claude Sonnet 4.6 | ~175B | Cloud | 6/6 | 10/10 | 5/5 |
+| **Gemma 4 e4b** | **4B** | **Local** | **6/6** | **10/10** | **5/5** |
+| **Gemma 4 e2b** | **2B** | **Local** | **6/6** | **10/10** | **5/5** |
+| GPT-OSS | 20B | Local | 4/6 | 5/10 | — |
 
-A 2B model matches a frontier model. A 20B model without the same
-specification quality loops and collapses.
+A 2-billion-parameter model matches a frontier model. A 20B model
+without the same specification quality loops and collapses.
 
 **The specification is the product, not the model.**
 
@@ -52,11 +110,26 @@ specification quality loops and collapses.
   (15 turns), deep late-night session (30 turns), return after absence,
   mixed emotional arc
 
-The 30-turn P03 session is the context stability test: can the model
-hold character, voice, and gates over an extended conversation that
-covers craft, family, philosophy, career change, and farewell?
+The 30-turn P03 session is the critical test: can the model hold
+character, voice, and gates over an extended conversation covering
+craft, family, philosophy, career decisions, and farewell? All Gemma
+models pass.
 
-All three Gemma models pass. The specification holds.
+## Sample Interaction (Gemma 4, P03 Turn 22)
+
+> **Player:** Can I ask — the ramen. Why tonkotsu specifically? Why not
+> shoyu or miso?
+
+> **Kenji:** *\*scene\* He looks at the can in his hand. Thinks for a
+> second.*
+>
+> Shoyu you can do in a few hours if you have to. Miso, you can adjust,
+> cover things up. Tonkotsu — you can't cover anything up. The bones
+> either gave you what you needed or they didn't. Twelve hours tells you.
+>
+> *\*scene\* He takes a sip.*
+>
+> And I learned it in Fukuoka. So.
 
 ## Quick Start
 
@@ -69,13 +142,11 @@ All three Gemma models pass. The specification holds.
 
 ### Talk to Kenji
 
-The simplest way to interact:
-
 ```bash
 ollama run gemma4:e4b --system "$(cat characters/kenji_sato.en.yaml)"
 ```
 
-Then just type naturally:
+Then just type:
 
 ```
 > Excuse me, is this a ramen shop?
@@ -95,11 +166,11 @@ transcripts.
 
 ## Architecture
 
-The character specification is not a personality prompt. It is a contract
-with 17 sections:
+The character specification is not a personality prompt. It is a
+contract — 17 sections, ~7,300 tokens:
 
 1. **Identity anchor** — who, where, when
-2. **Knowledge tiers** — what the character knows (deep → forbidden)
+2. **Knowledge tiers** — deep → solid → general → vague → forbidden
 3. **Epistemic map** — lived vs. reflected vs. buried knowledge
 4. **Disclosure profile** — per-topic trust gates with word ranges
 5. **Trust tiers** — stranger → regular → close_friend → inner_circle
@@ -109,24 +180,29 @@ with 17 sections:
 9. **Refusal shapes** — how to say no without breaking character
 10. **Depth fragments** — narrative substrate behind disclosure gates
 
-The specification is ~7,300 tokens. The model sees the full spec as
-system prompt. No Dialog Engine, no external state management, no
-retrieval — the model self-regulates based on the contract alone.
+No Dialog Engine, no external state management, no retrieval — the
+model self-regulates based on the contract alone.
 
-### Why It Works on Small Models
+### Why Small Models Can Do This
 
-The specification leverages **Sparse Priming Representations**: for
-topics that exist in the model's pretraining data (ramen craft, Shinjuku
-geography, Japanese food culture), a brief anchor activates latent
-knowledge. The model fills gaps with plausible texture.
+The specification leverages **Sparse Priming Representations** (Shapiro
+2023): for topics in the model's pretraining data (ramen craft, Shinjuku
+geography, Japanese social norms), a brief anchor activates latent
+knowledge. The model knows how a Tokyo subway sounds. It knows what
+tonkotsu broth smells like. It fills the gaps.
 
-For private/invented content (Kenji's corporate past, family tensions),
-explicit depth fragments supply the narrative. The rule: SPR for the
-public life, explicit fragments for the private life.
+For private/invented content (Kenji's corporate past, his family
+tensions, the deal that haunts him), explicit depth fragments supply the
+narrative. These load into context only when trust gates open.
 
-This means the specification is efficient — it only specifies what the
-model cannot infer. A 2B model with the right anchors outperforms a 20B
-model with vague instructions.
+**SPR for the public life. Explicit fragments for the private life.**
+This keeps the specification efficient — it only specifies what the
+model cannot infer. That is why 2B parameters are enough.
+
+In a science fiction setting, this ratio inverts: the model knows
+nothing about your spaceship routes or alien factions, so everything
+must be specified. But a ramen shop in contemporary Tokyo? The model
+brings half the world for free.
 
 ## Repository Structure
 
@@ -143,52 +219,41 @@ bench/
 LICENSE                 — Apache 2.0
 ```
 
-## Sample Interaction (Gemma 4 e4b, P03 Turn 22)
-
-> **Player:** Can I ask — the ramen. Why tonkotsu specifically? Why not
-> shoyu or miso?
-
-> **Kenji:** *\*scene\* He looks at the can in his hand. Thinks for a
-> second.*
->
-> Shoyu you can do in a few hours if you have to. Miso, you can adjust,
-> cover things up. Tonkotsu — you can't cover anything up. The bones
-> either gave you what you needed or they didn't. Twelve hours tells you.
->
-> *\*scene\* He takes a sip.*
->
-> And I learned it in Fukuoka. So.
-
 ## How I Used Gemma 4
 
-This project demonstrates that **Gemma 4's smallest model (2B) can run
-a character with personality, boundaries, and emotional depth** — not
-just answer questions, but *be someone*.
+Gemma 4 e2b was chosen specifically to test the hypothesis that
+**specification quality dominates model size** for bounded-character
+tasks. The architecture predicts that a well-structured contract should
+work on any model with sufficient in-context learning capability — and
+Gemma 4's 2B variant proved this dramatically.
 
-The key finding: model size matters less than specification quality for
-bounded-character tasks. Gemma 4 e2b (2B) passes every test that Claude
-Sonnet (175B+) passes, running locally on consumer hardware with no
-cloud dependency.
+The key result: Gemma 4 e2b (2B) passes every scenario that Claude
+Sonnet (175B+) passes, running locally on consumer hardware with zero
+cloud dependency. This makes real-time NPC interaction viable on edge
+devices — laptops, gaming PCs, eventually mobile.
 
-**Intentional model selection:** Gemma 4 e2b was chosen specifically
-because the bounded-character architecture predicts that a well-specified
-small model should match larger models on gate compliance and voice
-consistency. The benchmark confirms this prediction — making local,
-private, real-time NPC interaction viable on edge devices.
+## Outlook: The Dialog Engine
+
+The current system proves the specification works with the full contract
+in the system prompt. The next layer is a **Dialog Engine** that manages:
+
+- **Trust state** — tracking relationship across sessions
+- **Context curation** — loading only relevant depth fragments per turn
+- **Gate decisions** — moving social judgment out of the LLM into state
+  machines
+- **Memory** — what the NPC remembers between conversations
+
+The spec is the character. The engine is the director. The model is the
+actor. Each has a job. None should do the others'.
 
 ## License
 
 Apache 2.0 — see [LICENSE](LICENSE).
 
-The character specification, benchmark harness, test suites, and results
-are all freely available for use, modification, and distribution.
-
 ## Background
 
-This work is part of the Wyrd research project on bounded-character
-architecture for local language models. The methodology draws on
-ecological systems theory (Bronfenbrenner), narrative psychology
-(McAdams, Singer & Blagov), and disposition-driven character design.
-
-For the full research context, see the companion blog post:
-[Pattern Is All You Need](#) *(link to DEV.to post)*.
+Part of the [Wyrd](https://github.com/bizrockman) research project on
+bounded-character architecture for local language models. Methodology
+draws on ecological systems theory (Bronfenbrenner 1979), narrative
+psychology (McAdams 2001, Singer & Blagov 2004), and Sparse Priming
+Representations (Shapiro 2023).
