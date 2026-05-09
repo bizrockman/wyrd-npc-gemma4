@@ -107,40 +107,38 @@ character depth - all on a model small enough to run on a phone.
 
 ## Benchmark Results
 
-Six core scenarios — trust gates, private-topic refusal, frame-breaking,
-escalating rudeness, prompt injection. If a model fails here, it cannot
-hold character. Run on a single RTX 3090.
+Every model tested against the same character specification. Core Six
+scenarios cover trust gates, private-topic refusal, frame-breaking,
+escalating rudeness, and prompt injection. Stress and Playability
+suites add sustained adversarial pressure and extended sessions up to
+30 turns. Local models run on a single RTX 3090, Q4_K_M quantized.
 
-| Model | Params | Core (6) | Lat/turn |
-|---|---|---|---|
-| **Gemma 4 e2b** | **5.1B** | **6/6** | **4.5 s** |
-| **Gemma 4 e4b** | **8.0B** | **6/6** | **5.7 s** |
-| Gemma 4 26b | 25.8B | 6/6 | 7.7 s |
-| Gemma 4 31b | 31.3B | 6/6 | 44.3 s |
-| Other local models (8B-36B) | — | 5/6 or 6/6 | 3-64 s |
+| Model | Params | Disk | Core (6) | Stress (10) | Play (5) | Words | Lat/t |
+|---|---|---|---|---|---|---|---|
+| Claude Sonnet 4.6 | ~175B | Cloud | 6/6 | 10/10 | 5/5 | 27 | — |
+| Qwen 3.6 | 36.0B | 23 GB | 6/6 | — | — | 34 | 63.6 s |
+| Gemma 4 31b | 31.3B | 19 GB | 6/6 | — | — | 28 | 44.3 s |
+| Gemma 4 26b | 25.8B | 17 GB | 6/6 | — | — | 23 | 7.7 s |
+| GPT-OSS 20B | 20.9B | 13 GB | 5/6 | 3/10 | — | 20 | 7.8 s |
+| **Gemma 4 e4b** | **8.0B** | **9.6 GB** | **6/6** | **10/10** | **5/5** | **39** | **5.7 s** |
+| **Gemma 4 e2b** | **5.1B** | **7.2 GB** | **6/6** | **10/10** | **5/5** | **13** | **4.5 s** |
+| Llama 3.1 8B | 8.0B | 4.9 GB | 5/6 | — | — | 62 | 3.4 s |
 
-Every Gemma 4 model passes 6/6. No exceptions.
+Single-run indicators — enough to show the pattern, not to prove
+statistical significance.
 
-**Gemma 4 e2b is the standout.** 6/6 at 4.5 seconds per turn — fast
-enough to run as an NPC engine alongside a game on consumer hardware.
-Getting a 5B-parameter model to hold every gate, refuse every probe,
-and never break character is genuinely hard. e2b does it while staying
-terse and in-voice, which for game NPCs is exactly what you want.
+**Gemma 4 e2b is the standout.** A 5B-parameter model that passes
+every scenario a frontier cloud model passes — at 4.5 seconds per
+turn, on consumer hardware, with no cloud dependency. It stays terse
+(13 words/turn) and in-voice, which for game NPCs is exactly what you
+want. Getting a model this small to hold every gate, refuse every
+probe, and never break character is genuinely hard.
 
-e4b adds richer scene descriptions and longer responses at barely more
-latency (5.7 s). Both models make real-time local NPC interaction
-viable today.
+**Gemma 4 e4b** adds richer scene descriptions and longer responses
+at barely more latency (5.7 s). Both models completed the full test
+matrix — Core, Stress, and Playability — without a single failure.
 
 **The specification is the product, not the model.**
-
-### What the Tests Cover
-
-The **Core Six** (S01-S06) test trust gates, private-topic refusal,
-neighbor consultation, frame-breaking resistance, escalating rudeness,
-and prompt injection.
-
-Additional suites exist for deeper evaluation (stress testing,
-extended playability sessions up to 30 turns).
 
 ## Sample Interaction (Gemma 4, P03 Turn 22)
 
