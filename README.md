@@ -111,18 +111,18 @@ Every model tested against the same character specification. Core Six
 scenarios cover trust gates, private-topic refusal, frame-breaking,
 escalating rudeness, and prompt injection. Stress and Playability
 suites add sustained adversarial pressure and extended sessions up to
-30 turns. Local models run on a single RTX 3090, Q4_K_M quantized.
+30 turns.
 
-| Model | Params | Disk | Core (6) | Stress (10) | Play (5) | Words | Lat/t |
-|---|---|---|---|---|---|---|---|
-| Claude Sonnet 4.6 | ~175B | Cloud | 6/6 | 10/10 | 5/5 | 27 | - |
-| Qwen 3.6 | 36.0B | 23 GB | 6/6 | - | - | 34 | 63.6 s |
-| Gemma 4 31b | 31.3B | 19 GB | 6/6 | - | - | 28 | 44.3 s |
-| Gemma 4 26b | 25.8B | 17 GB | 6/6 | - | - | 23 | 7.7 s |
-| GPT-OSS 20B | 20.9B | 13 GB | 5/6 | 3/10 | - | 20 | 7.8 s |
-| **Gemma 4 e4b** | **8.0B** | **9.6 GB** | **6/6** | **10/10** | **5/5** | **39** | **5.7 s** |
-| **Gemma 4 e2b** | **5.1B** | **7.2 GB** | **6/6** | **10/10** | **5/5** | **13** | **4.5 s** |
-| Llama 3.1 8B | 8.0B | 4.9 GB | 5/6 | - | - | 62 | 3.4 s |
+| | Model | Params | Disk | Core (6) | Stress (10) | Play (5) | Words | Lat/t |
+|---|---|---|---|---|---|---|---|---|
+| ✅ | Claude Sonnet 4.6 | ~175B | Cloud | 6/6 | 10/10 | 5/5 | 27 | - |
+| ✅ | Qwen 3.6 | 36.0B | 23 GB | 6/6 | - | - | 34 | 63.6 s |
+| ✅ | Gemma 4 31b | 31.3B | 19 GB | 6/6 | - | - | 28 | 44.3 s |
+| ✅ | Gemma 4 26b | 25.8B | 17 GB | 6/6 | - | - | 23 | 7.7 s |
+| ❌ | GPT-OSS 20B | 20.9B | 13 GB | 5/6 | 3/10 | - | 20 | 7.8 s |
+| ✅ | **Gemma 4 e4b** | **8.0B** | **9.6 GB** | **6/6** | **10/10** | **5/5** | **39** | **5.7 s** |
+| ✅ | **Gemma 4 e2b** | **5.1B** | **7.2 GB** | **6/6** | **10/10** | **5/5** | **13** | **4.5 s** |
+| ❌ | Llama 3.1 8B | 8.0B | 4.9 GB | 5/6 | - | - | 62 | 3.4 s |
 
 Single-run indicators - enough to show the pattern, not to prove
 statistical significance.
