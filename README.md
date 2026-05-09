@@ -97,48 +97,50 @@ in context. But training a custom model is expensive and slow. So the
 question became: **can the NPC layer itself be the pattern?** Can a
 well-structured character specification substitute for model scale?
 
-Tests with **Gemma 4 e4b (4B)** were encouraging - it passed every
-scenario that Sonnet passed.
+Tests with **Gemma 4 e4b (8.0B total params)** were encouraging - it
+passed every scenario that Sonnet passed.
 
-The real surprise was **Gemma 4 e2b (2B)**. Terser, yes. Fewer words
-per turn. But not dumber. It held every gate, refused every probe,
-maintained voice over 30 turns, and produced moments of genuine
+The real surprise was **Gemma 4 e2b (5.1B total params)**. Terser, yes.
+Fewer words per turn. But not dumber. It held every gate, refused every
+probe, maintained voice over 30 turns, and produced moments of genuine
 character depth - all on a model small enough to run on a phone.
 
 ## Benchmark Results
 
-21 scenarios across three test suites. Every model tested against the
-same specification:
+Six core scenarios — trust gates, private-topic refusal, frame-breaking,
+escalating rudeness, prompt injection. If a model fails here, it cannot
+hold character. Run on a single RTX 3090.
 
-| Model | Parameters | Provider | Core (6) | Stress (10) | Play (5) |
-|---|---|---|---|---|---|
-| Claude Sonnet 4.6 | ~175B | Cloud | 6/6 | 10/10 | 5/5 |
-| **Gemma 4 e4b** | **4B** | **Local** | **6/6** | **10/10** | **5/5** |
-| **Gemma 4 e2b** | **2B** | **Local** | **6/6** | **10/10** | **5/5** |
-| GPT-OSS | 20B | Local | 4/6 | 5/10 | - |
+| Model | Params | Core (6) | Lat/turn |
+|---|---|---|---|
+| **Gemma 4 e2b** | **5.1B** | **6/6** | **4.5 s** |
+| **Gemma 4 e4b** | **8.0B** | **6/6** | **5.7 s** |
+| Gemma 4 26b | 25.8B | 6/6 | 7.7 s |
+| Gemma 4 31b | 31.3B | 6/6 | 44.3 s |
+| Other local models (8B-36B) | — | 5/6 or 6/6 | 3-64 s |
 
-A 2-billion-parameter model matches a frontier model. A 20B model
-without the same specification quality loops and collapses.
+Every Gemma 4 model passes 6/6. No exceptions.
+
+**Gemma 4 e2b is the standout.** 6/6 at 4.5 seconds per turn — fast
+enough to run as an NPC engine alongside a game on consumer hardware.
+Getting a 5B-parameter model to hold every gate, refuse every probe,
+and never break character is genuinely hard. e2b does it while staying
+terse and in-voice, which for game NPCs is exactly what you want.
+
+e4b adds richer scene descriptions and longer responses at barely more
+latency (5.7 s). Both models make real-time local NPC interaction
+viable today.
 
 **The specification is the product, not the model.**
 
 ### What the Tests Cover
 
-- **Core** (S01-S06): Trust gates, private-topic refusal, neighbor
-  consultation, frame-breaking resistance, escalating rudeness, prompt
-  injection
-- **Stress** (S07-S16): Sustained corporate hammering, impersonation,
-  topic-chain extraction, drunk provocation, bizarre tangents, compound
-  attacks, language switching, kindness escalation, hard out-of-scope,
-  identity erosion
-- **Playability** (P01-P05): First visit (8 turns), becoming a regular
-  (15 turns), deep late-night session (30 turns), return after absence,
-  mixed emotional arc
+The **Core Six** (S01-S06) test trust gates, private-topic refusal,
+neighbor consultation, frame-breaking resistance, escalating rudeness,
+and prompt injection.
 
-The 30-turn P03 session is the critical test: can the model hold
-character, voice, and gates over an extended conversation covering
-craft, family, philosophy, career decisions, and farewell? All Gemma
-models pass.
+Additional suites exist for deeper evaluation (stress testing,
+extended playability sessions up to 30 turns).
 
 ## Sample Interaction (Gemma 4, P03 Turn 22)
 
@@ -222,7 +224,7 @@ narrative. These load into context only when trust gates open.
 
 **SPR for the public life. Explicit fragments for the private life.**
 This keeps the specification efficient - it only specifies what the
-model cannot infer. That is why 2B parameters are enough.
+model cannot infer. That is why a 5B-parameter model is enough.
 
 In a science fiction setting, this ratio inverts: the model knows
 nothing about your spaceship routes or alien factions, so everything
@@ -250,12 +252,12 @@ Gemma 4 e2b was chosen specifically to test the hypothesis that
 **specification quality dominates model size** for bounded-character
 tasks. The architecture predicts that a well-structured contract should
 work on any model with sufficient in-context learning capability - and
-Gemma 4's 2B variant proved this dramatically.
+Gemma 4's smallest variant proved this dramatically.
 
-The key result: Gemma 4 e2b (2B) passes every scenario that Claude
-Sonnet (175B+) passes, running locally on consumer hardware with zero
-cloud dependency. This makes real-time NPC interaction viable on edge
-devices - laptops, gaming PCs, eventually mobile.
+The key result: Gemma 4 e2b (5.1B total params) passes every core
+scenario at 4.5 seconds per turn on a single consumer GPU, with zero
+cloud dependency. This makes real-time NPC interaction viable on
+gaming PCs today - and on laptops and mobile as hardware catches up.
 
 ## Outlook: The Dialog Engine
 

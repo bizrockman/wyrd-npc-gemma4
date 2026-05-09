@@ -37,6 +37,8 @@ MODEL_REGISTRY = {
     "gemma4:e2b": {"provider": "ollama", "model_id": "gemma4:e2b", "label": "Local small"},
     "qwen3:4b": {"provider": "ollama", "model_id": "qwen3:4b", "label": "Smallest candidate"},
     "phi4-mini": {"provider": "ollama", "model_id": "phi4-mini-reasoning:latest", "label": "Negative control"},
+    "gemma4:31b": {"provider": "ollama", "model_id": "gemma4:31b", "label": "Gemma Dense"},
+    "llama3.1:8b": {"provider": "ollama", "model_id": "llama3.1:8b-instruct-q4_K_M", "label": "Meta instruct"},
 }
 
 DEFAULT_MODELS = list(MODEL_REGISTRY.keys())
