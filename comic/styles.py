@@ -219,32 +219,57 @@ def build_full_page_prompt(
     panel_texts = []
     panel_num = 1
 
+    # Grid positions for 2-row layout
+    grid_pos = [
+        "top-left", "top-center", "top-right",
+        "bottom-left", "bottom-center", "bottom-right",
+    ]
+
     # Title panel
     title = strip.get("title", "Kenji")
     panel_texts.append(
-        f'Title panel top-left: "Kenji" in bold hand-lettered style, '
-        f'with a small portrait of a stern Japanese ramen cook, facing '
+        f'Title panel ({grid_pos[0]}): "Kenji" in bold hand-lettered style, '
+        f'with a small portrait of a stern Japanese raman cook, facing '
         f'the viewer, arms crossed, white apron, steam rising behind him.'
     )
 
+    # Character position rule
+    position_rule = (
+        "In every panel: Kenji the cook is always on the RIGHT side "
+        "behind the counter. The customer is always on the LEFT side "
+        "facing Kenji. Never swap their positions."
+    )
+
     for p in panels:
+        gpos = grid_pos[panel_num] if panel_num < len(grid_pos) else ""
+        pos_hint = f" ({gpos})" if gpos else ""
+
         if p["customer_line"]:
             panel_texts.append(
-                f'Panel {panel_num}: Customer at the counter. '
-                f'Speech bubble: "{p["customer_line"]}"'
+                f'Panel {panel_num}{pos_hint}: Customer (LEFT side) speaks '
+                f'to Kenji (RIGHT side, behind counter). '
+                f'Speech bubble with tail pointing toward the customer on the left, '
+                f'text: "{p["customer_line"]}"'
             )
             panel_num += 1
+            gpos = grid_pos[panel_num] if panel_num < len(grid_pos) else ""
+            pos_hint = f" ({gpos})" if gpos else ""
 
         action = p["scene_desc"] or "Kenji behind the counter"
         if p["kenji_line"]:
             panel_texts.append(
-                f'Panel {panel_num}: {action}. Kenji, Japanese male, 49, '
+                f'Panel {panel_num}{pos_hint}: Both characters visible. '
+                f'Customer (LEFT side) listens. {action}. '
+                f'Kenji (RIGHT side), Japanese male, 49, '
                 f'short graying hair, white cook\'s uniform. '
-                f'Speech bubble: "{p["kenji_line"]}"'
+                f'Speech bubble with tail pointing toward Kenji on the right, '
+                f'text: "{p["kenji_line"]}"'
             )
         else:
             panel_texts.append(
-                f'Panel {panel_num}: {action}. Kenji, Japanese male, 49, '
+                f'Panel {panel_num}{pos_hint}: Both characters visible. '
+                f'Customer (LEFT side). {action}. '
+                f'Kenji (RIGHT side), Japanese male, 49, '
                 f'short graying hair, white cook\'s uniform. No speech.'
             )
         panel_num += 1
@@ -253,10 +278,12 @@ def build_full_page_prompt(
     panels_block = "\n\n".join(panel_texts)
 
     prompt = (
-        f"A complete {num_panels}-panel comic strip page. "
-        f"Reading left to right, top to bottom. "
+        f"A complete {num_panels}-panel comic strip page, 2 rows, "
+        f"reading left to right, top to bottom. "
+        f"{position_rule} "
         f"All speech bubbles must contain English text only, clearly legible, "
-        f"white bubbles with black outlines. No Japanese text in speech bubbles. "
+        f"white bubbles with black outlines and tails pointing to the speaker. "
+        f"No Japanese text in speech bubbles. "
         f"Setting: {SETTING} "
         f"Consistent character design throughout all panels.\n\n"
         f"{panels_block}\n\n"

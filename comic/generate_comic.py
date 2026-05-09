@@ -49,6 +49,15 @@ FAL_MODELS = {
             "output_format": "png",
         },
     },
+    "nano-banana-2": {
+        "endpoint": "fal-ai/nano-banana-2",
+        "params": lambda prompt, neg, aspect: {
+            "prompt": prompt,
+            "num_images": 1,
+            "aspect_ratio": aspect,
+            "output_format": "png",
+        },
+    },
     "flux-schnell": {
         "endpoint": "fal-ai/flux/schnell",
         "params": lambda prompt, neg, aspect: {
