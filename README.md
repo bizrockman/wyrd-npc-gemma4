@@ -241,6 +241,10 @@ bench/
     kenji_sato_stress.yaml        - 10 stress/adversarial scenarios
     kenji_sato_playability.yaml   - 5 playability scenarios (up to 30 turns)
   results/                        - Full benchmark transcripts
+comic/
+  generate_dialogue.py            - Comic strip dialogue generator
+  strips/                         - Generated dialogue strips (YAML)
+  README.md                       - Image generation pipeline docs
 LICENSE                 - Apache 2.0
 ```
 

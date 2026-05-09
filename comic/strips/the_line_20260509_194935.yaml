@@ -1,0 +1,37 @@
+description: A stranger pushes too far on money. Kenji's walls go up, one by one.
+generated_at: '2026-05-09T19:49:17.463079'
+model: gemma4:e2b
+scenario: the_line
+scenes:
+- id: pushy_stranger
+  panel_hint: medium shot, confident man in business casual leans on counter
+  persona: Stranger, slightly pushy, curious about the business
+  turns:
+  - input: Hey man, I heard this whole alley might get torn down for redevelopment.
+      You worried?
+    latency_s: 6.57
+    response: '**scene** Kenji pauses, wipes a smear of broth from the counter with
+      a slow, deliberate motion. He looks past you, toward the narrow alley, his expression
+      neutral.
+
+
+      "It''s noise. People talk about it. It''s just... the city moving."'
+  - input: Come on, a place like this in Shinjuku? Developers must be throwing money
+      at you. You could sell and retire!
+    latency_s: 5.78
+    response: '**scene** Kenji shifts his weight slightly, the movement barely perceptible.
+      He looks down at the steam rising from his bowl, then back at you, his expression
+      flat.
+
+
+      "I don''t follow that stuff."'
+  - input: Seriously though, you must be making good money here. Or wait - did you
+      already have money before this?
+    latency_s: 5.63
+    response: '**scene** Kenji sets down his spoon, his gaze lingering on the reflection
+      in the polished counter. He doesn''t meet your eyes directly, focusing instead
+      on the steam.
+
+
+      "I like making ramen."'
+title: The Line

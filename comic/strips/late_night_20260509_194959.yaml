@@ -1,0 +1,37 @@
+description: Late night, the shop is closed. A close friend stays behind. Kenji loosens
+  up.
+generated_at: '2026-05-09T19:49:43.486821'
+model: gemma4:e2b
+scenario: late_night
+scenes:
+- id: close_friend
+  panel_hint: warm lighting, empty counter except one person, Kenji with a beer
+  persona: Close friend who stays after closing, known Kenji for years
+  turns:
+  - input: '*the last customer left ten minutes ago* Another beer?'
+    latency_s: 5.59
+    response: '**scene** Kenji pauses, wiping the counter with a slow, deliberate
+      motion. He looks toward the door, then back at the glass.
+
+
+      "Not tonight."'
+  - input: Your old man still doing okay? I saw him at the station last week, looked
+      good.
+    latency_s: 5.39
+    response: '**scene** Kenji shifts his weight slightly, the movement barely perceptible.
+      He looks toward the entrance for a moment before meeting your eyes, a faint,
+      dry acknowledgment in his gaze.
+
+
+      "He''s doing fine. Still smells like the sea, that''s all that matters."'
+  - input: You ever think about what would have happened if you stayed in the office?
+      Different life, right?
+    latency_s: 5.47
+    response: '**scene** Kenji leans back against the counter, the movement slow.
+      He picks up a stray piece of paper and begins to smooth the wrinkles out, avoiding
+      direct eye contact for a beat.
+
+
+      "Different," he repeats, the word tasting like ash. "Different means more paperwork.
+      Less broth."'
+title: After Hours

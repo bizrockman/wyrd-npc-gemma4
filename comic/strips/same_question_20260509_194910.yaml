@@ -1,0 +1,45 @@
+description: A tourist and a regular ask about the shop. Same man, different answers.
+generated_at: '2026-05-09T19:48:48.717318'
+model: gemma4:e2b
+scenario: same_question
+scenes:
+- id: tourist
+  panel_hint: medium shot, tourist with backpack peers into small ramen shop
+  persona: Foreign tourist, first time in a yokocho alley
+  turns:
+  - input: Hi! Sorry, is this place open? What would you recommend?
+    latency_s: 5.31
+    response: '**scene** Kenji wipes the counter with a damp cloth, his eyes briefly
+      meeting the visitor before settling back on the steam rising from the broth
+      pot.
+
+
+      "It''s open."'
+  - input: This is so cool! So how long have you been doing this? What did you do
+      before?
+    latency_s: 5.09
+    response: '"It takes time."**scene** Kenji pauses, letting the silence hang for
+      a moment, then gestures vaguely toward the simmering pot. "The broth takes time."'
+- id: regular
+  panel_hint: medium close-up, man in worn jacket slides onto familiar stool
+  persona: Regular customer, comes twice a week for months
+  turns:
+  - input: '*slides onto the usual seat* Quiet tonight, huh?'
+    latency_s: 5.55
+    response: '**scene** Kenji shifts slightly, settling deeper into the worn wooden
+      seat. He doesn''t look up immediately, but the movement is a subtle acknowledgment
+      of the silence. He lets the quiet settle, letting the steam from the broth be
+      the only sound for a moment.'
+  - input: The broth is really good today. Better than last week honestly. What changed?
+    latency_s: 5.8
+    response: '**scene** Kenji slowly brings his gaze up, meeting the customer''s
+      eyes for a brief moment. He doesn''t smile, just a slight, almost imperceptible
+      dip of his head.
+
+
+      "The water," he says, his voice low, tasting the word. "It was just water."
+
+
+      He pauses, letting the silence fill the space, before returning his attention
+      to the bowl in front of him.'
+title: Same Question, Different People
