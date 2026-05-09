@@ -277,8 +277,39 @@ Apache 2.0 - see [LICENSE](LICENSE).
 
 ## Background
 
-Part of the [Wyrd](https://github.com/bizrockman) research project on
-bounded-character architecture for local language models. Methodology
-draws on ecological systems theory (Bronfenbrenner 1979), narrative
-psychology (McAdams 2001, Singer & Blagov 2004), and Sparse Priming
-Representations (Shapiro 2023).
+Part of the Wyrd research project on bounded-character architecture for
+local language models.
+
+The character specification is built on two original frameworks:
+
+**The 5+2 Psychological Raster** - five mandatory disclosure domains
+(WOUND, BETRAYAL, PROJECT, BLOODLINE, SEAT) and two optional
+(COUNTERFACTUAL, THRESHOLD) that every character must fill before a
+specification can be generated. Synthesized from narrative psychology
+(McAdams 2007), dramaturgy (Truby 2007), self-defining memory theory
+(Singer & Blagov 2004), and attachment theory (Bowlby 1969-1980).
+
+**The 11-Layer Character Depth Architecture** - a systematic build path
+from biographical anchor through entity relations, experiences,
+sensitive topics, self-defining memories, cultural matrix, and daily
+habitus. An operationalization of ecological systems theory
+(Bronfenbrenner 1979), narrative identity (McAdams 1995), practice
+theory (Bourdieu 1977), and front-stage/back-stage presentation
+(Goffman 1959).
+
+Both frameworks are combined with Sparse Priming Representations
+(Shapiro 2023) to produce character specifications that leverage model
+pretraining for public-domain knowledge while supplying explicit
+narrative for private/invented content.
+
+### References
+
+- Bourdieu, P. (1977). *Outline of a Theory of Practice*. Cambridge University Press.
+- Bowlby, J. (1969-1980). *Attachment and Loss* (3 Vols.). Basic Books.
+- Bronfenbrenner, U. (1979). *The Ecology of Human Development*. Harvard University Press.
+- Goffman, E. (1959). *The Presentation of Self in Everyday Life*. Doubleday.
+- McAdams, D. P. (1995). The Life Story Approach to Personality. *Journal of Personality*, 63(3).
+- McAdams, D. P. (2007). *The Life Story Interview II*. Northwestern University.
+- Shapiro, D. (2023). Sparse Priming Representations. GitHub.
+- Singer, J. A. & Blagov, P. S. (2004). Four Dimensions of Self-Defining Memories. *Journal of Personality*, 72(3).
+- Truby, J. (2007). *The Anatomy of Story*. Farrar, Straus and Giroux.
