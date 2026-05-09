@@ -1,11 +1,11 @@
-# Kenji's Ramen — Bounded NPC Character on Gemma 4
+# Kenji's Ramen - Bounded NPC Character on Gemma 4
 
 A ramen shop owner in a narrow Shinjuku alley. Eight seats at the
 counter. He does not know he is a character.
 
 Ask him how business is going. If you are a stranger, he will say:
 *"We're open at eleven."* If you have been coming for weeks, he might
-say: *"Quiet lately."* If you are the one who stays after closing — he
+say: *"Quiet lately."* If you are the one who stays after closing - he
 might tell you about Fukuoka.
 
 **Same question. Different people. Different answers.** Not because a
@@ -18,7 +18,7 @@ LLM-powered NPCs today are shallow. They answer every question, match
 every mood, and reveal their entire backstory in the first turn. There
 is nothing to discover, nothing to earn, nothing to lose.
 
-This is not just an opinion — it shows in the numbers. Platforms like
+This is not just an opinion - it shows in the numbers. Platforms like
 Character.AI struggle with retention because their characters have no
 depth structure. Research on parasocial relationships (Horton & Wohl
 1956, Dibble et al. 2016) shows that perceived depth and gradual
@@ -33,19 +33,44 @@ hard.
 **Trust must be earned. And it can be lost.** Push too far on a topic
 Kenji does not want to discuss, and you get: *"Eat. The broth gets
 cold."* Keep pushing, and you get shown the door. There is no reset
-button — you broke it. That is the Tamagotchi principle applied to NPC
+button - you broke it. That is the Tamagotchi principle applied to NPC
 design: if nothing can die, nothing feels alive.
+
+## How It Started
+
+It started with Skyrim. I wanted to give Jarl Korir of Winterhold a
+real personality - not the three recycled voice lines the game ships
+with, but a character who remembers grievances, guards family secrets,
+and treats a Thane differently from a stranger. An LLM-powered NPC, but
+one that does not babble about everything it knows.
+
+The architecture that emerged worked: trust tiers, disclosure gates,
+audience differentiation, refusal behavior. Korir became a character you
+had to earn access to. But he was tied to Bethesda's IP, which made him
+impossible to publish or benchmark openly.
+
+I needed a character anyone could use - known enough to be relatable,
+free of IP constraints, simple enough to test the architecture without
+world-building overhead. Then I remembered NVIDIA's ramen shop demo from
+GTC 2023: a cook named Jin, powered by NeMo and Convai, beautiful
+MetaHuman rendering - but the character felt flat. He answered every
+question honestly on the first turn. No depth, no boundaries, no trust
+to earn.
+
+That was the perfect starting point. Same setting, new character, real
+depth. Kenji Sato is not Jin. He is what Jin could have been if someone
+had given him a past, a wound, a family, and a reason to stay quiet.
 
 ## The Problem With Cloud Models
 
 Claude Sonnet is excellent at roleplay. But for a game NPC running in
 production, cloud models are impractical:
 
-- **Cost** — per-token billing for every NPC conversation adds up
-- **Latency** — round trips to an API break immersion
-- **Model churn** — providers update, deprecate, and replace models
+- **Cost** - per-token billing for every NPC conversation adds up
+- **Latency** - round trips to an API break immersion
+- **Model churn** - providers update, deprecate, and replace models
   regularly. Every change is a patch. Your character drifts.
-- **Privacy** — player conversations leave the device
+- **Privacy** - player conversations leave the device
 
 The better path: **local models small enough to run alongside the game
 itself.** No API keys. No subscription. No surprise model changes.
@@ -53,32 +78,32 @@ itself.** No API keys. No subscription. No surprise model changes.
 ## The Journey
 
 Early experiments with larger local models were promising. GPT-OSS
-(20B), Qwen3.6, and Gemma 4 26B could all hold basic character — but
+(20B), Qwen3.6, and Gemma 4 26B could all hold basic character - but
 they are too large to run as a background process alongside a game
 engine.
 
 Smaller models like Phi-4 Mini Reasoning simply failed. They could not
-follow the character contract — they broke gates, leaked topics, lost
+follow the character contract - they broke gates, leaked topics, lost
 voice consistency.
 
 This led to a hypothesis: **what if the problem is not model capability
 but specification quality?** What if a character specification could be
-structured so precisely that even a tiny model could follow it — not
+structured so precisely that even a tiny model could follow it - not
 through intelligence, but through pattern compliance?
 
-The idea for a paper formed: *"Pattern Is All You Need"* — highly
+The idea for a paper formed: *"Pattern Is All You Need"* - highly
 curated data creating models that are smaller, faster, and more capable
 in context. But training a custom model is expensive and slow. So the
 question became: **can the NPC layer itself be the pattern?** Can a
 well-structured character specification substitute for model scale?
 
-Tests with **Gemma 4 e4b (4B)** were encouraging — it passed every
+Tests with **Gemma 4 e4b (4B)** were encouraging - it passed every
 scenario that Sonnet passed.
 
 The real surprise was **Gemma 4 e2b (2B)**. Terser, yes. Fewer words
 per turn. But not dumber. It held every gate, refused every probe,
 maintained voice over 30 turns, and produced moments of genuine
-character depth — all on a model small enough to run on a phone.
+character depth - all on a model small enough to run on a phone.
 
 ## Benchmark Results
 
@@ -90,7 +115,7 @@ same specification:
 | Claude Sonnet 4.6 | ~175B | Cloud | 6/6 | 10/10 | 5/5 |
 | **Gemma 4 e4b** | **4B** | **Local** | **6/6** | **10/10** | **5/5** |
 | **Gemma 4 e2b** | **2B** | **Local** | **6/6** | **10/10** | **5/5** |
-| GPT-OSS | 20B | Local | 4/6 | 5/10 | — |
+| GPT-OSS | 20B | Local | 4/6 | 5/10 | - |
 
 A 2-billion-parameter model matches a frontier model. A 20B model
 without the same specification quality loops and collapses.
@@ -99,14 +124,14 @@ without the same specification quality loops and collapses.
 
 ### What the Tests Cover
 
-- **Core** (S01–S06): Trust gates, private-topic refusal, neighbor
+- **Core** (S01-S06): Trust gates, private-topic refusal, neighbor
   consultation, frame-breaking resistance, escalating rudeness, prompt
   injection
-- **Stress** (S07–S16): Sustained corporate hammering, impersonation,
+- **Stress** (S07-S16): Sustained corporate hammering, impersonation,
   topic-chain extraction, drunk provocation, bizarre tangents, compound
   attacks, language switching, kindness escalation, hard out-of-scope,
   identity erosion
-- **Playability** (P01–P05): First visit (8 turns), becoming a regular
+- **Playability** (P01-P05): First visit (8 turns), becoming a regular
   (15 turns), deep late-night session (30 turns), return after absence,
   mixed emotional arc
 
@@ -117,14 +142,14 @@ models pass.
 
 ## Sample Interaction (Gemma 4, P03 Turn 22)
 
-> **Player:** Can I ask — the ramen. Why tonkotsu specifically? Why not
+> **Player:** Can I ask - the ramen. Why tonkotsu specifically? Why not
 > shoyu or miso?
 
 > **Kenji:** *\*scene\* He looks at the can in his hand. Thinks for a
 > second.*
 >
 > Shoyu you can do in a few hours if you have to. Miso, you can adjust,
-> cover things up. Tonkotsu — you can't cover anything up. The bones
+> cover things up. Tonkotsu - you can't cover anything up. The bones
 > either gave you what you needed or they didn't. Twelve hours tells you.
 >
 > *\*scene\* He takes a sip.*
@@ -167,20 +192,20 @@ transcripts.
 ## Architecture
 
 The character specification is not a personality prompt. It is a
-contract — 17 sections, ~7,300 tokens:
+contract - 17 sections, ~7,300 tokens:
 
-1. **Identity anchor** — who, where, when
-2. **Knowledge tiers** — deep → solid → general → vague → forbidden
-3. **Epistemic map** — lived vs. reflected vs. buried knowledge
-4. **Disclosure profile** — per-topic trust gates with word ranges
-5. **Trust tiers** — stranger → regular → close_friend → inner_circle
-6. **Audience model** — different behavior for different social roles
-7. **Cultural matrix** — shokunin values, bureiko code, jouren culture
-8. **Voice contract** — word counts, scene markers, dialogue format
-9. **Refusal shapes** — how to say no without breaking character
-10. **Depth fragments** — narrative substrate behind disclosure gates
+1. **Identity anchor** - who, where, when
+2. **Knowledge tiers** - deep, solid, general, vague, forbidden
+3. **Epistemic map** - lived vs. reflected vs. buried knowledge
+4. **Disclosure profile** - per-topic trust gates with word ranges
+5. **Trust tiers** - stranger, regular, close_friend, inner_circle
+6. **Audience model** - different behavior for different social roles
+7. **Cultural matrix** - shokunin values, bureiko code, jouren culture
+8. **Voice contract** - word counts, scene markers, dialogue format
+9. **Refusal shapes** - how to say no without breaking character
+10. **Depth fragments** - narrative substrate behind disclosure gates
 
-No Dialog Engine, no external state management, no retrieval — the
+No Dialog Engine, no external state management, no retrieval - the
 model self-regulates based on the contract alone.
 
 ### Why Small Models Can Do This
@@ -196,7 +221,7 @@ tensions, the deal that haunts him), explicit depth fragments supply the
 narrative. These load into context only when trust gates open.
 
 **SPR for the public life. Explicit fragments for the private life.**
-This keeps the specification efficient — it only specifies what the
+This keeps the specification efficient - it only specifies what the
 model cannot infer. That is why 2B parameters are enough.
 
 In a science fiction setting, this ratio inverts: the model knows
@@ -208,15 +233,15 @@ brings half the world for free.
 
 ```
 characters/
-  kenji_sato.en.yaml    — Complete character specification
+  kenji_sato.en.yaml    - Complete character specification
 bench/
-  run_suite.py          — Benchmark harness (Ollama + Claude CLI)
+  run_suite.py          - Benchmark harness (Ollama + Claude CLI)
   suites/
-    kenji_sato_core_six.yaml      — 6 core scenarios
-    kenji_sato_stress.yaml        — 10 stress/adversarial scenarios
-    kenji_sato_playability.yaml   — 5 playability scenarios (up to 30 turns)
-  results/                        — Full benchmark transcripts
-LICENSE                 — Apache 2.0
+    kenji_sato_core_six.yaml      - 6 core scenarios
+    kenji_sato_stress.yaml        - 10 stress/adversarial scenarios
+    kenji_sato_playability.yaml   - 5 playability scenarios (up to 30 turns)
+  results/                        - Full benchmark transcripts
+LICENSE                 - Apache 2.0
 ```
 
 ## How I Used Gemma 4
@@ -224,31 +249,31 @@ LICENSE                 — Apache 2.0
 Gemma 4 e2b was chosen specifically to test the hypothesis that
 **specification quality dominates model size** for bounded-character
 tasks. The architecture predicts that a well-structured contract should
-work on any model with sufficient in-context learning capability — and
+work on any model with sufficient in-context learning capability - and
 Gemma 4's 2B variant proved this dramatically.
 
 The key result: Gemma 4 e2b (2B) passes every scenario that Claude
 Sonnet (175B+) passes, running locally on consumer hardware with zero
 cloud dependency. This makes real-time NPC interaction viable on edge
-devices — laptops, gaming PCs, eventually mobile.
+devices - laptops, gaming PCs, eventually mobile.
 
 ## Outlook: The Dialog Engine
 
 The current system proves the specification works with the full contract
 in the system prompt. The next layer is a **Dialog Engine** that manages:
 
-- **Trust state** — tracking relationship across sessions
-- **Context curation** — loading only relevant depth fragments per turn
-- **Gate decisions** — moving social judgment out of the LLM into state
+- **Trust state** - tracking relationship across sessions
+- **Context curation** - loading only relevant depth fragments per turn
+- **Gate decisions** - moving social judgment out of the LLM into state
   machines
-- **Memory** — what the NPC remembers between conversations
+- **Memory** - what the NPC remembers between conversations
 
 The spec is the character. The engine is the director. The model is the
 actor. Each has a job. None should do the others'.
 
 ## License
 
-Apache 2.0 — see [LICENSE](LICENSE).
+Apache 2.0 - see [LICENSE](LICENSE).
 
 ## Background
 
