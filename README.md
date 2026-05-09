@@ -287,7 +287,7 @@ The character specification is built on two original frameworks:
 (COUNTERFACTUAL, THRESHOLD) that every character must fill before a
 specification can be generated. Synthesized from narrative psychology
 (McAdams 2007), dramaturgy (Truby 2007), self-defining memory theory
-(Singer & Blagov 2004), and attachment theory (Bowlby 1969-1980).
+(Blagov & Singer 2004), and attachment theory (Bowlby 1969-1980).
 
 **The Disposition Layer** - the turning point in the architecture.
 Bronfenbrenner's ecological model tells you what context a character
@@ -314,13 +314,13 @@ narrative for private/invented content.
 
 ### References
 
+- Blagov, P. S. & Singer, J. A. (2004). Four Dimensions of Self-Defining Memories (Specificity, Meaning, Content, and Affect) and Their Relationships to Self-Restraint, Distress, and Repressive Defensiveness. *Journal of Personality*, 72(3), 481-511.
 - Bourdieu, P. (1977). *Outline of a Theory of Practice*. Cambridge University Press.
 - Bowlby, J. (1969-1980). *Attachment and Loss* (3 Vols.). Basic Books.
-- Bronfenbrenner, U. (1979). *The Ecology of Human Development*. Harvard University Press.
+- Bronfenbrenner, U. (1979). *The Ecology of Human Development: Experiments by Nature and Design*. Harvard University Press.
 - Goffman, E. (1959). *The Presentation of Self in Everyday Life*. Doubleday.
-- MacLean, P. D. (1990). *The Triune Brain in Evolution*. Plenum Press. (Used as organizing heuristic, not as neuroscience.)
-- McAdams, D. P. (1995). The Life Story Approach to Personality. *Journal of Personality*, 63(3).
-- McAdams, D. P. (2007). *The Life Story Interview II*. Northwestern University.
+- MacLean, P. D. (1990). *The Triune Brain in Evolution: Role in Paleocerebral Functions*. Plenum Press. (Used as organizing heuristic, not as neuroscience.)
+- McAdams, D. P. (1995). What Do We Know When We Know a Person? *Journal of Personality*, 63(3), 365-396.
+- McAdams, D. P. (2007). *The Life Story Interview II*. Unpublished manuscript, Northwestern University.
 - Shapiro, D. (2023). Sparse Priming Representations. GitHub.
-- Singer, J. A. & Blagov, P. S. (2004). Four Dimensions of Self-Defining Memories. *Journal of Personality*, 72(3).
-- Truby, J. (2007). *The Anatomy of Story*. Farrar, Straus and Giroux.
+- Truby, J. (2007). *The Anatomy of Story: 22 Steps to Becoming a Master Storyteller*. Faber & Faber.

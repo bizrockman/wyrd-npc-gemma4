@@ -89,7 +89,7 @@ def call_ollama(model_id, system_prompt, messages, temperature=0.3):
                 "model": model_id,
                 "messages": ollama_messages,
                 "stream": False,
-                "options": {"temperature": temperature, "num_predict": 1024},
+                "options": {"temperature": temperature},
             },
             timeout=300,
         )
