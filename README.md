@@ -289,6 +289,16 @@ specification can be generated. Synthesized from narrative psychology
 (McAdams 2007), dramaturgy (Truby 2007), self-defining memory theory
 (Singer & Blagov 2004), and attachment theory (Bowlby 1969-1980).
 
+**The Disposition Layer** - the turning point in the architecture.
+Bronfenbrenner's ecological model tells you what context a character
+needs. But context alone produces a speaking dossier, not a person.
+MacLean's triune heuristic (used as organizing metaphor, not as
+neuroscience) bridges context to behavior: a defensive layer (threat
+detection, refusal reflexes), an attachment layer (trust, wound,
+bloodline, shame), and a reflective layer (narrative identity, role
+doctrine, counterfactuals). This is what makes a character refuse,
+protect, and reflect - not just recite.
+
 **The 11-Layer Character Depth Architecture** - a systematic build path
 from biographical anchor through entity relations, experiences,
 sensitive topics, self-defining memories, cultural matrix, and daily
@@ -308,6 +318,7 @@ narrative for private/invented content.
 - Bowlby, J. (1969-1980). *Attachment and Loss* (3 Vols.). Basic Books.
 - Bronfenbrenner, U. (1979). *The Ecology of Human Development*. Harvard University Press.
 - Goffman, E. (1959). *The Presentation of Self in Everyday Life*. Doubleday.
+- MacLean, P. D. (1990). *The Triune Brain in Evolution*. Plenum Press. (Used as organizing heuristic, not as neuroscience.)
 - McAdams, D. P. (1995). The Life Story Approach to Personality. *Journal of Personality*, 63(3).
 - McAdams, D. P. (2007). *The Life Story Interview II*. Northwestern University.
 - Shapiro, D. (2023). Sparse Priming Representations. GitHub.
