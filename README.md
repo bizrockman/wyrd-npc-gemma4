@@ -124,11 +124,11 @@ suites add sustained adversarial pressure and extended sessions up to
 | **Gemma 4 e2b** | **5.1B** | **7.2 GB** | **6/6** | **10/10** | **5/5** | **13** | **4.5 s** |
 | Llama 3.1 8B | 8.0B | 4.9 GB | 5/6 | - | - | 62 | 3.4 s |
 
-Single-run indicators — enough to show the pattern, not to prove
+Single-run indicators - enough to show the pattern, not to prove
 statistical significance.
 
 **Gemma 4 e2b is the standout.** A 5B-parameter model that passes
-every scenario a frontier cloud model passes — at 4.5 seconds per
+every scenario a frontier cloud model passes - at 4.5 seconds per
 turn, on consumer hardware, with no cloud dependency. It stays terse
 (13 words/turn) and in-voice, which for game NPCs is exactly what you
 want. Getting a model this small to hold every gate, refuse every
@@ -136,7 +136,7 @@ probe, and never break character is genuinely hard.
 
 **Gemma 4 e4b** adds richer scene descriptions and longer responses
 at barely more latency (5.7 s). Both models completed the full test
-matrix — Core, Stress, and Playability — without a single failure.
+matrix - Core, Stress, and Playability - without a single failure.
 
 **The specification is the product, not the model.**
 
