@@ -2,7 +2,14 @@ __pycache__/
 *.pyc
 .env
 .venv/
+.venv-*/
 *.egg-info/
 .DS_Store
 Thumbs.db
 comic/output/
+
+# Generated asset sweeps — large, regeneratable via sweep_*.py
+demo/assets/variations/
+demo/assets/scenes/
+demo/assets/_full/
+demo/assets/_small/

@@ -29,11 +29,25 @@ try:
     from rich.panel import Panel
     from rich.text import Text
     from rich.columns import Columns
+    from rich.table import Table
     from rich import box
     HAS_RICH = True
 except ImportError:
     HAS_RICH = False
     print("Note: Install 'rich' for a better terminal experience (pip install rich)")
+
+try:
+    from rich_pixels import Pixels
+    from PIL import Image
+    HAS_PIXELS = True
+except ImportError:
+    HAS_PIXELS = False
+
+try:
+    from term_image.image import BlockImage
+    HAS_TERM_IMAGE = True
+except ImportError:
+    HAS_TERM_IMAGE = False
 
 
 # ---------------------------------------------------------------------------
@@ -376,6 +390,99 @@ def parse_response(response: str) -> list[tuple[str, str]]:
 
 
 # ---------------------------------------------------------------------------
+# Image rendering (welcome banner)
+# ---------------------------------------------------------------------------
+
+ASSETS_DIR = Path(__file__).resolve().parent / "assets"
+INTRO_IMAGE_CANDIDATES = ["intro-alley2.png", "intro_alley.png"]
+PERSONA_IMAGE_CANDIDATES = ["persona1.png", "kenji_persona.png"]
+
+
+def _render_via_term_image(path: Path, target_height: int):
+    """Render an image with term-image (better alpha handling) and wrap in Rich Text.
+
+    Uses str(ti) not format(ti) — format() pads the output with terminal-width
+    whitespace for centering, which makes Rich think the column is much wider
+    than the actual avatar and pushes neighbour cells off-screen.
+    """
+    if not HAS_TERM_IMAGE:
+        return None
+    try:
+        from rich.text import Text
+        ti = BlockImage.from_file(str(path))
+        ti.set_size(height=target_height)
+        return Text.from_ansi(str(ti))
+    except Exception:
+        return None
+
+
+def _render_via_pixels(path: Path, target_height: int):
+    """Fallback: render with rich-pixels (Unicode half-blocks, struggles with semi-alpha)."""
+    if not HAS_PIXELS:
+        return None
+    try:
+        img = Image.open(path)
+        target_pixel_height = target_height * 2  # half-blocks
+        aspect = img.width / img.height
+        target_pixel_width = int(target_pixel_height * aspect)
+        img_resized = img.resize(
+            (target_pixel_width, target_pixel_height), Image.LANCZOS
+        )
+        return Pixels.from_image(img_resized)
+    except Exception:
+        return None
+
+
+def _find_asset(candidates: list[str]) -> Path | None:
+    for name in candidates:
+        path = ASSETS_DIR / name
+        if path.exists():
+            return path
+    return None
+
+
+def render_intro_image(target_height: int = 15):
+    """Return a Rich-renderable for the intro image, or None.
+
+    Prefers term-image (handles transparency cleanly), falls back to rich-pixels.
+    """
+    path = _find_asset(INTRO_IMAGE_CANDIDATES)
+    if path is None:
+        return None
+    return _render_via_term_image(path, target_height) or _render_via_pixels(path, target_height)
+
+
+def render_persona_image(target_height: int = 14):
+    """Return a Rich-renderable for the Kenji persona avatar, or None."""
+    path = _find_asset(PERSONA_IMAGE_CANDIDATES)
+    if path is None:
+        return None
+    return _render_via_term_image(path, target_height) or _render_via_pixels(path, target_height)
+
+
+# Cache for the per-turn avatar — re-rendering it on every Kenji response would
+# be wasteful and the terminal width does not change mid-session.
+_PERSONA_CACHE = {"height": None, "render": None, "disabled": False}
+
+
+def get_persona_render(height: int = 14):
+    """Return the cached persona avatar at the given height, or None."""
+    if _PERSONA_CACHE["disabled"]:
+        return None
+    if _PERSONA_CACHE["height"] == height and _PERSONA_CACHE["render"] is not None:
+        return _PERSONA_CACHE["render"]
+    rendered = render_persona_image(height)
+    _PERSONA_CACHE["height"] = height
+    _PERSONA_CACHE["render"] = rendered
+    return rendered
+
+
+def disable_persona():
+    _PERSONA_CACHE["disabled"] = True
+    _PERSONA_CACHE["render"] = None
+
+
+# ---------------------------------------------------------------------------
 # Terminal UI
 # ---------------------------------------------------------------------------
 
@@ -390,8 +497,20 @@ def format_response_rich(console: "Console", response: str, latency: float):
         else:
             formatted.append(f"  {text}\n", style="bold")
 
+    persona = get_persona_render(14)
+    if persona is not None:
+        # Avatar left, dialogue right. Larger horizontal padding gives the text
+        # breathing room from the avatar, vertical="middle" centers it against
+        # the avatar instead of sticking to the top edge.
+        body = Table.grid(padding=(0, 4))
+        body.add_column(no_wrap=True)
+        body.add_column(vertical="middle")
+        body.add_row(persona, formatted)
+    else:
+        body = formatted
+
     panel = Panel(
-        formatted,
+        body,
         title="[bold]Kenji[/bold]",
         subtitle=f"[dim]{latency:.1f}s[/dim]",
         border_style="yellow",
@@ -455,6 +574,9 @@ def main():
     parser.add_argument("--mode", default=None,
                         choices=["scene", "dialogue"],
                         help="Override default mode (scene+dialogue vs dialogue-only)")
+    parser.add_argument("--no-image", action="store_true",
+                        help="Disable the intro pixel-art image (for terminals that "
+                             "render half-blocks incorrectly, e.g. cmder)")
     args = parser.parse_args()
 
     # Setup console early for picker
@@ -500,14 +622,29 @@ def main():
     # Setup display
     if console:
         console.print()
+
+        if args.no_image:
+            disable_persona()
+            intro_pixels = None
+        else:
+            intro_pixels = render_intro_image(target_height=15)
+        intro_text = Text()
+        intro_text.append("Kenji's Ramen\n", style="bold yellow")
+        intro_text.append("Mendokoro Sato — Shinjuku Yokocho\n\n", style="dim")
+        intro_text.append("A narrow alley. Steam drifts from under the noren curtain.\n")
+        intro_text.append("You push through and sit down at the worn wooden counter.\n")
+        intro_text.append("The cook glances at you, then back at his pot.\n\n")
+        intro_text.append(f"Model: {model} ({mode_label})\n", style="dim")
+        intro_text.append("Type freely or pick a suggestion. ", style="dim")
+        intro_text.append("'quit' to leave, 'clear' to start over.\n", style="dim")
+
+        if intro_pixels is not None:
+            body = Columns([intro_pixels, intro_text], padding=(0, 2), expand=False)
+        else:
+            body = intro_text
+
         console.print(Panel(
-            "[bold]Kenji's Ramen[/bold]\n"
-            "[dim]Mendokoro Sato - Shinjuku Yokocho[/dim]\n\n"
-            "A narrow alley. Steam drifts from under the noren curtain.\n"
-            "You push through and sit down at the worn wooden counter.\n"
-            "The cook glances at you, then back at his pot.\n\n"
-            f"[dim]Model: {model} ({mode_label}) | Type freely or pick a suggestion[/dim]\n"
-            "[dim]Type 'quit' to leave, 'clear' to start over[/dim]",
+            body,
             title="[yellow]麺処 佐藤[/yellow]",
             border_style="yellow",
             box=box.DOUBLE,
