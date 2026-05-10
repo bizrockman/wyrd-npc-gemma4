@@ -267,19 +267,31 @@ brings half the world for free.
 
 ```
 characters/
-  kenji_sato.en.yaml    - Complete character specification
+  kenji_sato.en.yaml                .. character spec, scene+dialogue mode
+  kenji_sato.dialogue_only.en.yaml  .. variant for e2b, dialogue only
 bench/
-  run_suite.py          - Benchmark harness (Ollama + Claude CLI)
+  run_suite.py                      .. benchmark harness (Ollama + Claude CLI)
   suites/
-    kenji_sato_core_six.yaml      - 6 core scenarios
-    kenji_sato_stress.yaml        - 10 stress/adversarial scenarios
-    kenji_sato_playability.yaml   - 5 playability scenarios (up to 30 turns)
-  results/                        - Full benchmark transcripts
+    kenji_sato_core_six.yaml        .. 6 core scenarios (gates, refusal, injection)
+    kenji_sato_stress.yaml          .. 10 sustained adversarial scenarios
+    kenji_sato_playability.yaml     .. 5 playability scenarios up to 30 turns
+    kenji_sato_natural_visit.yaml   .. warmth + hook engagement check
+    kenji_sato_role_competence.yaml .. can the NPC do its job?
+  results/                          .. full benchmark transcripts
+demo/
+  kenji_terminal.py                 .. interactive CLI with pixel-art visuals
+  test_render.py                    .. compare image render backends
+  test_persona_dialog.py            .. avatar+dialogue layout sandbox
+  generate_assets.py                .. asset generation via Nano Banana Pro
+  generate_assets_local.py          .. local asset generation (SDXL + LoRA)
+  sweep_alley.py / sweep_scenes.py  .. prompt and scene sweeps
+  assets/                           .. pixel-art intro + Kenji avatar
 comic/
-  generate_dialogue.py            - Comic strip dialogue generator
-  strips/                         - Generated dialogue strips (YAML)
-  README.md                       - Image generation pipeline docs
-LICENSE                 - Apache 2.0
+  generate_dialogue.py              .. comic strip dialogue generator
+  generate_comic.py                 .. image generation pipeline (fal.ai)
+  strips/                           .. generated dialogue strips (YAML)
+  README.md                         .. image generation pipeline docs
+LICENSE                             .. Apache 2.0
 ```
 
 ## How I Used Gemma 4
