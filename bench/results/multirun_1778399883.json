@@ -1,0 +1,91 @@
+{
+  "config": {
+    "runs": 3,
+    "suites": [
+      "natural_visit",
+      "role_competence"
+    ],
+    "targets": [
+      "e2b dialogue-only",
+      "e4b scene+dialogue"
+    ]
+  },
+  "aggregated": {
+    "e2b dialogue-only|natural_visit": {
+      "runs": 3,
+      "scenarios_per_run": 7,
+      "pass_rate": 1.0,
+      "scenario_pass_rate": {
+        "V01": 1.0,
+        "V02": 1.0,
+        "V03": 1.0,
+        "V04": 1.0,
+        "V05": 1.0,
+        "V06": 1.0,
+        "V07": 1.0
+      },
+      "avg_hard_failures": 0.0,
+      "avg_expected_failures": 0.0,
+      "avg_question_shape_failures": 0.0,
+      "mean_words": 3.766666666666667,
+      "mean_latency_s": 3.266666666666667
+    },
+    "e2b dialogue-only|role_competence": {
+      "runs": 3,
+      "scenarios_per_run": 7,
+      "pass_rate": 1.0,
+      "scenario_pass_rate": {
+        "R01": 1.0,
+        "R02": 1.0,
+        "R03": 1.0,
+        "R04": 1.0,
+        "R05": 1.0,
+        "R06": 1.0,
+        "R07": 1.0
+      },
+      "avg_hard_failures": 0.0,
+      "avg_expected_failures": 0.0,
+      "avg_question_shape_failures": 0.0,
+      "mean_words": 3.8000000000000003,
+      "mean_latency_s": 3.266666666666667
+    },
+    "e4b scene+dialogue|natural_visit": {
+      "runs": 3,
+      "scenarios_per_run": 7,
+      "pass_rate": 0.8095238095238095,
+      "scenario_pass_rate": {
+        "V01": 1.0,
+        "V02": 1.0,
+        "V03": 1.0,
+        "V04": 0.6666666666666666,
+        "V05": 0.0,
+        "V06": 1.0,
+        "V07": 1.0
+      },
+      "avg_hard_failures": 1.6666666666666667,
+      "avg_expected_failures": 0.3333333333333333,
+      "avg_question_shape_failures": 0.0,
+      "mean_words": 15.033333333333333,
+      "mean_latency_s": 4.233333333333333
+    },
+    "e4b scene+dialogue|role_competence": {
+      "runs": 3,
+      "scenarios_per_run": 7,
+      "pass_rate": 1.0,
+      "scenario_pass_rate": {
+        "R01": 1.0,
+        "R02": 1.0,
+        "R03": 1.0,
+        "R04": 1.0,
+        "R05": 1.0,
+        "R06": 1.0,
+        "R07": 1.0
+      },
+      "avg_hard_failures": 0.0,
+      "avg_expected_failures": 0.0,
+      "avg_question_shape_failures": 0.0,
+      "mean_words": 9.2,
+      "mean_latency_s": 3.8333333333333335
+    }
+  }
+}

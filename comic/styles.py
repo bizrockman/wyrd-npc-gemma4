@@ -201,12 +201,10 @@ def build_full_page_prompt(
                 scene_desc = matches[0].strip()
 
             quotes = re.findall(r'"([^"]+)"', response)
-            kenji_line = quotes[0] if quotes else ""
+            kenji_line = quotes[0].rstrip(",") if quotes else ""
 
-            # Clean customer input
-            customer_line = user_input.strip().lstrip("*").split("*")[0].strip()
-            if customer_line.startswith("*"):
-                customer_line = ""
+            # Clean customer input - strip *action* markers, keep spoken text only
+            customer_line = re.sub(r'\*[^*]+\*', '', user_input).strip()
 
             panels.append({
                 "customer_line": customer_line,
@@ -240,13 +238,25 @@ def build_full_page_prompt(
         "facing Kenji. Never swap their positions."
     )
 
+    # Camera angles cycle for visual variety
+    camera_cycle = [
+        "medium shot, both characters at the counter",
+        "over-the-shoulder from behind Kenji, customer facing us",
+        "close-up on face",
+        "medium wide shot, full counter visible",
+        "close-up on hands and bowl",
+        "medium close-up, slight low angle",
+    ]
+
     for p in panels:
         gpos = grid_pos[panel_num] if panel_num < len(grid_pos) else ""
         pos_hint = f" ({gpos})" if gpos else ""
+        camera = camera_cycle[panel_num % len(camera_cycle)]
 
         if p["customer_line"]:
             panel_texts.append(
-                f'Panel {panel_num}{pos_hint}: Customer (LEFT side) speaks '
+                f'Panel {panel_num}{pos_hint}: {camera}. '
+                f'Customer (LEFT side) speaks '
                 f'to Kenji (RIGHT side, behind counter). '
                 f'Speech bubble with tail pointing toward the customer on the left, '
                 f'text: "{p["customer_line"]}"'
@@ -254,11 +264,13 @@ def build_full_page_prompt(
             panel_num += 1
             gpos = grid_pos[panel_num] if panel_num < len(grid_pos) else ""
             pos_hint = f" ({gpos})" if gpos else ""
+            camera = camera_cycle[panel_num % len(camera_cycle)]
 
         action = p["scene_desc"] or "Kenji behind the counter"
         if p["kenji_line"]:
             panel_texts.append(
-                f'Panel {panel_num}{pos_hint}: Both characters visible. '
+                f'Panel {panel_num}{pos_hint}: {camera}. '
+                f'Both characters visible. '
                 f'Customer (LEFT side) listens. {action}. '
                 f'Kenji (RIGHT side), Japanese male, 49, '
                 f'short graying hair, white cook\'s uniform. '
@@ -267,7 +279,8 @@ def build_full_page_prompt(
             )
         else:
             panel_texts.append(
-                f'Panel {panel_num}{pos_hint}: Both characters visible. '
+                f'Panel {panel_num}{pos_hint}: {camera}. '
+                f'Both characters visible. '
                 f'Customer (LEFT side). {action}. '
                 f'Kenji (RIGHT side), Japanese male, 49, '
                 f'short graying hair, white cook\'s uniform. No speech.'

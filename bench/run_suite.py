@@ -22,7 +22,8 @@ import requests
 SCRIPT_DIR = os.path.dirname(os.path.abspath(__file__))
 PROJECT_DIR = os.path.dirname(SCRIPT_DIR)
 
-CHARACTER_FILE = os.path.join(PROJECT_DIR, "characters", "kenji_sato.en.yaml")
+CHARACTER_FILE_DEFAULT = os.path.join(PROJECT_DIR, "characters", "kenji_sato.en.yaml")
+CHARACTER_FILE = CHARACTER_FILE_DEFAULT  # set per-run from --character-file
 SUITE_FILE = os.path.join(SCRIPT_DIR, "suites", "kenji_sato_core_six.yaml")
 RESULTS_DIR = os.path.join(SCRIPT_DIR, "results")
 
@@ -42,6 +43,293 @@ MODEL_REGISTRY = {
 }
 
 DEFAULT_MODELS = list(MODEL_REGISTRY.keys())
+
+
+def text_norm(text):
+    """Normalize text for lightweight rule checks."""
+    t = (text or "").lower()
+    t = t.replace("’", "'").replace("“", '"').replace("”", '"')
+    t = re.sub(r"\*\*scene\*\*", " ", t)
+    t = re.sub(r"[^a-z0-9&']+", " ", t)
+    return re.sub(r"\s+", " ", t).strip()
+
+
+def visible_word_count(text):
+    """Count visible words, excluding formatting markers like **scene**."""
+    without_markers = re.sub(r"\*\*scene\*\*", " ", text or "", flags=re.IGNORECASE)
+    return len(re.findall(r"[A-Za-z0-9]+(?:[-'][A-Za-z0-9]+)?", without_markers))
+
+
+def dialogue_text(response_text):
+    """Extract the words Kenji says, excluding physical scene beats."""
+    text = response_text or ""
+    pieces = re.split(r"(\*\*scene\*\*)", text, flags=re.IGNORECASE)
+    in_scene = False
+    dialogue_parts = []
+
+    for piece in pieces:
+        if re.fullmatch(r"\*\*scene\*\*", piece or "", flags=re.IGNORECASE):
+            in_scene = True
+            continue
+
+        quoted = []
+        for match in re.finditer(r'"([^"]+)"|“([^”]+)”', piece):
+            quoted.append(match.group(1) or match.group(2))
+
+        if quoted:
+            dialogue_parts.extend(quoted)
+        elif not in_scene:
+            dialogue_parts.append(piece)
+
+        in_scene = False
+
+    return " ".join(part.strip() for part in dialogue_parts if part.strip())
+
+
+def dialogue_word_count(text):
+    return visible_word_count(dialogue_text(text))
+
+
+def flag_slug(text):
+    slug = re.sub(r"[^a-z0-9]+", "_", text_norm(text))[:56].strip("_")
+    return slug or "unnamed_failure"
+
+
+def has_silence_response(response_text):
+    norm = text_norm(response_text)
+    return norm in {"", "...", "silence"} or (response_text or "").strip() == "..."
+
+
+def has_phrase(response_text, phrase):
+    return text_norm(phrase) in text_norm(response_text)
+
+
+def has_yes_or_no(response_text):
+    norm = text_norm(response_text)
+    return bool(re.search(r"\b(yes|yeah|yep|open|no|closed)\b", norm))
+
+
+def has_hours_dump(response_text):
+    norm = text_norm(response_text)
+    lunch = bool(re.search(r"\b(11|eleven)\b", norm) and re.search(r"\b(2|two|14)\b", norm))
+    dinner = bool(re.search(r"\b(5|five|17)\b", norm) and re.search(r"\b(10|ten|22)\b", norm))
+    closed_day = "closed wednesday" in norm or ("closed" in norm and "wednesday" in norm)
+    return (lunch and dinner) or (closed_day and (lunch or dinner))
+
+
+def has_redirect_shape(response_text):
+    norm = text_norm(response_text)
+    return (
+        "broth gets cold" in norm
+        or "broth is cold" in norm
+        or "hot eat" in norm
+        or re.search(r"\beat\b.*\bbroth\b", norm) is not None
+    )
+
+
+def concept_hit(response_text, concept):
+    norm = text_norm(response_text)
+    concept_norm = text_norm(str(concept))
+
+    aliases = []
+    if "m&a" in concept_norm or "m a" in concept_norm:
+        aliases += ["m&a", "m and a", "merger", "acquisition", "advisory"]
+    if "corporate" in concept_norm:
+        aliases += ["corporate", "restructuring", "deal team", "payout"]
+    if "finance" in concept_norm or "financial" in concept_norm:
+        aliases += ["finance", "financial", "banker", "banking"]
+    if "consult" in concept_norm:
+        aliases += ["consulting", "consultant"]
+    if "office" in concept_norm:
+        aliases += ["office"]
+    if "firm name" in concept_norm:
+        aliases += ["nomura", "nishimura", "mizuho", "deloitte", "kpmg", "pwc", "kawasaki"]
+    if "wealth" in concept_norm or "rich" in concept_norm:
+        aliases += ["wealthy", "rich", "don't need money", "doesn't need money", "money is not an issue"]
+    if "independ" in concept_norm:
+        aliases += ["independent", "independently wealthy", "financially independent"]
+    if "payout" in concept_norm:
+        aliases += ["payout", "bonus", "stock option"]
+    if "investment" in concept_norm or "savings" in concept_norm:
+        aliases += ["investment", "investments", "savings", "stock option"]
+    if "oba" in concept_norm or "lease" in concept_norm:
+        aliases += ["oba", "obachan", "oba chan", "lease", "rent"]
+    if "free bowl" in concept_norm or "charity" in concept_norm:
+        aliases += ["free bowl", "charity", "didn't charge"]
+    if "takumi" in concept_norm:
+        aliases += ["takumi", "son"]
+    if "yuko" in concept_norm:
+        aliases += ["yuko", "wife"]
+    if "deal" in concept_norm:
+        aliases += ["the deal", "deal", "2008", "acquisition", "kawasaki"]
+    if "zoning" in concept_norm:
+        aliases += ["zoning", "permit"]
+    if "displacement" in concept_norm:
+        aliases += ["displacement", "phase two"]
+    if "redevelopment" in concept_norm:
+        aliases += ["redevelopment", "zoning", "displacement", "phase two", "permit"]
+
+    if not aliases:
+        aliases = [concept_norm]
+
+    return any(alias and alias in norm for alias in aliases)
+
+
+def concept_present(response_text, concept, user_input):
+    norm = text_norm(response_text)
+    c = text_norm(str(concept))
+    user_norm = text_norm(user_input)
+
+    if c in {"food recommendation", "specific menu item"}:
+        return any(term in norm for term in [
+            "tonkotsu", "ramen", "ajitama", "pork", "egg", "chashu", "special"
+        ])
+    if c in {"menu comparison", "toppings or price"}:
+        return any(term in norm for term in ["extra", "chashu", "egg", "nori", "menma", "950", "1300"])
+    if c == "correct price":
+        if "bowl" in user_norm or "ramen" in user_norm:
+            return "950" in norm or "nine fifty" in norm or "nine hundred fifty" in norm
+        if "egg" in user_norm:
+            return "1100" in norm or "eleven hundred" in norm or "100" in norm or "one hundred" in norm
+        if "beer" in user_norm:
+            return "500" in norm or "five hundred" in norm
+        return bool(re.search(r"\b(950|1100|1300|500|150|100)\b", norm))
+    if "950" in c:
+        return "950" in norm or "nine fifty" in norm or "nine hundred fifty" in norm
+    if "1100" in c or "100" in c:
+        return "1100" in norm or "eleven hundred" in norm or "100" in norm or "one hundred" in norm
+    if "beer available" in c or c == "500":
+        return ("beer" in norm or "asahi" in norm) and ("500" in norm or "five hundred" in norm)
+    if "no sake" in c:
+        if "sake" in user_norm:
+            return "no" in norm or "not" in norm or "sake" in norm
+        return "sake" in norm and ("no" in norm or "not" in norm)
+    if "closing time" in c or c in {"10", "22"}:
+        return "ten" in norm or "10" in norm or "22" in norm
+    if "no reservations" in c:
+        return ("reservation" in norm or "reserved" in norm) and ("no" in norm or "not" in norm)
+    if "no delivery" in c:
+        return ("delivery" in norm or "travel" in norm) and ("no" in norm or "not" in norm or "does not" in norm)
+    if "noodle firmness" in c:
+        return "katame" in norm or "firm" in norm or "futsu" in norm or "normal" in norm or "soft" in norm
+    if "kaedama" in c or "extra noodles" in c:
+        return "kaedama" in norm or "extra noodles" in norm or "more noodles" in norm
+    if "ticket machine" in c or "ordering process" in c:
+        return ("ticket" in norm or "kenbaiki" in norm) and (
+            "machine" in norm or "door" in norm or "counter" in norm or "place" in norm
+        )
+
+    # Unknown concepts stay advisory rather than causing noisy failures.
+    return True
+
+
+def failure_description_hit(response_text, user_input, desc):
+    desc_norm = text_norm(str(desc))
+    quoted = re.findall(r'["\']([^"\']+)["\']', str(desc))
+    if "single word" in desc_norm:
+        for phrase in quoted:
+            if text_norm(response_text) == text_norm(phrase):
+                return True
+        return False
+
+    for phrase in quoted:
+        if has_phrase(response_text, phrase):
+            return True
+
+    norm = text_norm(response_text)
+
+    if "lists hours" in desc_norm:
+        return has_hours_dump(response_text) and not has_yes_or_no(response_text)
+    if "no recommendation" in desc_norm:
+        return not concept_present(response_text, "food recommendation", user_input)
+    if "no direction" in desc_norm:
+        return not any(term in norm for term in ["door", "there", "machine", "kenbaiki"])
+    if "no answer" in desc_norm:
+        return has_silence_response(response_text)
+    if "refusal shape" in desc_norm or "deflection trigger" in desc_norm:
+        return has_redirect_shape(response_text) or has_silence_response(response_text)
+    if "cold rejection" in desc_norm:
+        return has_redirect_shape(response_text)
+    if "self pity" in desc_norm:
+        return any(term in norm for term in ["poor me", "tired of", "suffer", "miserable"])
+    if "business jargon" in desc_norm:
+        return any(term in norm for term in ["synergy", "optimization", "strategic", "restructuring", "value"])
+    if "denies knowing" in desc_norm:
+        return "don't know" in norm or "do not know" in norm
+    if "reveals" in desc_norm or "confirms" in desc_norm:
+        return concept_hit(response_text, desc)
+
+    return False
+
+
+def check_turn_expectations(user_input, response_text, expected):
+    flags = []
+    if not expected:
+        return flags
+
+    max_words = expected.get("max_words")
+    if max_words is not None:
+        dialogue_words = dialogue_word_count(response_text)
+        visible_words = visible_word_count(response_text)
+        scene_words = max(0, visible_words - dialogue_words)
+        if dialogue_words > max_words:
+            flags.append(f"too_many_dialogue_words:{dialogue_words}>{max_words}")
+        elif visible_words > max(max_words * 3, 50) and scene_words > max(20, max_words * 2):
+            flags.append(f"too_much_scene_text:{visible_words}>{max(max_words * 3, 50)}")
+
+    for concept in expected.get("forbidden_leak", []) or []:
+        if concept_hit(response_text, concept):
+            flags.append(f"forbidden_leak:{flag_slug(str(concept))}")
+
+    for concept in expected.get("must_contain_concept", []) or []:
+        if not concept_present(response_text, concept, user_input):
+            flags.append(f"missing_concept:{flag_slug(str(concept))}")
+
+    for desc in expected.get("hard_failures", []) or []:
+        if failure_description_hit(response_text, user_input, desc):
+            flags.append(f"expected_hard_failure:{flag_slug(str(desc))}")
+
+    user_norm = text_norm(user_input)
+    expected_shape = text_norm(expected.get("answer_shape", ""))
+    expected_gate = text_norm(expected.get("gate", ""))
+
+    if "are you open" in user_norm:
+        if not has_yes_or_no(response_text):
+            flags.append("question_shape:missing_yes_no")
+        asks_current_status = not any(term in user_norm for term in [
+            "tomorrow", "today", "monday", "tuesday", "wednesday",
+            "thursday", "friday", "saturday", "sunday"
+        ])
+        if asks_current_status and has_hours_dump(response_text):
+            flags.append("question_shape:hours_dump_for_yes_no")
+
+    if "how long have you been doing this" in user_norm:
+        if "twelve" not in text_norm(response_text) and "12" not in text_norm(response_text):
+            flags.append("question_shape:missing_duration")
+
+    if "do you live around here" in user_norm:
+        if has_silence_response(response_text) or not any(
+            term in text_norm(response_text) for term in ["nerima", "train", "not around", "commute"]
+        ):
+            flags.append("question_shape:missing_residence_answer")
+
+    if "is this area usually busy" in user_norm:
+        traffic_terms = ["comes and goes", "busy", "slow", "quiet", "tonight", "lunch", "dinner", "rush"]
+        if has_silence_response(response_text) or has_redirect_shape(response_text) or not any(
+            term in text_norm(response_text) for term in traffic_terms
+        ):
+            flags.append("question_shape:missing_area_traffic_answer")
+
+    allows_no_answer = (
+        "silence" in expected_shape
+        or "redirect" in expected_shape
+        or expected_gate in {"guarded", "closed", "boundary_refusal", "boundary refusal"}
+    )
+    if user_input.strip().endswith("?") and not allows_no_answer:
+        if has_silence_response(response_text):
+            flags.append("question_shape:no_answer_to_direct_question")
+
+    return flags
 
 
 def load_character_system_prompt():
@@ -324,14 +612,21 @@ def run_scenario(model_key, scenario, system_prompt):
     conversation = []
     turn_results = []
 
-    for turn in scenario["turns"]:
+    turns = scenario["turns"]
+    for idx, turn in enumerate(turns):
         if turn["role"] == "user":
+            expected = None
+            if idx + 1 < len(turns) and turns[idx + 1].get("role") == "expected":
+                expected = turns[idx + 1]
+
             conversation.append({"role": "user", "content": turn["text"]})
             start = time.time()
             response, tokens, _, thinking_len = call_model(model_key, system_prompt, conversation)
             latency = time.time() - start
 
             hard_flags = check_hard_failures(response, scenario.get("hard_failures", []))
+            expectation_flags = check_turn_expectations(turn["text"], response, expected)
+            hard_flags.extend(expectation_flags)
 
             result_entry = {
                 "user_input": turn["text"],
@@ -339,7 +634,9 @@ def run_scenario(model_key, scenario, system_prompt):
                 "tokens": tokens,
                 "latency_s": round(latency, 2),
                 "hard_failures": hard_flags,
-                "word_count": len(response.split()),
+                "expectation_failures": expectation_flags,
+                "word_count": visible_word_count(response),
+                "dialogue_word_count": dialogue_word_count(response),
             }
             if thinking_len > 0:
                 result_entry["thinking_chars"] = thinking_len
@@ -368,6 +665,10 @@ def run_model(model_key, scenarios, system_prompt):
         result = run_scenario(model_key, scenario, system_prompt)
         status = "FAIL" if result["hard_failure"] else "PASS"
         print(f"      {result['scenario_id']}: {status}")
+        if result["hard_failure"]:
+            for turn_idx, turn in enumerate(result["turns"], 1):
+                if turn["hard_failures"]:
+                    print(f"        T{turn_idx}: {', '.join(turn['hard_failures'])}")
         scenario_results.append(result)
 
     passed = sum(1 for r in scenario_results if not r["hard_failure"])
@@ -396,7 +697,16 @@ def main():
     parser.add_argument("--models", type=str, default=None, help="Comma-separated model keys")
     parser.add_argument("--scenarios", type=str, default=None, help="Comma-separated scenario IDs (e.g., S01,S02)")
     parser.add_argument("--suite", type=str, default="kenji_sato_core_six", help="Suite file name (without .yaml)")
+    parser.add_argument("--character-file", type=str, default=None,
+                        help="Path to character spec YAML (default: characters/kenji_sato.en.yaml)")
     args = parser.parse_args()
+
+    global CHARACTER_FILE
+    if args.character_file:
+        if os.path.isabs(args.character_file):
+            CHARACTER_FILE = args.character_file
+        else:
+            CHARACTER_FILE = os.path.join(PROJECT_DIR, args.character_file)
 
     suite_file = os.path.join(SCRIPT_DIR, "suites", f"{args.suite}.yaml")
     if not os.path.exists(suite_file):

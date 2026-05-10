@@ -8,14 +8,14 @@ his internal state.
 
 Usage:
     python kenji_terminal.py
-    python kenji_terminal.py --model gemma4:e4b
     python kenji_terminal.py --no-suggestions
 
-Requires: pip install requests rich
+Requires: pip install requests rich pyyaml
 """
 
 import argparse
 import json
+import re
 import os
 import sys
 import time
@@ -41,40 +41,76 @@ except ImportError:
 # ---------------------------------------------------------------------------
 
 OLLAMA_URL = "http://localhost:11434/api/chat"
+OLLAMA_TAGS_URL = "http://localhost:11434/api/tags"
+
+# Models offered in the picker (in preference order)
+# default_mode: "dialogue" (small models — capacity reserved for accuracy)
+#               "scene"    (larger models — scenes add atmosphere)
+PREFERRED_MODELS = [
+    ("gemma4:e2b", "Gemma 4 e2b  (2.3B eff. — fast)            [dialogue-only]", "dialogue"),
+    ("gemma4:e4b", "Gemma 4 e4b  (4.3B eff. — balanced)        [scene+dialogue]", "scene"),
+    ("gemma4:12b", "Gemma 4 12b  (12B — strong)                [scene+dialogue]", "scene"),
+    ("gemma4:26b", "Gemma 4 26b  (26B — best quality, PLE)     [scene+dialogue]", "scene"),
+    ("gemma4:27b", "Gemma 4 27b  (27B — best quality, PLE)     [scene+dialogue]", "scene"),
+    ("gemma4:31b", "Gemma 4 31b  (31B — dense, no PLE)         [scene+dialogue]", "scene"),
+]
+
+# Spec files
+SPEC_FILES = {
+    "scene":    "kenji_sato.en.yaml",            # scene+dialogue (default)
+    "dialogue": "kenji_sato.dialogue_only.en.yaml",  # dialogue-only (small models)
+}
 
 SUGGESTION_SYSTEM = """\
 You are a conversation coach helping a customer at a small ramen shop \
 in Tokyo. The customer is sitting at the counter. The cook is a quiet, \
 middle-aged Japanese man.
 
-Based on the conversation so far, suggest exactly 4 short things the \
-customer could naturally say next. Mix types:
-- One about the food or cooking
-- One casual small-talk / observation about the place
-- One slightly more personal question
-- One that shows appreciation or curiosity
+The visit follows a natural flow:
+1. ARRIVING: sit down, look at menu, ask what's good, order at the ticket machine
+2. WAITING: small talk, observe the cook working, ask about the place
+3. EATING: appreciate the food, ask about ingredients or technique
+4. FINISHING: thank him, ask about the neighborhood, say goodbye
+
+Based on the conversation so far, figure out which PHASE the customer \
+is in and suggest 4 things that fit that moment. Don't suggest ordering \
+if they already ordered. Don't suggest food questions if they're already eating.
 
 Rules:
 - Keep each suggestion under 15 words
 - Sound natural, not scripted
+- Match the phase — after ordering, suggest waiting/chatting, not more ordering
 - Don't reference anything the cook hasn't mentioned
 - Don't ask about sensitive topics (money, past career, family problems)
 - Write as the customer would speak, casual and friendly
 - Output ONLY a JSON array of 4 strings, nothing else
 
-Example output:
-["How long does the broth take to make?", "Busy night tonight?", \
-"You been doing this long?", "This smells amazing, what's in it?"]"""
+Example — just sat down:
+["What do you recommend?", "Busy night tonight?", \
+"You been doing this long?", "This smells amazing, what's in it?"]
+
+Example — food just arrived:
+["This looks incredible.", "Is that black garlic oil on top?", \
+"How long did you train to make this?", "Can I get a beer with this?"]"""
 
 
 # ---------------------------------------------------------------------------
 # Ollama client
 # ---------------------------------------------------------------------------
 
+def get_available_models() -> list[str]:
+    """Get list of all models available in Ollama."""
+    try:
+        resp = requests.get(OLLAMA_TAGS_URL, timeout=5)
+        return [m["name"] for m in resp.json().get("models", [])]
+    except requests.ConnectionError:
+        return []
+
+
 def check_ollama(model: str) -> bool:
     """Check if Ollama is running and model is available."""
     try:
-        resp = requests.get("http://localhost:11434/api/tags", timeout=5)
+        resp = requests.get(OLLAMA_TAGS_URL, timeout=5)
         models = [m["name"] for m in resp.json().get("models", [])]
         if model not in models:
             print(f"Error: Model '{model}' not found in Ollama.")
@@ -85,6 +121,73 @@ def check_ollama(model: str) -> bool:
     except requests.ConnectionError:
         print("Error: Ollama is not running. Start it with: ollama serve")
         return False
+
+
+def pick_model(console=None) -> tuple[str, str]:
+    """Interactive model picker. Returns (model_name, default_mode)."""
+    available = get_available_models()
+    if not available:
+        print("Error: Ollama is not running. Start it with: ollama serve")
+        sys.exit(1)
+
+    # Filter preferred models to those actually available
+    choices = []
+    for model_id, description, mode in PREFERRED_MODELS:
+        if model_id in available:
+            choices.append((model_id, description, mode))
+
+    # Also add any other gemma4 models not in preferred list (default to scene)
+    for m in available:
+        if m.startswith("gemma4") and m not in [c[0] for c in choices]:
+            choices.append((m, f"{m}", "scene"))
+
+    if not choices:
+        print("No Gemma 4 models found. Available models:")
+        for m in available:
+            print(f"  {m}")
+        print("\nPull a Gemma 4 model: ollama pull gemma4:e4b")
+        sys.exit(1)
+
+    if len(choices) == 1:
+        return choices[0][0], choices[0][2]
+
+    # Show picker
+    if console and HAS_RICH:
+        console.print()
+        lines = []
+        for i, (model_id, desc, mode) in enumerate(choices, 1):
+            lines.append(f"  [bold cyan][{i}][/bold cyan] {desc}")
+        console.print(Panel(
+            "\n".join(lines),
+            title="[bold]Select Model[/bold]",
+            border_style="yellow",
+            box=box.ROUNDED,
+            padding=(0, 1),
+        ))
+        while True:
+            try:
+                pick = console.input("[bold yellow]Model>[/bold yellow] ").strip()
+                idx = int(pick) - 1
+                if 0 <= idx < len(choices):
+                    selected = choices[idx]
+                    console.print(f"[dim]  → {selected[0]}[/dim]\n")
+                    return selected[0], selected[2]
+            except (ValueError, KeyboardInterrupt, EOFError):
+                pass
+            console.print(f"[dim]  Pick 1-{len(choices)}[/dim]")
+    else:
+        print("\nSelect model:")
+        for i, (model_id, desc, mode) in enumerate(choices, 1):
+            print(f"  [{i}] {desc}")
+        while True:
+            try:
+                pick = input("Model> ").strip()
+                idx = int(pick) - 1
+                if 0 <= idx < len(choices):
+                    return choices[idx][0], choices[idx][2]
+            except (ValueError, KeyboardInterrupt, EOFError):
+                pass
+            print(f"  Pick 1-{len(choices)}")
 
 
 def chat(model: str, messages: list, temperature: float = 0.7) -> tuple[str, float]:
@@ -109,16 +212,42 @@ def generate_suggestions(model: str, conversation: list) -> list[str]:
     # Build a summary of the conversation for context
     summary_msgs = [{"role": "system", "content": SUGGESTION_SYSTEM}]
 
-    if len(conversation) > 1:  # More than just the system prompt
-        # Give the suggestion model a brief conversation summary
-        turns = []
-        for msg in conversation[1:]:  # Skip system prompt
+    if len(conversation) > 2:  # At least one exchange happened
+        # Extract the last exchange prominently
+        last_user = ""
+        last_cook = ""
+        for msg in reversed(conversation[1:]):
+            if msg["role"] == "assistant" and not last_cook:
+                last_cook = msg["content"][:120]
+            elif msg["role"] == "user" and not last_user:
+                last_user = msg["content"][:120]
+            if last_user and last_cook:
+                break
+
+        # Build earlier context as brief background
+        earlier = []
+        for msg in conversation[1:-2]:  # Everything before last exchange
             role = "Customer" if msg["role"] == "user" else "Cook"
-            turns.append(f"{role}: {msg['content'][:100]}")
-        summary = "\n".join(turns[-6:])  # Last 3 exchanges max
+            earlier.append(f"{role}: {msg['content'][:60]}")
+        earlier_text = "\n".join(earlier[-4:])  # Max 2 earlier exchanges
+
+        prompt_parts = []
+        if earlier_text:
+            prompt_parts.append(f"Earlier:\n{earlier_text}")
+        prompt_parts.append(f"JUST NOW — Customer said: \"{last_user}\"")
+        prompt_parts.append(f"JUST NOW — Cook responded: \"{last_cook}\"")
+        prompt_parts.append("\nWhat would the customer naturally say NEXT? React to what just happened.")
+
         summary_msgs.append({
             "role": "user",
-            "content": f"Conversation so far:\n{summary}\n\nSuggest 4 things the customer could say next.",
+            "content": "\n".join(prompt_parts),
+        })
+    elif len(conversation) > 1:
+        # First response happened, suggest follow-ups
+        last_cook = conversation[-1]["content"][:120] if conversation[-1]["role"] == "assistant" else ""
+        summary_msgs.append({
+            "role": "user",
+            "content": f"The cook just said: \"{last_cook}\"\nWhat would the customer naturally say next?",
         })
     else:
         summary_msgs.append({
@@ -149,33 +278,117 @@ def generate_suggestions(model: str, conversation: list) -> list[str]:
 
 
 # ---------------------------------------------------------------------------
+# Response parsing
+# ---------------------------------------------------------------------------
+
+# Patterns that indicate scene/action text (third-person descriptions)
+_SCENE_PATTERNS = [
+    re.compile(r"^\*\*scene\*\*", re.IGNORECASE),
+    re.compile(r"^\*[^*]"),             # *italics style action*
+    re.compile(r"^He\s"),               # He turns, He nods, ...
+    re.compile(r"^She\s"),
+    re.compile(r"^Kenji\s"),            # Kenji wipes, Kenji looks, ...
+    re.compile(r"^The cook\s", re.IGNORECASE),
+]
+
+
+def is_scene_text(text: str) -> bool:
+    """Detect if a text segment is a scene description (action, not dialogue)."""
+    for pat in _SCENE_PATTERNS:
+        if pat.search(text):
+            return True
+    return False
+
+
+def clean_scene_markers(text: str) -> str:
+    """Remove **scene** markers from text, keep the description."""
+    text = re.sub(r"\*\*[Ss]cene\*\*\s*", "", text)
+    text = text.strip("*").strip()
+    return text
+
+
+def parse_response(response: str) -> list[tuple[str, str]]:
+    """Parse response into segments: ('scene', text) or ('dialogue', text).
+
+    Handles mixed lines like: **scene** He points. "Pork. Egg." **scene** The ajitama.
+    """
+    segments = []
+
+    for line in response.strip().split("\n"):
+        stripped = line.strip()
+        if not stripped:
+            continue
+
+        # Split on **scene** markers to handle inline scene/dialogue mixes
+        parts = re.split(r"(\*\*[Ss]cene\*\*)", stripped)
+
+        in_scene = False
+        for part in parts:
+            part = part.strip()
+            if not part:
+                continue
+
+            if re.match(r"\*\*[Ss]cene\*\*$", part):
+                in_scene = True
+                continue
+
+            if in_scene:
+                # Everything after **scene** until a quote is scene
+                # Check if there's quoted dialogue embedded
+                quote_match = re.search(r'["“]([^"”]+)["”]', part)
+                if quote_match:
+                    # Split: scene before quote, dialogue in quote, scene after
+                    before = part[:quote_match.start()].strip()
+                    dialogue = quote_match.group(0)
+                    after = part[quote_match.end():].strip()
+                    if before:
+                        segments.append(("scene", before))
+                    segments.append(("dialogue", dialogue))
+                    if after:
+                        after_clean = clean_scene_markers(after)
+                        if after_clean:
+                            segments.append(("scene", after_clean))
+                else:
+                    segments.append(("scene", part))
+                in_scene = False
+            elif is_scene_text(part):
+                # Scene text detected — but may contain embedded quotes
+                clean = clean_scene_markers(part)
+                if clean:
+                    quote_match = re.search(r'["“]([^"”]+)["”]', clean)
+                    if quote_match:
+                        before = clean[:quote_match.start()].strip()
+                        dialogue = quote_match.group(0)
+                        after = clean[quote_match.end():].strip()
+                        if before:
+                            segments.append(("scene", before))
+                        segments.append(("dialogue", dialogue))
+                        if after:
+                            segments.append(("scene", after))
+                    else:
+                        segments.append(("scene", clean))
+            elif part.startswith('"') or part.startswith('“'):
+                segments.append(("dialogue", part))
+            else:
+                segments.append(("dialogue", part))
+
+    return segments if segments else [("dialogue", response.strip())]
+
+
+# ---------------------------------------------------------------------------
 # Terminal UI
 # ---------------------------------------------------------------------------
 
 def format_response_rich(console: "Console", response: str, latency: float):
     """Format Kenji's response with rich styling."""
-    # Split scene descriptions and dialogue
-    lines = response.strip().split("\n")
+    segments = parse_response(response)
     formatted = Text()
 
-    for line in lines:
-        stripped = line.strip()
-        if not stripped:
-            formatted.append("\n")
-            continue
-
-        if "**scene**" in stripped.lower() or stripped.startswith("*"):
-            # Scene description - italic, dim
-            clean = stripped.replace("**scene**", "").replace("**Scene**", "").strip()
-            clean = clean.strip("*").strip()
-            if clean:
-                formatted.append(f"  {clean}\n", style="italic dim")
-        elif stripped.startswith('"') or stripped.startswith('“'):
-            # Quoted dialogue - bold
-            formatted.append(f"  {stripped}\n", style="bold")
+    for seg_type, text in segments:
+        if seg_type == "scene":
+            formatted.append(f"  {text}\n", style="italic #6a6a6a")
         else:
-            # Regular text
-            formatted.append(f"  {stripped}\n")
+            formatted.append(f"  {text}\n", style="bold")
 
     panel = Panel(
         formatted,
@@ -190,8 +403,13 @@ def format_response_rich(console: "Console", response: str, latency: float):
 
 def format_response_plain(response: str, latency: float):
     """Format Kenji's response without rich."""
+    segments = parse_response(response)
     print(f"\n--- Kenji ({latency:.1f}s) ---")
-    print(response)
+    for seg_type, text in segments:
+        if seg_type == "scene":
+            print(f"  [{text}]")
+        else:
+            print(f"  {text}")
     print("---\n")
 
 
@@ -225,7 +443,8 @@ def show_suggestions_plain(suggestions: list[str]):
 
 def main():
     parser = argparse.ArgumentParser(description="Talk to Kenji at the ramen counter")
-    parser.add_argument("--model", default="gemma4:e2b", help="Ollama model for Kenji")
+    parser.add_argument("--model", default=None,
+                        help="Ollama model for Kenji (skip picker)")
     parser.add_argument("--suggestion-model", default=None,
                         help="Ollama model for suggestions (defaults to same as --model)")
     parser.add_argument("--no-suggestions", action="store_true",
@@ -233,28 +452,53 @@ def main():
     parser.add_argument("--persona", default="tourist",
                         choices=["tourist", "regular", "stranger"],
                         help="Your character (affects how Kenji sees you)")
+    parser.add_argument("--mode", default=None,
+                        choices=["scene", "dialogue"],
+                        help="Override default mode (scene+dialogue vs dialogue-only)")
     args = parser.parse_args()
 
-    suggestion_model = args.suggestion_model or args.model
+    # Setup console early for picker
+    console = Console() if HAS_RICH else None
 
-    if not check_ollama(args.model):
-        sys.exit(1)
-    if suggestion_model != args.model and not check_ollama(suggestion_model):
+    # Model selection (also returns recommended mode)
+    default_mode = "scene"
+    if args.model:
+        model = args.model
+        if not check_ollama(model):
+            sys.exit(1)
+        # Look up default mode from registry
+        for m_id, _, m_mode in PREFERRED_MODELS:
+            if m_id == model:
+                default_mode = m_mode
+                break
+    else:
+        model, default_mode = pick_model(console)
+
+    # Mode resolution: explicit flag > model default
+    mode = args.mode or default_mode
+
+    suggestion_model = args.suggestion_model or model
+    if suggestion_model != model and not check_ollama(suggestion_model):
         sys.exit(1)
 
-    # Load character spec
-    spec_path = Path(__file__).parent.parent / "characters" / "kenji_sato.en.yaml"
+    # Load the appropriate spec file for the mode
+    spec_filename = SPEC_FILES[mode]
+    spec_path = Path(__file__).parent.parent / "characters" / spec_filename
     if not spec_path.exists():
         print(f"Error: Character spec not found at {spec_path}")
         sys.exit(1)
     spec = spec_path.read_text(encoding="utf-8")
+    mode_label = "scene+dialogue" if mode == "scene" else "dialogue-only"
+
+    if console:
+        mode_style = "[dim]" if mode == "scene" else "[bold yellow]"
+        console.print(f"  {mode_style}Mode: {mode_label}[/]  [dim]({spec_filename})[/dim]")
 
     # Build conversation with system prompt
     conversation = [{"role": "system", "content": spec}]
 
     # Setup display
-    if HAS_RICH:
-        console = Console()
+    if console:
         console.print()
         console.print(Panel(
             "[bold]Kenji's Ramen[/bold]\n"
@@ -262,7 +506,7 @@ def main():
             "A narrow alley. Steam drifts from under the noren curtain.\n"
             "You push through and sit down at the worn wooden counter.\n"
             "The cook glances at you, then back at his pot.\n\n"
-            f"[dim]Model: {args.model} | Type freely or pick a suggestion[/dim]\n"
+            f"[dim]Model: {model} ({mode_label}) | Type freely or pick a suggestion[/dim]\n"
             "[dim]Type 'quit' to leave, 'clear' to start over[/dim]",
             title="[yellow]麺処 佐藤[/yellow]",
             border_style="yellow",
@@ -277,7 +521,7 @@ def main():
         print("\nA narrow alley. Steam drifts from under the noren curtain.")
         print("You push through and sit down at the worn wooden counter.")
         print("The cook glances at you, then back at his pot.\n")
-        print(f"Model: {args.model} | Type freely or pick [1-4]")
+        print(f"Model: {model} | Type freely or pick [1-4]")
         print("Type 'quit' to leave, 'clear' to start over\n")
 
     turn = 0
@@ -286,7 +530,7 @@ def main():
     while True:
         # Generate suggestions
         if not args.no_suggestions:
-            if HAS_RICH:
+            if console:
                 with console.status("[dim]Thinking of suggestions...[/dim]", spinner="dots"):
                     suggestions = generate_suggestions(suggestion_model, conversation)
                 show_suggestions_rich(console, suggestions)
@@ -296,7 +540,7 @@ def main():
 
         # Get player input
         try:
-            if HAS_RICH:
+            if console:
                 player_input = console.input("[bold green]You>[/bold green] ")
             else:
                 player_input = input("You> ")
@@ -309,7 +553,7 @@ def main():
             continue
 
         if player_input.lower() in ("quit", "exit", "q"):
-            if HAS_RICH:
+            if console:
                 console.print("\n[dim]You step back through the noren curtain into the alley.[/dim]\n")
             else:
                 print("\nYou step back through the noren curtain into the alley.\n")
@@ -318,7 +562,7 @@ def main():
         if player_input.lower() == "clear":
             conversation = [{"role": "system", "content": spec}]
             turn = 0
-            if HAS_RICH:
+            if console:
                 console.print("\n[dim]--- New visit ---[/dim]\n")
             else:
                 print("\n--- New visit ---\n")
@@ -329,7 +573,7 @@ def main():
             idx = int(player_input) - 1
             if idx < len(suggestions):
                 player_input = suggestions[idx]
-                if HAS_RICH:
+                if console:
                     console.print(f"[green]  \"{player_input}\"[/green]")
                 else:
                     print(f'  "{player_input}"')
@@ -338,18 +582,18 @@ def main():
         conversation.append({"role": "user", "content": player_input})
         turn += 1
 
-        if HAS_RICH:
+        if console:
             with console.status("[yellow]...[/yellow]", spinner="dots"):
-                response, latency = chat(args.model, conversation)
+                response, latency = chat(model, conversation)
             format_response_rich(console, response, latency)
         else:
-            response, latency = chat(args.model, conversation)
+            response, latency = chat(model, conversation)
             format_response_plain(response, latency)
 
         conversation.append({"role": "assistant", "content": response})
 
         # Show turn counter
-        if HAS_RICH:
+        if console:
             console.print(f"[dim]Turn {turn}[/dim]", justify="right")
         else:
             print(f"  [Turn {turn}]")
