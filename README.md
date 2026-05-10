@@ -142,21 +142,32 @@ matrix - Core, Stress, and Playability - without a single failure.
 
 **The specification is the product, not the model.**
 
-## Sample Interaction (Gemma 4, P03 Turn 22)
+## Sample Interaction (Gemma 4 31b, P03 Turns 11 & 24)
 
-> **Player:** Can I ask - the ramen. Why tonkotsu specifically? Why not
-> shoyu or miso?
+Late-night session, the shop has closed. Trust has been built over the
+last 30 minutes. The player asks Kenji why he cooks ramen.
 
-> **Kenji:** *\*scene\* He looks at the can in his hand. Thinks for a
-> second.*
+> **Player:** How did you know? That this was the thing? The ramen?
 >
-> Shoyu you can do in a few hours if you have to. Miso, you can adjust,
-> cover things up. Tonkotsu - you can't cover anything up. The bones
-> either gave you what you needed or they didn't. Twelve hours tells you.
+> **Kenji:** "Three years in Fukuoka. Cold mornings, hot bones. It's
+> a different kind of patience."
 >
-> *\*scene\* He takes a sip.*
+> *\*scene\* He leans against the counter for a moment, looking at the
+> steam still rising from the pot.*
+
+Two turns later, after the player picks up on the Fukuoka thread:
+
+> **Player:** Three years. That's serious. Most people give up after
+> a few months.
 >
-> And I learned it in Fukuoka. So.
+> **Kenji:** "Mm. Bones don't hurry."
+>
+> *\*scene\* He looks at the user and gives a very faint, almost
+> imperceptible smile. "You're still here."*
+
+The "*You're still here*" is the trust mechanic surfacing in voice —
+implicit acknowledgement that the player earned this conversation.
+No reset button, no menu of options, no skip-ahead. Just presence.
 
 ## Quick Start
 
@@ -165,9 +176,28 @@ matrix - Core, Stress, and Playability - without a single failure.
 - [Ollama](https://ollama.ai) installed and running
 - Gemma 4 model pulled: `ollama pull gemma4:e2b` (or `gemma4:e4b`)
 - Python 3.10+
-- `pip install requests pyyaml`
+- `pip install requests pyyaml rich rich-pixels term-image pillow`
 
-### Talk to Kenji
+### Talk to Kenji — Terminal Demo (recommended)
+
+```bash
+python demo/kenji_terminal.py
+```
+
+You get a pixel-art welcome banner of Kenji's alley, a model picker
+(e2b / e4b / 26b / 31b — auto-detected from your Ollama install), a
+small persona avatar next to every response, and four conversation
+suggestions per turn that adapt to the dialogue so far. The demo
+auto-selects scene+dialogue mode for larger models and dialogue-only
+for e2b (smaller models hold the gates better when not also generating
+scene markers).
+
+Best in PowerShell or Windows Terminal — works in any terminal that
+renders Unicode half-blocks. For terminals that don't, add `--no-image`.
+
+### Talk to Kenji — Bare Ollama
+
+If you want the raw experience without the demo wrapper:
 
 ```bash
 ollama run gemma4:e4b --system "$(cat characters/kenji_sato.en.yaml)"
@@ -182,14 +212,16 @@ Then just type:
 ### Run the Benchmark
 
 ```bash
-cd bench
-python run_suite.py --suite kenji_sato_core_six --models gemma4-e4b
-python run_suite.py --suite kenji_sato_stress --models gemma4-e4b
-python run_suite.py --suite kenji_sato_playability --models gemma4-e4b
+python bench/run_suite.py --suite kenji_sato_core_six --models gemma4:e4b
+python bench/run_suite.py --suite kenji_sato_natural_visit --models gemma4:e4b
+python bench/run_suite.py --suite kenji_sato_role_competence --models gemma4:e4b
+python bench/run_suite.py --suite kenji_sato_playability --models gemma4:e4b
+python bench/run_suite.py --suite kenji_sato_stress --models gemma4:e4b
 ```
 
-Results are saved to `bench/results/` as YAML with full conversation
-transcripts.
+The `--character-file` flag lets you swap in `kenji_sato.dialogue_only.en.yaml`
+for the e2b-targeted variant. Results land in `bench/results/` as YAML
+with full conversation transcripts.
 
 ## Architecture
 
