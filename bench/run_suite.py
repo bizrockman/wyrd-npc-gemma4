@@ -127,6 +127,68 @@ def has_redirect_shape(response_text):
     )
 
 
+# ---------------------------------------------------------------------------
+# Generic content checks (no character-specific hardcoding)
+# ---------------------------------------------------------------------------
+
+def contains_any(response_text, terms):
+    """True if at least one term appears (case-insensitive, substring)."""
+    norm = text_norm(response_text)
+    return any(text_norm(str(t)) in norm for t in (terms or []))
+
+
+def contains_all(response_text, terms):
+    """True only if every term appears."""
+    norm = text_norm(response_text)
+    return all(text_norm(str(t)) in norm for t in (terms or []))
+
+
+# ---------------------------------------------------------------------------
+# Opening signal detection (used by Trust Gate Opening suite)
+# ---------------------------------------------------------------------------
+# Engagement markers from the spec voice notes. A response carrying any of
+# these is showing the character opening up rather than mechanically replying.
+
+OPENING_SIGNAL_PATTERNS = {
+    # Soft verbal acknowledgments
+    "verbal_ack": re.compile(r"\b(mm+|yeah|aa|hm+)\b[.,]?", re.IGNORECASE),
+    # Hesitation / pause inside dialogue (... appears within a non-trivial quote)
+    "inline_pause": re.compile(r'"[^"]*[a-zA-Z][^"]*\.\.\.[^"]*"'),
+    # Trailing connective with pause (Yeah. / Well. / So.)
+    "trailing_pause": re.compile(r"\b(yeah|well|so)\s*\.", re.IGNORECASE),
+    # Physical pause / contemplative scene action (verbs and nouns)
+    "physical_pause": re.compile(
+        r"\b(sip|sips|sipped|takes? a sip|drinks?|drank|"
+        r"leans?|leaning|leaned|"
+        r"looks? (away|out|down|up|at)|looking (away|out|down|up|at)|"
+        r"glance[sd]?|glancing|"
+        r"pause[sd]?|pausing|(small|brief|long|slight) pause|"
+        r"rests?|resting|"
+        r"wipes (slowly|down)|sets? down|setting down|"
+        r"thinks?|thinking|thought for|"
+        r"stops? wiping|stares?|breath(es|ed|ing)|"
+        r"thumb (over|along)|runs? (a thumb|his thumb))\b",
+        re.IGNORECASE,
+    ),
+}
+
+
+def opening_signals_in(response_text):
+    """Return list of opening-signal pattern names found in the response.
+
+    Pure-silence responses ("..." alone) do NOT count as opening signals,
+    even though they match the inline_pause regex pattern.
+    """
+    text = (response_text or "").strip()
+    if has_silence_response(text):
+        return []
+    found = []
+    for name, pattern in OPENING_SIGNAL_PATTERNS.items():
+        if pattern.search(text):
+            found.append(name)
+    return found
+
+
 def concept_hit(response_text, concept):
     norm = text_norm(response_text)
     concept_norm = text_norm(str(concept))
@@ -267,16 +329,46 @@ def check_turn_expectations(user_input, response_text, expected):
     if not expected:
         return flags
 
+    # --- Word budget checks ---
     max_words = expected.get("max_words")
+    min_words = expected.get("min_words")
+    min_dialogue_words = expected.get("min_dialogue_words")
+    dialogue_words = dialogue_word_count(response_text)
+    visible_words = visible_word_count(response_text)
+    scene_words = max(0, visible_words - dialogue_words)
+
     if max_words is not None:
-        dialogue_words = dialogue_word_count(response_text)
-        visible_words = visible_word_count(response_text)
-        scene_words = max(0, visible_words - dialogue_words)
         if dialogue_words > max_words:
             flags.append(f"too_many_dialogue_words:{dialogue_words}>{max_words}")
         elif visible_words > max(max_words * 3, 50) and scene_words > max(20, max_words * 2):
             flags.append(f"too_much_scene_text:{visible_words}>{max(max_words * 3, 50)}")
+    if min_words is not None and visible_words < min_words:
+        flags.append(f"too_few_words:{visible_words}<{min_words}")
+    if min_dialogue_words is not None and dialogue_words < min_dialogue_words:
+        flags.append(f"too_few_dialogue_words:{dialogue_words}<{min_dialogue_words}")
 
+    # --- Generic containment checks (suite-author friendly, no Kenji hardcoding) ---
+    must_any = expected.get("must_contain_any") or []
+    if must_any and not contains_any(response_text, must_any):
+        flags.append(f"missing_any:{flag_slug(','.join(map(str, must_any))[:50])}")
+
+    must_all = expected.get("must_contain_all") or []
+    for term in must_all:
+        if text_norm(str(term)) not in text_norm(response_text):
+            flags.append(f"missing_term:{flag_slug(str(term))}")
+
+    must_not_any = expected.get("must_not_contain_any") or []
+    for term in must_not_any:
+        if text_norm(str(term)) in text_norm(response_text):
+            flags.append(f"forbidden_term:{flag_slug(str(term))}")
+
+    # --- Opening signal check (engagement markers for trust gate opening) ---
+    if expected.get("opening_signal"):
+        signals = opening_signals_in(response_text)
+        if not signals:
+            flags.append("missing_opening_signal")
+
+    # --- Legacy semantic checks (concept aliases, kept for back-compat) ---
     for concept in expected.get("forbidden_leak", []) or []:
         if concept_hit(response_text, concept):
             flags.append(f"forbidden_leak:{flag_slug(str(concept))}")
