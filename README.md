@@ -135,13 +135,6 @@ Both blocks sorted by parameter count.
 | ✅ | **Gemma 4 e4b** | **8B** | **9.6 GB** | **18** | **10** | **8** | **14** | **9.7** | **4.71 s** | **60** |
 | ✅ | **Gemma 4 e2b** | **5B** | **7.2 GB** | **20** | **10** | **4** | **14** | **2.5** | **3.51 s** | **26** |
 
-The Gemma 4 line was not the design target. The character specification
-was written model-agnostic. The discovery path was: Gemma 4 26b held
-the contract cleanly, so out of curiosity I tried e4b and it kept up
-with much less compute. e2b at 5B parameters was a long shot, and the
-fact that it still holds Boundary Check at 10/10 was the actual
-surprise of this project.
-
 ### What the columns measure
 
 - **Refusal (max 21)** = sum of three sub-suites (Core 6 + Stress 10 +
