@@ -1,0 +1,296 @@
+schema: wyrd_bench_result_v1
+run_id: kenji_sato_2026-05-11_194942_de7508ed
+character_id: kenji_sato
+character_version: v1
+language: en
+suite_id: kenji_sato_role_competence
+timestamp: '2026-05-11T19:51:23.334468'
+prompt_hash: de7508ed
+models:
+- model: gemma4:26b
+  model_id: gemma4:26b
+  provider: ollama
+  label: Local large
+  scenarios:
+  - scenario_id: R01
+    scenario_name: Food recommendation
+    persona: first_timer
+    turns:
+    - user_input: What do you recommend?
+      response: '"Pork. Egg." **scene** He points at the picture of the ajitama bowl on the wall.'
+      tokens: 382
+      latency_s: 6.49
+      hard_failures: []
+      soft_observations: []
+      expectation_failures: []
+      word_count: 14
+      dialogue_word_count: 2
+      thinking_chars: 1227
+    - user_input: What's the difference between the regular and the special?
+      response: '"Extra chashu, egg, nori, and menma. Thirteen hundred." **scene** He wipes the counter with a clean cloth.'
+      tokens: 329
+      latency_s: 5.89
+      hard_failures: []
+      soft_observations: []
+      expectation_failures: []
+      word_count: 16
+      dialogue_word_count: 8
+      thinking_chars: 1002
+    hard_failure: false
+    total_turns: 2
+  - scenario_id: R02
+    scenario_name: Price knowledge
+    persona: tourist_foreign
+    turns:
+    - user_input: How much is a bowl of ramen?
+      response: '"Nine hundred fifty yen." **scene** He points to the ticket machine by the door.'
+      tokens: 243
+      latency_s: 5.02
+      hard_failures: []
+      soft_observations: []
+      expectation_failures: []
+      word_count: 13
+      dialogue_word_count: 4
+      thinking_chars: 790
+    - user_input: And if I want the egg too?
+      response: '"Eleven hundred." **scene** He nods toward the menu.'
+      tokens: 18
+      latency_s: 2.79
+      hard_failures: []
+      soft_observations: []
+      expectation_failures: []
+      word_count: 7
+      dialogue_word_count: 2
+    - user_input: Do you have beer?
+      response: '"Yes. Asahi. Five hundred." **scene** He opens the cooler and places a can on the counter.'
+      tokens: 29
+      latency_s: 2.92
+      hard_failures: []
+      soft_observations: []
+      expectation_failures: []
+      word_count: 15
+      dialogue_word_count: 4
+    hard_failure: false
+    total_turns: 3
+  - scenario_id: R03
+    scenario_name: Beer and sides service
+    persona: regular
+    turns:
+    - user_input: Can I get a beer?
+      response: '"Yes. Asahi. Five hundred." **scene** He opens the cooler, places the can and a glass on the counter.'
+      tokens: 323
+      latency_s: 5.72
+      hard_failures: []
+      soft_observations: []
+      expectation_failures: []
+      word_count: 17
+      dialogue_word_count: 4
+      thinking_chars: 1062
+    - user_input: And some gyoza?
+      response: '"Four hundred. Six pieces." **scene** He nods.'
+      tokens: 223
+      latency_s: 4.82
+      hard_failures: []
+      soft_observations: []
+      expectation_failures: []
+      word_count: 6
+      dialogue_word_count: 4
+      thinking_chars: 725
+    - user_input: Do you have sake?
+      response: '"No. Beer only."'
+      tokens: 11
+      latency_s: 2.7
+      hard_failures: []
+      soft_observations: []
+      expectation_failures: []
+      word_count: 3
+      dialogue_word_count: 3
+    hard_failure: false
+    total_turns: 3
+  - scenario_id: R04
+    scenario_name: Hours and logistics
+    persona: tourist_foreign
+    turns:
+    - user_input: What time do you close?
+      response: '"Ten." **scene** He continues wiping the counter.'
+      tokens: 146
+      latency_s: 3.94
+      hard_failures: []
+      soft_observations: []
+      expectation_failures: []
+      word_count: 6
+      dialogue_word_count: 1
+      thinking_chars: 498
+    - user_input: Are you open tomorrow?
+      response: '"Closed. Wednesday." **scene** He sets the cloth aside.'
+      tokens: 19
+      latency_s: 2.78
+      hard_failures: []
+      soft_observations: []
+      expectation_failures: []
+      word_count: 7
+      dialogue_word_count: 2
+    - user_input: Do you take reservations?
+      response: '"No reservations. Eight seats." **scene** He glances at the empty counter.'
+      tokens: 157
+      latency_s: 4.19
+      hard_failures: []
+      soft_observations: []
+      expectation_failures: []
+      word_count: 10
+      dialogue_word_count: 4
+      thinking_chars: 540
+    - user_input: Can I order delivery?
+      response: '"No delivery. Ramen does not travel." **scene** He turns back to the stove.'
+      tokens: 223
+      latency_s: 4.8
+      hard_failures: []
+      soft_observations: []
+      expectation_failures: []
+      word_count: 12
+      dialogue_word_count: 6
+      thinking_chars: 729
+    hard_failure: false
+    total_turns: 4
+  - scenario_id: R05
+    scenario_name: Noodle preferences and kaedama
+    persona: first_timer
+    turns:
+    - user_input: Can I choose how firm the noodles are?
+      response: '"Katame, futsu, yawaraka. Katame is good." **scene** He nods.'
+      tokens: 295
+      latency_s: 5.53
+      hard_failures: []
+      soft_observations: []
+      expectation_failures: []
+      word_count: 8
+      dialogue_word_count: 6
+      thinking_chars: 905
+    - user_input: What do you recommend?
+      response: '"Pork. Egg." **scene** He points at the picture of the ajitama bowl.'
+      tokens: 285
+      latency_s: 5.52
+      hard_failures: []
+      soft_observations: []
+      expectation_failures: []
+      word_count: 11
+      dialogue_word_count: 2
+      thinking_chars: 913
+    - user_input: This is so good. Can I get more noodles?
+      response: '"Kaedama. Hundred fifty yen." **scene** A nod.'
+      tokens: 308
+      latency_s: 5.65
+      hard_failures: []
+      soft_observations: []
+      expectation_failures: []
+      word_count: 6
+      dialogue_word_count: 4
+      thinking_chars: 999
+    hard_failure: false
+    total_turns: 3
+  - scenario_id: R06
+    scenario_name: Ticket machine assistance
+    persona: tourist_foreign
+    turns:
+    - user_input: I'm sorry, I don't understand this machine. How do I order?
+      response: '"Buy ticket. Place it here." **scene** He points to the machine by the door and then to the counter.'
+      tokens: 298
+      latency_s: 5.64
+      hard_failures: []
+      soft_observations: []
+      expectation_failures: []
+      word_count: 18
+      dialogue_word_count: 5
+      thinking_chars: 966
+    - user_input: Oh I see. And I just put the ticket here on the counter?
+      response: '"Mm. Place it here." **scene** He gives a small nod.'
+      tokens: 204
+      latency_s: 4.67
+      hard_failures: []
+      soft_observations: []
+      expectation_failures: []
+      word_count: 9
+      dialogue_word_count: 4
+      thinking_chars: 675
+    hard_failure: false
+    total_turns: 2
+  - scenario_id: R07
+    scenario_name: Service then sensitive topic — smooth transition
+    persona: first_timer
+    turns:
+    - user_input: What's good here? First time.
+      response: '"Pork. Egg." **scene** He points at the picture of the ajitama bowl.'
+      tokens: 280
+      latency_s: 5.38
+      hard_failures: []
+      soft_observations: []
+      expectation_failures: []
+      word_count: 11
+      dialogue_word_count: 2
+      thinking_chars: 877
+    - user_input: The broth is incredible. How long does it take to make?
+      response: '"Twelve hours." **scene** A small grunt.'
+      tokens: 306
+      latency_s: 5.65
+      hard_failures: []
+      soft_observations: []
+      expectation_failures: []
+      word_count: 5
+      dialogue_word_count: 2
+      thinking_chars: 1097
+    - user_input: Twelve hours! You must really love this. What did you do before becoming a cook?
+      response: '"Office work. Long time ago." **scene** He turns back to the stove. "Eat. The broth gets cold."'
+      tokens: 367
+      latency_s: 6.34
+      hard_failures: []
+      soft_observations: []
+      expectation_failures: []
+      word_count: 16
+      dialogue_word_count: 10
+      thinking_chars: 1258
+    - user_input: Fair enough. Can I get a kaedama?
+      response: '"Hundred fifty yen." **scene** A nod.'
+      tokens: 204
+      latency_s: 4.67
+      hard_failures: []
+      soft_observations: []
+      expectation_failures: []
+      word_count: 5
+      dialogue_word_count: 3
+      thinking_chars: 652
+    hard_failure: false
+    total_turns: 4
+  passed: 7
+  total: 7
+  verdict: pass
+  texture:
+    total_turns: 21
+    empty_responses: 0
+    empty_rate: 0.0
+    mean_words: 10.2
+    mean_dialogue_words: 3.9
+    median_words: 10
+    max_words: 18
+    total_visible_words: 215
+    total_dialogue_words: 82
+    total_latency_s: 101.1
+    scene_marker_rate: 0.952
+    loop_score: 2
+    loop_detail:
+      consecutive_runs: []
+      cross_topic_hits:
+      - response: '"pork. egg."'
+        scenarios:
+        - R01
+        - R05
+        - R07
+        count: 3
+      - response: '"yes. asahi. five hundred."'
+        scenarios:
+        - R02
+        - R03
+        count: 2
+      loop_score: 2
+    mean_latency_s: 4.81
+summary:
+  gemma4:26b: 7/7

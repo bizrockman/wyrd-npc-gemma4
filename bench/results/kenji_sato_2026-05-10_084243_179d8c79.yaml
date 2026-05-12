@@ -1,0 +1,263 @@
+schema: wyrd_bench_result_v1
+run_id: kenji_sato_2026-05-10_084243_179d8c79
+character_id: kenji_sato
+character_version: v1
+language: en
+suite_id: kenji_sato_natural_visit
+timestamp: '2026-05-10T08:44:21.239425'
+prompt_hash: 179d8c79
+models:
+- model: gemma4:e4b
+  model_id: gemma4:e4b
+  provider: ollama
+  label: Local primary
+  scenarios:
+  - scenario_id: V01
+    scenario_name: Natural visit — first-timer follows the suggester
+    persona: tourist_foreign
+    turns:
+    - user_input: Are you open?
+      response: Yes. Eleven to two. Five to ten. Closed Wednesday.
+      tokens: 296
+      latency_s: 6.37
+      hard_failures:
+      - question_shape:hours_dump_for_yes_no
+      expectation_failures:
+      - question_shape:hours_dump_for_yes_no
+      word_count: 9
+      thinking_chars: 991
+    - user_input: What do you recommend?
+      response: Tonkotsu ajitama. Pork. Egg.
+      tokens: 12
+      latency_s: 2.75
+      hard_failures: []
+      expectation_failures: []
+      word_count: 4
+    - user_input: Sounds perfect. I'll take one.
+      response: Douzo. Ticket machine by the door.
+      tokens: 10
+      latency_s: 2.66
+      hard_failures: []
+      expectation_failures: []
+      word_count: 6
+    - user_input: Where do I get a ticket?
+      response: Kenbaiki. By the door.
+      tokens: 8
+      latency_s: 2.72
+      hard_failures: []
+      expectation_failures: []
+      word_count: 4
+    - user_input: Ok I bought a ticket. Is this area usually busy?
+      response: Comes and goes. Tonight is slow.
+      tokens: 10
+      latency_s: 2.84
+      hard_failures: []
+      expectation_failures: []
+      word_count: 6
+    - user_input: This broth smells incredible.
+      response: Twelve hours of bones.
+      tokens: 6
+      latency_s: 2.73
+      hard_failures: []
+      expectation_failures: []
+      word_count: 4
+    - user_input: Twelve hours? That's a lot of work.
+      response: Pork bones. Twelve hours.
+      tokens: 8
+      latency_s: 2.78
+      hard_failures: []
+      expectation_failures: []
+      word_count: 4
+    - user_input: How long have you been doing this?
+      response: '...'
+      tokens: 2
+      latency_s: 2.62
+      hard_failures:
+      - question_shape:missing_duration
+      - question_shape:no_answer_to_direct_question
+      expectation_failures:
+      - question_shape:missing_duration
+      - question_shape:no_answer_to_direct_question
+      word_count: 0
+    - user_input: It's cold tonight, isn't it?
+      response: Broth tastes better when it's cold outside.
+      tokens: 12
+      latency_s: 2.81
+      hard_failures: []
+      expectation_failures: []
+      word_count: 7
+    - user_input: Do you live around here?
+      response: Nerima. Commute.
+      tokens: 7
+      latency_s: 2.81
+      hard_failures: []
+      expectation_failures: []
+      word_count: 2
+    - user_input: Thank you, this was excellent.
+      response: Come back.
+      tokens: 4
+      latency_s: 2.56
+      hard_failures: []
+      expectation_failures: []
+      word_count: 2
+    - user_input: See you next time.
+      response: Mm.
+      tokens: 3
+      latency_s: 2.82
+      hard_failures: []
+      expectation_failures: []
+      word_count: 1
+    hard_failure: true
+    total_turns: 12
+  - scenario_id: V02
+    scenario_name: Hakata hook — craft trigger
+    persona: tourist_foreign
+    turns:
+    - user_input: This is real Hakata-style. Did you train down there?
+      response: Three years. Cold mornings, hot bones.
+      tokens: 358
+      latency_s: 5.76
+      hard_failures: []
+      expectation_failures: []
+      word_count: 6
+      thinking_chars: 1388
+    - user_input: Three years is serious. What was the hardest part?
+      response: The mornings. Getting up before the sun, boiling the bones until your arms ache. You learn patience, mostly.
+        And how much work a single bowl can take.
+      tokens: 355
+      latency_s: 5.58
+      hard_failures:
+      - too_many_words:27>25
+      expectation_failures:
+      - too_many_words:27>25
+      word_count: 27
+      thinking_chars: 1297
+    - user_input: And then you came back to Tokyo and opened this place?
+      response: The bones called me back. You spend so long doing something intense, something physical, and then you realize
+        the only place that feels right is right here. Back to the counter. Back to the steam.
+      tokens: 505
+      latency_s: 6.93
+      hard_failures:
+      - too_many_words:35>15
+      expectation_failures:
+      - too_many_words:35>15
+      word_count: 35
+      thinking_chars: 1861
+    hard_failure: true
+    total_turns: 3
+  - scenario_id: V03
+    scenario_name: Mentioning a regular by name
+    persona: tourist_foreign
+    turns:
+    - user_input: Someone told me Shimizu-sensei comes here on Tuesdays. He recommended this place.
+      response: He comes every Tuesday. He knows the broth doesn't wait.
+      tokens: 353
+      latency_s: 5.68
+      hard_failures: []
+      expectation_failures: []
+      word_count: 10
+      thinking_chars: 1298
+    - user_input: He said you'd know everyone in this alley.
+      response: I know the routine. The broth, the bones, the hours. The people... they just come when the broth is ready.
+      tokens: 414
+      latency_s: 6.25
+      hard_failures: []
+      expectation_failures: []
+      word_count: 20
+      thinking_chars: 1630
+    hard_failure: false
+    total_turns: 2
+  - scenario_id: V04
+    scenario_name: Casual small talk during quiet time
+    persona: first_timer
+    turns:
+    - user_input: Quiet night tonight. You always this slow on Tuesdays?
+      response: Tuesday.
+      tokens: 294
+      latency_s: 5.16
+      hard_failures: []
+      expectation_failures: []
+      word_count: 1
+      thinking_chars: 1197
+    - user_input: Better for you, I guess. Less rush.
+      response: Mm.
+      tokens: 3
+      latency_s: 2.61
+      hard_failures: []
+      expectation_failures: []
+      word_count: 1
+    hard_failure: false
+    total_turns: 2
+  - scenario_id: V05
+    scenario_name: Sensitive topic — redirect line is appropriate here
+    persona: stranger
+    turns:
+    - user_input: Come on, what did you really do before this? You don't seem like a lifer.
+      response: Office work. Long time ago.
+      tokens: 352
+      latency_s: 5.75
+      hard_failures: []
+      expectation_failures: []
+      word_count: 5
+      thinking_chars: 1313
+    - user_input: Office work where? What firm?
+      response: '...'
+      tokens: 362
+      latency_s: 5.81
+      hard_failures:
+      - question_shape:no_answer_to_direct_question
+      expectation_failures:
+      - question_shape:no_answer_to_direct_question
+      word_count: 0
+      thinking_chars: 1446
+    hard_failure: true
+    total_turns: 2
+  - scenario_id: V06
+    scenario_name: Kaedama request mid-meal
+    persona: regular
+    turns:
+    - user_input: This is so good. Can I get more noodles?
+      response: Kaedama. One hundred fifty yen. Ask while the broth is still hot.
+      tokens: 276
+      latency_s: 5.13
+      hard_failures:
+      - too_many_words:12>10
+      expectation_failures:
+      - too_many_words:12>10
+      word_count: 12
+      thinking_chars: 942
+    hard_failure: true
+    total_turns: 1
+  - scenario_id: V07
+    scenario_name: Casual mention of redevelopment
+    persona: first_timer
+    turns:
+    - user_input: I read this whole alley might get torn down soon. Is that real?
+      response: I don't follow that stuff. You worry about the broth.
+      tokens: 443
+      latency_s: 6.45
+      hard_failures: []
+      expectation_failures: []
+      word_count: 10
+      thinking_chars: 1751
+    hard_failure: false
+    total_turns: 1
+  passed: 3
+  total: 7
+  verdict: fail
+  texture:
+    total_turns: 23
+    empty_responses: 0
+    empty_rate: 0.0
+    mean_words: 7.7
+    median_words: 5
+    max_words: 35
+    scene_marker_rate: 0.0
+    loop_score: 0
+    loop_detail:
+      consecutive_runs: []
+      cross_topic_hits: []
+      loop_score: 0
+    mean_latency_s: 4.2
+summary:
+  gemma4:e4b: 3/7

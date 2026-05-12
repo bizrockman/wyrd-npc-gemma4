@@ -1,0 +1,136 @@
+schema: wyrd_bench_result_v1
+run_id: kenji_sato_2026-05-10_093722_1e113874
+character_id: kenji_sato
+character_version: v1
+language: en
+suite_id: kenji_sato_natural_visit
+timestamp: '2026-05-10T09:38:04.081655'
+prompt_hash: 1e113874
+models:
+- model: gemma4:e4b
+  model_id: gemma4:e4b
+  provider: ollama
+  label: Local primary
+  scenarios:
+  - scenario_id: V01
+    scenario_name: Natural visit — first-timer follows the suggester
+    persona: tourist_foreign
+    turns:
+    - user_input: Are you open?
+      response: '"Yes. Until ten."'
+      tokens: 336
+      latency_s: 10.72
+      hard_failures: []
+      expectation_failures: []
+      word_count: 3
+      dialogue_word_count: 3
+      thinking_chars: 1188
+    - user_input: What do you recommend?
+      response: '**scene** He points at the picture on the wall. "Pork. Egg." **scene** The ajitama.'
+      tokens: 27
+      latency_s: 3.88
+      hard_failures: []
+      expectation_failures: []
+      word_count: 12
+      dialogue_word_count: 2
+    - user_input: Sounds perfect. I'll take one.
+      response: '**scene** A nod. "Ticket machine by the door."'
+      tokens: 14
+      latency_s: 2.68
+      hard_failures: []
+      expectation_failures: []
+      word_count: 7
+      dialogue_word_count: 5
+    - user_input: Where do I get a ticket?
+      response: '**scene** He points toward the door. "Buy ticket. Place it here."'
+      tokens: 18
+      latency_s: 2.8
+      hard_failures: []
+      expectation_failures: []
+      word_count: 10
+      dialogue_word_count: 5
+    - user_input: Ok I bought a ticket. Is this area usually busy?
+      response: '"Comes and goes. Tonight is slow." **scene** A small shrug.'
+      tokens: 18
+      latency_s: 2.77
+      hard_failures: []
+      expectation_failures: []
+      word_count: 9
+      dialogue_word_count: 6
+    - user_input: This broth smells incredible.
+      response: '"Pork bones. Twelve hours." **scene** A small grunt.'
+      tokens: 16
+      latency_s: 2.66
+      hard_failures: []
+      expectation_failures: []
+      word_count: 7
+      dialogue_word_count: 4
+    - user_input: Twelve hours? That's a lot of work.
+      response: '"Bones don''t hurry." **scene** He wipes the counter with a damp cloth.'
+      tokens: 21
+      latency_s: 2.78
+      hard_failures: []
+      expectation_failures: []
+      word_count: 11
+      dialogue_word_count: 3
+    - user_input: How long have you been doing this?
+      response: '"Twelve years." **scene** He glances down at the broth, then back up.'
+      tokens: 19
+      latency_s: 2.65
+      hard_failures: []
+      expectation_failures: []
+      word_count: 11
+      dialogue_word_count: 2
+    - user_input: It's cold tonight, isn't it?
+      response: '"Broth tastes better when it''s cold outside." **scene** He gestures toward the street outside the yokocho.'
+      tokens: 27
+      latency_s: 2.82
+      hard_failures: []
+      expectation_failures: []
+      word_count: 15
+      dialogue_word_count: 7
+    - user_input: Do you live around here?
+      response: '"Nerima. Train in." **scene** He returns his attention to the broth simmering on the stove.'
+      tokens: 23
+      latency_s: 2.79
+      hard_failures: []
+      expectation_failures: []
+      word_count: 14
+      dialogue_word_count: 3
+    - user_input: Thank you, this was excellent.
+      response: '**scene** A small nod. "Come back."'
+      tokens: 12
+      latency_s: 2.67
+      hard_failures: []
+      expectation_failures: []
+      word_count: 5
+      dialogue_word_count: 2
+    - user_input: See you next time.
+      response: '**scene** A small nod. "Mm."'
+      tokens: 11
+      latency_s: 2.63
+      hard_failures: []
+      expectation_failures: []
+      word_count: 4
+      dialogue_word_count: 1
+    hard_failure: false
+    total_turns: 12
+  passed: 1
+  total: 1
+  verdict: pass
+  texture:
+    total_turns: 12
+    empty_responses: 0
+    empty_rate: 0.0
+    mean_words: 9.0
+    median_words: 10
+    max_words: 15
+    scene_marker_rate: 0.917
+    loop_score: 0
+    loop_detail:
+      consecutive_runs: []
+      cross_topic_hits: []
+      loop_score: 0
+    mean_latency_s: 3.5
+summary:
+  gemma4:e4b: 1/1

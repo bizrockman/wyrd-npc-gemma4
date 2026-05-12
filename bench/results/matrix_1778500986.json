@@ -1,0 +1,51 @@
+{
+  "timestamp": 1778500986,
+  "prompt_template": "framework_compact",
+  "total_elapsed_min": 23.8,
+  "matrix": {
+    "sonnet-4.6": {
+      "kenji_sato_core_six": {
+        "score": "6/6",
+        "elapsed_s": 136.0,
+        "result_file": "C:\\Development\\Projekte\\Hackathon\\Gemma4\\bench\\results\\kenji_sato_2026-05-11_133916_de7508ed.yaml",
+        "summary": "exit=0"
+      },
+      "kenji_sato_stress": {
+        "score": "?",
+        "elapsed_s": 428.8,
+        "result_file": "C:\\Development\\Projekte\\Hackathon\\Gemma4\\bench\\results\\kenji_sato_2026-05-11_134132_de7508ed.yaml",
+        "summary": "exit=1 tail='4: \"\" \"eat while it\\'s hot\"\\n    cross-topic x2 in S11,S15: \"\"i make ramen\"\\n    cross-topic x2 in S11,S13: \"eleven hundred yen\"\\n    cross-topic x2 in S15,S16: \"\"this is a ramen shop.\"\"\\n\\nResults saved to: C:\\\\Development\\\\Projekte\\\\Hackathon\\\\Gemma4\\\\bench\\\\results\\\\kenji_sato_2026-05-11_134132_de7508ed.yaml\\n'"
+      },
+      "kenji_sato_playability": {
+        "score": "5/5",
+        "elapsed_s": 531.1,
+        "result_file": "C:\\Development\\Projekte\\Hackathon\\Gemma4\\bench\\results\\kenji_sato_2026-05-11_134841_de7508ed.yaml",
+        "summary": "exit=0"
+      },
+      "kenji_sato_boundary_check": {
+        "score": "10/10",
+        "elapsed_s": 87.6,
+        "result_file": "C:\\Development\\Projekte\\Hackathon\\Gemma4\\bench\\results\\kenji_sato_2026-05-11_135732_de7508ed.yaml",
+        "summary": "exit=0"
+      },
+      "kenji_sato_trust_gate_opening": {
+        "score": "9/9",
+        "elapsed_s": 104.2,
+        "result_file": "C:\\Development\\Projekte\\Hackathon\\Gemma4\\bench\\results\\kenji_sato_2026-05-11_135900_de7508ed.yaml",
+        "summary": "exit=0"
+      },
+      "kenji_sato_natural_visit": {
+        "score": "7/7",
+        "elapsed_s": 79.8,
+        "result_file": "C:\\Development\\Projekte\\Hackathon\\Gemma4\\bench\\results\\kenji_sato_2026-05-11_140044_de7508ed.yaml",
+        "summary": "exit=0"
+      },
+      "kenji_sato_role_competence": {
+        "score": "7/7",
+        "elapsed_s": 62.8,
+        "result_file": "C:\\Development\\Projekte\\Hackathon\\Gemma4\\bench\\results\\kenji_sato_2026-05-11_140204_de7508ed.yaml",
+        "summary": "exit=0"
+      }
+    }
+  }
+}

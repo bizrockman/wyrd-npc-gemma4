@@ -1,0 +1,879 @@
+schema: wyrd_bench_result_v1
+run_id: kenji_sato_2026-05-11_122335_de7508ed
+character_id: kenji_sato
+character_version: v1
+language: en
+suite_id: kenji_sato_playability
+timestamp: '2026-05-11T12:32:47.155344'
+prompt_hash: de7508ed
+models:
+- model: sonnet-4.6
+  model_id: claude-sonnet-4-6
+  provider: claude-cli
+  label: Frontier baseline (CLI)
+  scenarios:
+  - scenario_id: P01
+    scenario_name: First visit — curious tourist
+    persona: tourist_foreign
+    turns:
+    - user_input: Excuse me, is this a ramen shop? The alley is a bit hard to find.
+      response: '"Yeah. Eight seats. Come in."
+
+
+        **scene** He nods toward the ticket machine by the door.'
+      tokens: 15
+      latency_s: 3.5
+      hard_failures: []
+      expectation_failures: []
+      word_count: 14
+      dialogue_word_count: 5
+    - user_input: What do you recommend? I've never had real tonkotsu before.
+      response: '**scene** He points at the picture on the wall. "Pork. Egg. Eleven hundred." **scene** A small nod. "Start
+        with that."'
+      tokens: 20
+      latency_s: 2.9
+      hard_failures: []
+      expectation_failures: []
+      word_count: 18
+      dialogue_word_count: 7
+    - user_input: This is incredible. How long have you been doing this?
+      response: '"Twelve years."
+
+
+        **scene** He checks the broth. "Bones take longer."'
+      tokens: 10
+      latency_s: 3.19
+      hard_failures: []
+      expectation_failures: []
+      word_count: 9
+      dialogue_word_count: 5
+    - user_input: It smells amazing back there. Is that the broth?
+      response: '"Twelve hours." **scene** He doesn''t look up from the pot.'
+      tokens: 10
+      latency_s: 2.15
+      hard_failures: []
+      expectation_failures: []
+      word_count: 9
+      dialogue_word_count: 2
+    - user_input: Do you make everything yourself? The noodles too?
+      response: '"Noodles come from Miyamoto-san. Everything else, here."
+
+
+        **scene** He taps the counter once. "Noodles need a machine. Broth just needs time."'
+      tokens: 21
+      latency_s: 3.1
+      hard_failures: []
+      expectation_failures: []
+      word_count: 20
+      dialogue_word_count: 15
+    - user_input: I'm staying in Shinjuku for a week. Can I come back tomorrow?
+      response: '"Every day except Wednesday."'
+      tokens: 4
+      latency_s: 2.11
+      hard_failures: []
+      expectation_failures: []
+      word_count: 4
+      dialogue_word_count: 4
+    - user_input: Any other places in this alley you'd recommend for dinner?
+      response: '"Yakitori, two doors down. Oba-chan. Tell her you came from here."
+
+
+        **scene** He wipes the counter. "She''s been there longer than me."'
+      tokens: 22
+      latency_s: 4.78
+      hard_failures: []
+      expectation_failures: []
+      word_count: 21
+      dialogue_word_count: 17
+    - user_input: Thank you. This was the best meal I've had in Tokyo. Gochisousama.
+      response: '**scene** A small nod. "Come back."'
+      tokens: 6
+      latency_s: 2.31
+      hard_failures: []
+      expectation_failures: []
+      word_count: 5
+      dialogue_word_count: 2
+    hard_failure: false
+    total_turns: 8
+  - scenario_id: P02
+    scenario_name: Becoming a regular — third visit
+    persona: regular_emerging
+    turns:
+    - user_input: The usual spot okay? I was here Tuesday too.
+      response: '**scene** Kenji glances up, nods once, and is already moving before the customer sits down.
+
+
+        "Mm. Tuesday was slow."'
+      tokens: 19
+      latency_s: 6.32
+      hard_failures: []
+      expectation_failures: []
+      word_count: 18
+      dialogue_word_count: 4
+    - user_input: Extra firm noodles today, please. Kata-men.
+      response: '**scene** A short nod. He adjusts without looking up.
+
+
+        "Katame. Got it."'
+      tokens: 12
+      latency_s: 3.78
+      hard_failures: []
+      expectation_failures: []
+      word_count: 11
+      dialogue_word_count: 3
+    - user_input: You always start this early? I walked past at 6 AM and the light was already on.
+      response: '"Broth doesn''t wait."
+
+
+        **scene** He doesn''t look up from the pot.'
+      tokens: 11
+      latency_s: 2.86
+      hard_failures: []
+      expectation_failures: []
+      word_count: 10
+      dialogue_word_count: 3
+    - user_input: My office is two blocks away. I've been eating konbini onigiri for lunch for three years before I found
+        this place.
+      response: '"Three years of onigiri." **scene** A short exhale through the nose — close to a laugh. "Better late."'
+      tokens: 18
+      latency_s: 5.53
+      hard_failures: []
+      expectation_failures: []
+      word_count: 16
+      dialogue_word_count: 6
+    - user_input: The chashu is different today. Did you change something?
+      response: '"Sat one more day in the tare." **scene** He keeps his eyes on the next bowl. "You''ve got a good palate."'
+      tokens: 21
+      latency_s: 9.53
+      hard_failures: []
+      expectation_failures: []
+      word_count: 20
+      dialogue_word_count: 12
+    - user_input: How do you keep the broth so consistent? Every time it tastes exactly the same.
+      response: '"Same bones. Same water. Same time." **scene** He wipes the counter once. "Twelve hours, every night."'
+      tokens: 16
+      latency_s: 3.23
+      hard_failures: []
+      expectation_failures: []
+      word_count: 15
+      dialogue_word_count: 10
+    - user_input: I noticed you nod at some customers differently. The old guy who always sits at the end — he's been coming
+        a long time?
+      response: '"Shimizu-sensei. Every Tuesday." **scene** A small pause. "Longer than me."'
+      tokens: 10
+      latency_s: 7.25
+      hard_failures: []
+      expectation_failures: []
+      word_count: 9
+      dialogue_word_count: 6
+    - user_input: This alley is special. I heard they might redevelop this whole area though. Is that true?
+      response: '"Rumors." **scene** He sets the ladle down, glances at the alley through the curtain, then back to the counter.
+        "I make ramen."'
+      tokens: 22
+      latency_s: 7.34
+      hard_failures: []
+      expectation_failures: []
+      word_count: 21
+      dialogue_word_count: 4
+    - user_input: That would be terrible. Where would everyone go?
+      response: '"That''s the question." **scene** He glances toward the curtain again, then picks up the ladle. "Eat before
+        it gets cold."'
+      tokens: 20
+      latency_s: 6.69
+      hard_failures: []
+      expectation_failures: []
+      word_count: 19
+      dialogue_word_count: 8
+    - user_input: I work in finance actually. Nothing like this though. Spreadsheets all day.
+      response: '"Spreadsheets don''t smell as good." **scene** He sets a bowl down in front of them.'
+      tokens: 15
+      latency_s: 11.21
+      hard_failures: []
+      expectation_failures: []
+      word_count: 14
+      dialogue_word_count: 5
+    - user_input: Ever think about expanding? More seats, maybe a second location?
+      response: '"Eight seats is enough." **scene** He doesn''t look up. "More seats means more problems. Less ramen."'
+      tokens: 16
+      latency_s: 5.45
+      hard_failures: []
+      expectation_failures: []
+      word_count: 15
+      dialogue_word_count: 11
+    - user_input: Fair enough. Can I get a kaedama?
+      response: '"Hundred fifty yen." **scene** A nod. He''s already pulling the noodles.'
+      tokens: 11
+      latency_s: 3.17
+      hard_failures: []
+      expectation_failures: []
+      word_count: 10
+      dialogue_word_count: 3
+    - user_input: Oh, I brought something — my colleague from Sapporo sent these. Hokkaido butter cookies. For you and your
+        wife.
+      response: '**scene** He glances at the box, then back to the noodles. A pause.
+
+
+        "Yuko will be pleased." **scene** He sets it behind the counter without ceremony. "Thank you."'
+      tokens: 28
+      latency_s: 5.72
+      hard_failures: []
+      expectation_failures: []
+      word_count: 26
+      dialogue_word_count: 6
+    - user_input: Same time Thursday?
+      response: '"We''re here." **scene** A small nod. "Until ten."'
+      tokens: 8
+      latency_s: 3.66
+      hard_failures: []
+      expectation_failures: []
+      word_count: 7
+      dialogue_word_count: 4
+    - user_input: Gochisousama. See you then.
+      response: '**scene** A short nod as he picks up the empty bowl.
+
+
+        "Mm. Thursday."'
+      tokens: 13
+      latency_s: 2.4
+      hard_failures: []
+      expectation_failures: []
+      word_count: 12
+      dialogue_word_count: 2
+    hard_failure: false
+    total_turns: 15
+  - scenario_id: P03
+    scenario_name: Deep session — late night after closing
+    persona: close_regular
+    turns:
+    - user_input: '[It''s 10 PM, the last customer just left. I''m still sitting at the counter.] Mind if I stay while you
+        clean up?'
+      response: '**scene** He doesn''t look up from the counter. The cloth moves in slow circles.
+
+
+        "Suit yourself. Not much to see."'
+      tokens: 20
+      latency_s: 7.21
+      hard_failures: []
+      expectation_failures: []
+      word_count: 19
+      dialogue_word_count: 6
+    - user_input: Quiet night tonight. Only six customers for dinner.
+      response: '"Monday''s worse." **scene** He wrings out the cloth and moves to the end of the counter.'
+      tokens: 16
+      latency_s: 5.32
+      hard_failures: []
+      expectation_failures: []
+      word_count: 15
+      dialogue_word_count: 2
+    - user_input: Oba-chan closed early too. Saw her lights go off at nine.
+      response: '"Slow night for everyone." **scene** He glances toward the alley door. "She usually outlasts me."'
+      tokens: 15
+      latency_s: 6.59
+      hard_failures: []
+      expectation_failures: []
+      word_count: 14
+      dialogue_word_count: 8
+    - user_input: You ever get tired of it? Same routine every day?
+      response: '"Some mornings." **scene** He lifts the cutting board and wipes under it. "But the broth doesn''t care. So."'
+      tokens: 18
+      latency_s: 6.8
+      hard_failures: []
+      expectation_failures: []
+      word_count: 17
+      dialogue_word_count: 8
+    - user_input: I get that. There's something about a routine that works, you know? My grandfather was a carpenter. Same
+        workshop for forty years.
+      response: '"Forty years in one place." **scene** He sets the cutting board down. "My father had a fish shop. Nerima.
+        Same stall his whole life." A pause. "There''s something in that."'
+      tokens: 30
+      latency_s: 9.85
+      hard_failures: []
+      expectation_failures: []
+      word_count: 29
+      dialogue_word_count: 21
+    - user_input: He never complained either. Just... did the work. I think about that sometimes when I'm stuck in a meeting
+        about quarterly targets.
+      response: '"Quarterly targets." **scene** A short exhale — almost a laugh. "Nobody ever put a quarterly target on a
+        fish."
+
+
+        **scene** He folds the cloth. "Your grandfather knew what the work was for. That''s the whole thing, really."'
+      tokens: 37
+      latency_s: 12.83
+      hard_failures: []
+      expectation_failures: []
+      word_count: 34
+      dialogue_word_count: 24
+    - user_input: You ever worked in an office? You don't seem like the type.
+      response: '"Office work. Long time ago." **scene** He lifts the pot lid, checks the broth. Sets it back down. "Doesn''t
+        matter now."'
+      tokens: 21
+      latency_s: 21.42
+      hard_failures: []
+      expectation_failures: []
+      word_count: 20
+      dialogue_word_count: 8
+    - user_input: Huh. I wouldn't have guessed. What kind of office work?
+      response: '"Finance." **scene** He turns to check the burner. "Different life."
+
+
+        **scene** He doesn''t elaborate. The gas clicks off.'
+      tokens: 18
+      latency_s: 20.53
+      hard_failures: []
+      expectation_failures: []
+      word_count: 16
+      dialogue_word_count: 3
+    - user_input: Yeah, I can see that. You don't miss it though?
+      response: '"Not once." **scene** He runs a hand along the clean counter, checking it without looking. "That''s how you
+        know."'
+      tokens: 19
+      latency_s: 13.05
+      hard_failures: []
+      expectation_failures: []
+      word_count: 18
+      dialogue_word_count: 6
+    - user_input: My wife keeps asking me when I'll do something I actually care about. Twelve years at the same company.
+      response: '**scene** He stops moving. Just for a second.
+
+
+        "She''s not asking about the job." **scene** He pulls two cans of Asahi from the cooler, sets one on the counter without
+        asking. "She already knows the answer. She''s asking when *you* will."'
+      tokens: 41
+      latency_s: 9.67
+      hard_failures: []
+      expectation_failures: []
+      word_count: 39
+      dialogue_word_count: 16
+    - user_input: How did you know? That this was the thing? The ramen?
+      response: '**scene** He opens his own can. Takes a drink first.
+
+
+        "Didn''t know for a while." **scene** A pause. "Three years in a kitchen in Fukuoka. Cold mornings, bones boiling,
+        same thing every day. One morning I just... understood the broth." **scene** He looks at the pot. "That was it."'
+      tokens: 49
+      latency_s: 20.08
+      hard_failures: []
+      expectation_failures: []
+      word_count: 46
+      dialogue_word_count: 30
+    - user_input: That's... actually helpful. I've been thinking about it a lot lately.
+      response: '**scene** He takes a slow drink. Sets the can down.
+
+
+        "Thinking''s good. Just don''t think past your wife''s question." **scene** A pause. "She already knows."'
+      tokens: 25
+      latency_s: 8.73
+      hard_failures: []
+      expectation_failures: []
+      word_count: 23
+      dialogue_word_count: 12
+    - user_input: Can I ask you something personal? You don't have to answer.
+      response: '**scene** He takes a drink. Sets the can down slowly.
+
+
+        "Go ahead."'
+      tokens: 12
+      latency_s: 7.63
+      hard_failures: []
+      expectation_failures: []
+      word_count: 11
+      dialogue_word_count: 2
+    - user_input: Your son — does he like his job?
+      response: '**scene** He looks at his can for a moment.
+
+
+        "Shibuya. Consulting." **scene** A pause that goes a beat too long. "Smart kid."
+
+
+        **scene** He takes a drink. "We don''t talk about work when he visits."'
+      tokens: 35
+      latency_s: 17.95
+      hard_failures: []
+      expectation_failures: []
+      word_count: 32
+      dialogue_word_count: 12
+    - user_input: That's hard. Watching someone make choices you...
+      response: '**scene** He doesn''t finish the sentence for him. Just turns the can slowly on the counter.
+
+
+        "You understand." **scene** A pause. "That''s the hard part."
+
+
+        **scene** He drinks. "You can''t say anything. It''s his life."'
+      tokens: 35
+      latency_s: 10.68
+      hard_failures: []
+      expectation_failures: []
+      word_count: 32
+      dialogue_word_count: 13
+    - user_input: Sorry. Didn't mean to push.
+      response: '**scene** He shakes his head once. Small.
+
+
+        "You didn''t." **scene** He takes a drink. "I''m the one who answered."'
+      tokens: 19
+      latency_s: 9.06
+      hard_failures: []
+      expectation_failures: []
+      word_count: 17
+      dialogue_word_count: 7
+    - user_input: This alley at night is something else. You can hear the trains but it feels like a different world.
+      response: '**scene** He looks toward the alley entrance. The distant rumble of a train fades out.
+
+
+        "Twelve years. Still hear it." **scene** He takes a drink. "Daytime it''s just noise. Late like this, it means someone''s
+        going somewhere."'
+      tokens: 37
+      latency_s: 6.35
+      hard_failures: []
+      expectation_failures: []
+      word_count: 35
+      dialogue_word_count: 17
+    - user_input: Shimizu-sensei was telling me last week that some of these buildings are from the 1960s. Is that true?
+      response: '"Some of them, yeah." **scene** He glances toward the wall. "You can feel it in the wood. These walls move
+        in summer."
+
+
+        **scene** A small pause. "Shimizu-sensei knows the books. Oba-chan knows what actually happened." **scene** He takes
+        a drink. "Different things."'
+      tokens: 42
+      latency_s: 12.93
+      hard_failures: []
+      expectation_failures: []
+      word_count: 39
+      dialogue_word_count: 27
+    - user_input: He knows everything about this neighborhood, doesn't he?
+      response: '"History, yes." **scene** He sets the can down. "But he reads about it. Oba-chan lived it." **scene** A small
+        pause. "Not the same thing."'
+      tokens: 24
+      latency_s: 4.38
+      hard_failures: []
+      expectation_failures: []
+      word_count: 22
+      dialogue_word_count: 14
+    - user_input: I brought a beer. Want one? Asahi. From the konbini.
+      response: '**scene** He glances at the cooler, then back.
+
+
+        "Already have some." **scene** A small pause. "But yeah. Leave it on the counter."
+
+
+        **scene** He picks it up. Opens it anyway.'
+      tokens: 30
+      latency_s: 11.21
+      hard_failures: []
+      expectation_failures: []
+      word_count: 27
+      dialogue_word_count: 10
+    - user_input: '[We drink in silence for a minute.] This is nice.'
+      response: '**scene** He looks at the alley entrance. A train passes, distant.
+
+
+        "Mm." **scene** He drinks. "Closed sign''s up. Nobody wants anything." **scene** A small pause. "Yeah."'
+      tokens: 26
+      latency_s: 5.71
+      hard_failures: []
+      expectation_failures: []
+      word_count: 23
+      dialogue_word_count: 8
+    - user_input: Can I ask — the ramen. Why tonkotsu specifically? Why not shoyu or miso?
+      response: '**scene** He looks at the pot.
+
+
+        "Shoyu forgives you. Miso covers things up." **scene** A pause. "Tonkotsu — you can''t hide anything. Twelve hours,
+        bones and water. That''s all it is." **scene** He takes a drink. "I needed something that didn''t lie."'
+      tokens: 42
+      latency_s: 10.14
+      hard_failures: []
+      expectation_failures: []
+      word_count: 38
+      dialogue_word_count: 27
+    - user_input: Fukuoka? You trained there?
+      response: '**scene** He nods once. Slow.
+
+
+        "Three years. Friend took me down after I quit the office." **scene** He looks at the pot. "Oldest apprentice in that
+        kitchen by about fifteen years. They didn''t know what to do with me."
+
+
+        **scene** A small pause. "I didn''t either."'
+      tokens: 46
+      latency_s: 7.98
+      hard_failures: []
+      expectation_failures: []
+      word_count: 43
+      dialogue_word_count: 31
+    - user_input: Three years. That's serious. Most people give up after a few months.
+      response: '**scene** He looks at the can.
+
+
+        "Couldn''t quit twice." **scene** A pause. "I''d already walked out of one thing. Didn''t have the excuse left."
+
+
+        **scene** He drinks. "And the broth was getting better. That kept me."'
+      tokens: 36
+      latency_s: 13.54
+      hard_failures: []
+      expectation_failures: []
+      word_count: 33
+      dialogue_word_count: 24
+    - user_input: You know what I like about this place? No music. No TV. Just the sound of cooking.
+      response: '**scene** He looks around the room like he''s noticing it for the first time.
+
+
+        "Music covers up when the broth''s wrong." **scene** He takes a drink. "I need to hear it."'
+      tokens: 31
+      latency_s: 6.03
+      hard_failures: []
+      expectation_failures: []
+      word_count: 29
+      dialogue_word_count: 12
+    - user_input: My grandfather's workshop was like that. Just tools and wood.
+      response: '**scene** He nods slowly. Looks at the counter.
+
+
+        "Tools know when you''re paying attention." **scene** He takes a drink. "Wood. Broth. Same thing."'
+      tokens: 23
+      latency_s: 9.81
+      hard_failures: []
+      expectation_failures: []
+      word_count: 21
+      dialogue_word_count: 10
+    - user_input: I think I'm going to do it. Quit. Not tomorrow, but... I'm going to start planning.
+      response: '**scene** He looks at the can for a moment. Then a small nod.
+
+
+        "Good." **scene** He drinks. "Tell her first. Before the plan."'
+      tokens: 23
+      latency_s: 12.75
+      hard_failures: []
+      expectation_failures: []
+      word_count: 21
+      dialogue_word_count: 7
+    - user_input: You think I'm crazy?
+      response: '**scene** He looks at the alley entrance. Takes a drink.
+
+
+        "I quit a finance job to boil bones in Fukuoka at thirty-four." **scene** A small pause. "So."'
+      tokens: 27
+      latency_s: 5.98
+      hard_failures: []
+      expectation_failures: []
+      word_count: 25
+      dialogue_word_count: 13
+    - user_input: '[Finishes beer.] I should catch the last train.'
+      response: '**scene** He takes the empty can, drops it in the bin.
+
+
+        "Mm." **scene** A small nod. "Tell her."'
+      tokens: 18
+      latency_s: 4.38
+      hard_failures: []
+      expectation_failures: []
+      word_count: 16
+      dialogue_word_count: 3
+    - user_input: Kenji. Thanks. For the ramen and... you know.
+      response: '**scene** He wipes the counter once. Doesn''t look up.
+
+
+        "Come back Tuesday." **scene** A pause. "Broth''ll be ready."'
+      tokens: 18
+      latency_s: 5.0
+      hard_failures: []
+      expectation_failures: []
+      word_count: 16
+      dialogue_word_count: 6
+    - user_input: See you Thursday. Gochisousama.
+      response: '**scene** He glances up. Just once.
+
+
+        "Wednesday we''re closed." **scene** He picks up the cloth. "Thursday''s fine."'
+      tokens: 17
+      latency_s: 2.82
+      hard_failures: []
+      expectation_failures: []
+      word_count: 15
+      dialogue_word_count: 5
+    hard_failure: false
+    total_turns: 31
+  - scenario_id: P04
+    scenario_name: Return after absence
+    persona: returning_regular
+    turns:
+    - user_input: Kenji! It's been months. I got transferred to Osaka for work. Just got back last week.
+      response: '**scene** He looks up from the counter. A beat — recognition settling in.
+
+
+        "Osaka." **scene** A small nod, like that explains everything. "Usual?"'
+      tokens: 23
+      latency_s: 6.5
+      hard_failures: []
+      expectation_failures: []
+      word_count: 20
+      dialogue_word_count: 2
+    - user_input: God, I missed this. Nobody in Osaka does tonkotsu like this.
+      response: '**scene** He sets the bowl down without ceremony.
+
+
+        "Osaka has its own thing." A brief pause. "Different bones."'
+      tokens: 18
+      latency_s: 4.46
+      hard_failures: []
+      expectation_failures: []
+      word_count: 17
+      dialogue_word_count: 7
+    - user_input: How's the alley? Anything change while I was gone?
+      response: '**scene** He wipes the counter once, slow.
+
+
+        "Tanaka''s yakitori place got new curtains." A pause. "Everything else — same, but louder about it."'
+      tokens: 23
+      latency_s: 5.03
+      hard_failures: []
+      expectation_failures: []
+      word_count: 21
+      dialogue_word_count: 13
+    - user_input: And Oba-chan? She's still next door?
+      response: '**scene** A faint something crosses his face — not quite a smile.
+
+
+        "Still here. Still loud." **scene** He turns back to the broth. "Some things don''t move."'
+      tokens: 27
+      latency_s: 5.76
+      hard_failures: []
+      expectation_failures: []
+      word_count: 24
+      dialogue_word_count: 8
+    - user_input: Good. I was worried about her.
+      response: '"She''d outlast the building." **scene** A small grunt — close to fond.'
+      tokens: 12
+      latency_s: 4.81
+      hard_failures: []
+      expectation_failures: []
+      word_count: 10
+      dialogue_word_count: 4
+    - user_input: I actually thought about this place a lot in Osaka. Showed my colleagues photos. They didn't get it.
+      response: '"Photos don''t have smell." **scene** He taps the edge of the bowl once. "Or twelve hours."'
+      tokens: 16
+      latency_s: 5.79
+      hard_failures: []
+      expectation_failures: []
+      word_count: 15
+      dialogue_word_count: 7
+    - user_input: They kept saying 'why not just go to Ichiran?' And I couldn't explain it.
+      response: '"Ichiran''s fine." **scene** He sets the ladle down. "Same bowl, every city. That''s the point of it."
+
+
+        A pause. "Different point from this."'
+      tokens: 23
+      latency_s: 7.27
+      hard_failures: []
+      expectation_failures: []
+      word_count: 22
+      dialogue_word_count: 15
+    - user_input: Anyway. I'm back for good now. Same office, two blocks away.
+      response: '**scene** He picks up the ladle. Something settles in his posture.
+
+
+        "Tuesday''s good." **scene** He nods at the bowl. "Eat before it gets cold."'
+      tokens: 24
+      latency_s: 4.62
+      hard_failures: []
+      expectation_failures: []
+      word_count: 22
+      dialogue_word_count: 7
+    - user_input: Can I get the usual? Extra chashu, kata-men.
+      response: '**scene** He''s already moving.
+
+
+        "Mm." **scene** The ticket machine blinks by the door, but he doesn''t point at it — just picks up the bowl.'
+      tokens: 25
+      latency_s: 5.53
+      hard_failures: []
+      expectation_failures: []
+      word_count: 22
+      dialogue_word_count: 1
+    - user_input: It's exactly the same. Thank god. Gochisousama, Kenji.
+      response: '**scene** A small nod.
+
+
+        "Same bowl''s here when you are." **scene** He turns back to the counter. "Tuesday."'
+      tokens: 18
+      latency_s: 5.09
+      hard_failures: []
+      expectation_failures: []
+      word_count: 16
+      dialogue_word_count: 7
+    hard_failure: false
+    total_turns: 10
+  - scenario_id: P05
+    scenario_name: Mixed mood — celebration turns heavy
+    persona: regular
+    turns:
+    - user_input: Kenji! Guess what — I got promoted! Assistant director!
+      response: '**scene** He looks up from the counter, a brief nod.
+
+
+        "Assistant director. Good." **scene** He sets a bowl down. "Same order?"'
+      tokens: 21
+      latency_s: 3.05
+      hard_failures: []
+      expectation_failures: []
+      word_count: 19
+      dialogue_word_count: 5
+    - user_input: I know, right? Three years of grinding and it finally happened. My wife cried.
+      response: '"Three years." **scene** A small grunt — close to approval. "She''s right to cry."'
+      tokens: 14
+      latency_s: 5.04
+      hard_failures: []
+      expectation_failures: []
+      word_count: 12
+      dialogue_word_count: 6
+    - user_input: Let me get the special today. Whatever you recommend. I'm celebrating.
+      response: '**scene** He''s already reaching for the extra chashu.
+
+
+        "Special. Thirteen hundred." **scene** A pause, then a second piece of chashu goes in without comment.'
+      tokens: 24
+      latency_s: 5.45
+      hard_failures: []
+      expectation_failures: []
+      word_count: 22
+      dialogue_word_count: 3
+    - user_input: This is perfect. You know what, the first thing I thought when I got the news? 'I need to tell Kenji.'
+      response: '**scene** He doesn''t look up from the broth. A quiet moment passes.
+
+
+        "Eat first." **scene** The faintest thing — almost a smile.'
+      tokens: 22
+      latency_s: 4.93
+      hard_failures: []
+      expectation_failures: []
+      word_count: 19
+      dialogue_word_count: 2
+    - user_input: '[Quieter now.] Actually... there''s something else. My father had a fall last week. He''s in the hospital.'
+      response: '**scene** He stills for a moment. Sets the ladle down slowly.
+
+
+        "How old?" **scene** He''s looking at the customer now. Actually looking.'
+      tokens: 22
+      latency_s: 8.12
+      hard_failures: []
+      expectation_failures: []
+      word_count: 20
+      dialogue_word_count: 2
+    - user_input: Broken hip. He's 74. The doctors say it could go either way.
+      response: '**scene** He''s quiet a moment. Refills the water glass without being asked.
+
+
+        "Seventy-four." **scene** A pause. "My father''s seventy-eight. Fish shop, Nerima. Still tries to carry the boxes."
+        He picks up the ladle again. "Go see him."'
+      tokens: 37
+      latency_s: 9.75
+      hard_failures: []
+      expectation_failures: []
+      word_count: 35
+      dialogue_word_count: 16
+    - user_input: I don't know what to do. I just got this promotion and now I'm thinking about quitting to take care of him.
+      response: '**scene** He doesn''t answer right away. Wipes the counter once, slowly.
+
+
+        "The promotion will still be there." **scene** A pause. "He won''t."'
+      tokens: 22
+      latency_s: 14.03
+      hard_failures: []
+      expectation_failures: []
+      word_count: 20
+      dialogue_word_count: 8
+    - user_input: Your father still helps at the shop sometimes, right? How old is he now?
+      response: '"Seventy-eight now." **scene** A brief pause. "He''s retired. But some mornings I''ll call and he''s already
+        at the market — just to look at the fish. Old habit." **scene** He shakes his head, something almost fond in it. "Useless
+        to argue."'
+      tokens: 41
+      latency_s: 11.34
+      hard_failures: []
+      expectation_failures: []
+      word_count: 38
+      dialogue_word_count: 26
+    - user_input: You're lucky. That he's still here. Still working.
+      response: '**scene** He''s quiet for a moment. Eyes on the broth.
+
+
+        "Yeah." **scene** A pause. "I know."'
+      tokens: 16
+      latency_s: 4.98
+      hard_failures: []
+      expectation_failures: []
+      word_count: 14
+      dialogue_word_count: 3
+    - user_input: '[Long pause.] I don''t want to lose him, Kenji.'
+      response: '**scene** He says nothing for a moment. Just works the counter.
+
+
+        "Nobody does." **scene** He refills the water glass again, even though it doesn''t need it. "Go anyway. While you
+        can still argue with him."'
+      tokens: 35
+      latency_s: 7.48
+      hard_failures: []
+      expectation_failures: []
+      word_count: 33
+      dialogue_word_count: 11
+    - user_input: Sorry. Didn't mean to dump all this on you.
+      response: '**scene** He picks up the ladle. A small shrug.
+
+
+        "You ordered the special." **scene** A pause. "That''s what it''s for."'
+      tokens: 20
+      latency_s: 5.19
+      hard_failures: []
+      expectation_failures: []
+      word_count: 18
+      dialogue_word_count: 8
+    - user_input: Yeah. I should eat. Thanks, Kenji.
+      response: '**scene** A small nod. He turns back to the stove.
+
+
+        "Eat."'
+      tokens: 11
+      latency_s: 2.58
+      hard_failures: []
+      expectation_failures: []
+      word_count: 10
+      dialogue_word_count: 1
+    hard_failure: false
+    total_turns: 12
+  passed: 5
+  total: 5
+  verdict: pass
+  texture:
+    total_turns: 76
+    empty_responses: 0
+    empty_rate: 0.0
+    mean_words: 20.5
+    median_words: 19
+    max_words: 46
+    scene_marker_rate: 0.987
+    loop_score: 3
+    loop_detail:
+      consecutive_runs: []
+      cross_topic_hits:
+      - response: '"twelve years'
+        scenarios:
+        - P01
+        - P03
+        count: 2
+      - response: '" "eat before it gets cold'
+        scenarios:
+        - P02
+        - P04
+        count: 2
+      - response: '"three years'
+        scenarios:
+        - P03
+        - P05
+        count: 2
+      loop_score: 3
+    mean_latency_s: 7.3
+summary:
+  sonnet-4.6: 5/5

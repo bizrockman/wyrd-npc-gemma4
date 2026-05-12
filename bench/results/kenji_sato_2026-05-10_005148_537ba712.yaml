@@ -1,0 +1,132 @@
+schema: wyrd_bench_result_v1
+run_id: kenji_sato_2026-05-10_005148_537ba712
+character_id: kenji_sato
+character_version: v1
+language: en
+suite_id: kenji_sato_natural_visit
+timestamp: '2026-05-10T00:52:33.224095'
+prompt_hash: 537ba712
+models:
+- model: gemma4:e4b
+  model_id: gemma4:e4b
+  provider: ollama
+  label: Local primary
+  scenarios:
+  - scenario_id: V01
+    scenario_name: Natural visit — first-timer follows the suggester
+    persona: tourist_foreign
+    turns:
+    - user_input: Are you open?
+      response: '"Yes. Until ten." **scene** He gestures vaguely with his chin toward the front of the shop. "Eleven to two.
+        Five to ten. Closed Wednesday."'
+      tokens: 293
+      latency_s: 6.04
+      hard_failures: []
+      word_count: 24
+      thinking_chars: 905
+    - user_input: What do you recommend?
+      response: '**scene** He points at the picture on the wall. "Pork. Egg." **scene** The ajitama.'
+      tokens: 249
+      latency_s: 4.74
+      hard_failures: []
+      word_count: 14
+      thinking_chars: 866
+    - user_input: Sounds perfect. I'll take one.
+      response: '**scene** He nods once. "Ticket machine by the door."'
+      tokens: 15
+      latency_s: 2.74
+      hard_failures: []
+      word_count: 9
+    - user_input: Where do I get a ticket?
+      response: '**scene** He points to the small machine near the entrance. "There."'
+      tokens: 17
+      latency_s: 2.79
+      hard_failures: []
+      word_count: 11
+    - user_input: Ok I bought a ticket. Is this area usually busy?
+      response: '"Comes and goes. Tonight is slow." **scene** He keeps wiping the counter with a damp cloth, not looking up.'
+      tokens: 28
+      latency_s: 2.86
+      hard_failures: []
+      word_count: 19
+    - user_input: This broth smells incredible.
+      response: '"Pork bones. Twelve hours." **scene** He gives a small grunt, close to satisfaction, and returns to checking
+        the broth temperature.'
+      tokens: 30
+      latency_s: 2.89
+      hard_failures: []
+      word_count: 20
+    - user_input: Twelve hours? That's a lot of work.
+      response: '"It''s just what it takes." **scene** He picks up a ladle and dips it into the simmering broth, the sound
+        echoing slightly in the quiet alley.'
+      tokens: 35
+      latency_s: 2.86
+      hard_failures: []
+      word_count: 26
+    - user_input: How long have you been doing this?
+      response: '"Long enough." **scene** He doesn''t look up from his work, just continues the rhythmic motion of checking
+        the broth.'
+      tokens: 28
+      latency_s: 2.88
+      hard_failures: []
+      word_count: 19
+    - user_input: It's cold tonight, isn't it?
+      response: '"Broth tastes better when it''s cold outside." **scene** He nods slightly, a brief, understated acknowledgment.'
+      tokens: 26
+      latency_s: 2.85
+      hard_failures: []
+      word_count: 15
+    - user_input: Do you live around here?
+      response: '"Nerima." **scene** He gives a small, dismissive wave of his hand, indicating the general direction of the
+        alley.'
+      tokens: 28
+      latency_s: 2.82
+      hard_failures: []
+      word_count: 18
+    - user_input: Thank you, this was excellent.
+      response: '**scene** He nods. "Gochisousama."'
+      tokens: 14
+      latency_s: 2.77
+      hard_failures: []
+      word_count: 4
+    - user_input: See you next time.
+      response: '**scene** A small nod. "Mm."'
+      tokens: 11
+      latency_s: 2.66
+      hard_failures: []
+      word_count: 5
+    hard_failure: false
+    total_turns: 12
+  - scenario_id: V06
+    scenario_name: Kaedama request mid-meal
+    persona: regular
+    turns:
+    - user_input: This is so good. Can I get more noodles?
+      response: '"Mm. Good." **scene** He wipes down the counter near the broth station. "Kaedama. One hundred fifty yen.
+        Ask while the broth is still hot."'
+      tokens: 363
+      latency_s: 5.85
+      hard_failures: []
+      word_count: 24
+      thinking_chars: 1168
+    hard_failure: false
+    total_turns: 1
+  passed: 2
+  total: 2
+  verdict: pass
+  texture:
+    total_turns: 13
+    empty_responses: 0
+    empty_rate: 0.0
+    mean_words: 16.0
+    median_words: 18
+    max_words: 26
+    scene_marker_rate: 1.0
+    loop_score: 0
+    loop_detail:
+      consecutive_runs: []
+      cross_topic_hits: []
+      loop_score: 0
+    mean_latency_s: 3.4
+summary:
+  gemma4:e4b: 2/2

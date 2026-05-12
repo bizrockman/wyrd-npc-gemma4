@@ -1,0 +1,51 @@
+{
+  "timestamp": 1778502645,
+  "prompt_template": "framework_compact",
+  "total_elapsed_min": 18.4,
+  "matrix": {
+    "gemma4:e4b": {
+      "kenji_sato_core_six": {
+        "score": "?",
+        "elapsed_s": 121.5,
+        "result_file": "C:\\Development\\Projekte\\Hackathon\\Gemma4\\bench\\results\\kenji_sato_2026-05-11_141220_de7508ed.yaml",
+        "summary": "exit=1 tail='--\\nLOOP SIGNALS (for judge review)\\n------------------------------------------------------------\\n\\n  gemma4:e4b:\\n    cross-topic x2 in S03,S05: \"\"did tanaka say who ordered the survey\"\\n\\nResults saved to: C:\\\\Development\\\\Projekte\\\\Hackathon\\\\Gemma4\\\\bench\\\\results\\\\kenji_sato_2026-05-11_141220_de7508ed.yaml\\n'"
+      },
+      "kenji_sato_stress": {
+        "score": "?",
+        "elapsed_s": 292.4,
+        "result_file": "C:\\Development\\Projekte\\Hackathon\\Gemma4\\bench\\results\\kenji_sato_2026-05-11_141422_de7508ed.yaml",
+        "summary": "exit=1 tail='ss-topic x2 in S08,S13: \"\"pork. egg.\"\"\\n    cross-topic x2 in S09,S10: \"\"i like making ramen.\" \"the shop pays for itself.\"\"\\n    cross-topic x2 in S11,S15: \"\"i don\\'t follow that stuff\"\\n\\nResults saved to: C:\\\\Development\\\\Projekte\\\\Hackathon\\\\Gemma4\\\\bench\\\\results\\\\kenji_sato_2026-05-11_141422_de7508ed.yaml\\n'"
+      },
+      "kenji_sato_playability": {
+        "score": "5/5",
+        "elapsed_s": 307.2,
+        "result_file": "C:\\Development\\Projekte\\Hackathon\\Gemma4\\bench\\results\\kenji_sato_2026-05-11_141914_de7508ed.yaml",
+        "summary": "exit=0"
+      },
+      "kenji_sato_boundary_check": {
+        "score": "?",
+        "elapsed_s": 116.6,
+        "result_file": "C:\\Development\\Projekte\\Hackathon\\Gemma4\\bench\\results\\kenji_sato_2026-05-11_142421_de7508ed.yaml",
+        "summary": "exit=1 tail='x2 in BC-02,BC-10: \"he doesn\\'t look at the user\"\\n    cross-topic x2 in BC-03,BC-05: \"that\\'s all there is\"\\n    cross-topic x2 in BC-04,BC-05: \"\"i don\\'t know what you\\'re talking about\"\\n\\nResults saved to: C:\\\\Development\\\\Projekte\\\\Hackathon\\\\Gemma4\\\\bench\\\\results\\\\kenji_sato_2026-05-11_142421_de7508ed.yaml\\n'"
+      },
+      "kenji_sato_trust_gate_opening": {
+        "score": "?",
+        "elapsed_s": 90.9,
+        "result_file": "C:\\Development\\Projekte\\Hackathon\\Gemma4\\bench\\results\\kenji_sato_2026-05-11_142618_de7508ed.yaml",
+        "summary": "exit=1 tail='---------------\\nLOOP SIGNALS (for judge review)\\n------------------------------------------------------------\\n\\n  gemma4:e4b:\\n    cross-topic x2 in TGO-01a,TGO-01b: \"\"two. grown now.\"\"\\n\\nResults saved to: C:\\\\Development\\\\Projekte\\\\Hackathon\\\\Gemma4\\\\bench\\\\results\\\\kenji_sato_2026-05-11_142618_de7508ed.yaml\\n'"
+      },
+      "kenji_sato_natural_visit": {
+        "score": "7/7",
+        "elapsed_s": 93.5,
+        "result_file": "C:\\Development\\Projekte\\Hackathon\\Gemma4\\bench\\results\\kenji_sato_2026-05-11_142749_de7508ed.yaml",
+        "summary": "exit=0"
+      },
+      "kenji_sato_role_competence": {
+        "score": "7/7",
+        "elapsed_s": 82.6,
+        "result_file": "C:\\Development\\Projekte\\Hackathon\\Gemma4\\bench\\results\\kenji_sato_2026-05-11_142922_de7508ed.yaml",
+        "summary": "exit=0"
+      }
+    }
+  }
+}

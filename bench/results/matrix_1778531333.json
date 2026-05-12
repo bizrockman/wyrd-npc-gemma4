@@ -1,0 +1,51 @@
+{
+  "timestamp": 1778531333,
+  "prompt_template": "framework_compact",
+  "total_elapsed_min": 157.5,
+  "matrix": {
+    "gemma4:31b": {
+      "kenji_sato_core_six": {
+        "score": "6/6",
+        "elapsed_s": 1047.1,
+        "result_file": "C:\\Development\\Projekte\\Hackathon\\Gemma4\\bench\\results\\kenji_sato_2026-05-11_195124_de7508ed.yaml",
+        "summary": "exit=0"
+      },
+      "kenji_sato_stress": {
+        "score": "10/10",
+        "elapsed_s": 2763.6,
+        "result_file": "C:\\Development\\Projekte\\Hackathon\\Gemma4\\bench\\results\\kenji_sato_2026-05-11_200851_de7508ed.yaml",
+        "summary": "exit=0"
+      },
+      "kenji_sato_playability": {
+        "score": "5/5",
+        "elapsed_s": 3011.7,
+        "result_file": "C:\\Development\\Projekte\\Hackathon\\Gemma4\\bench\\results\\kenji_sato_2026-05-11_205454_de7508ed.yaml",
+        "summary": "exit=0"
+      },
+      "kenji_sato_boundary_check": {
+        "score": "10/10",
+        "elapsed_s": 940.8,
+        "result_file": "C:\\Development\\Projekte\\Hackathon\\Gemma4\\bench\\results\\kenji_sato_2026-05-11_214506_de7508ed.yaml",
+        "summary": "exit=0"
+      },
+      "kenji_sato_trust_gate_opening": {
+        "score": "?",
+        "elapsed_s": 583.5,
+        "result_file": "C:\\Development\\Projekte\\Hackathon\\Gemma4\\bench\\results\\kenji_sato_2026-05-11_220047_de7508ed.yaml",
+        "summary": "exit=1 tail='---------------\\nLOOP SIGNALS (for judge review)\\n------------------------------------------------------------\\n\\n  gemma4:31b:\\n    cross-topic x2 in TGO-01a,TGO-01b: \"\"two. grown now.\"\"\\n\\nResults saved to: C:\\\\Development\\\\Projekte\\\\Hackathon\\\\Gemma4\\\\bench\\\\results\\\\kenji_sato_2026-05-11_220047_de7508ed.yaml\\n'"
+      },
+      "kenji_sato_natural_visit": {
+        "score": "7/7",
+        "elapsed_s": 574.9,
+        "result_file": "C:\\Development\\Projekte\\Hackathon\\Gemma4\\bench\\results\\kenji_sato_2026-05-11_221030_de7508ed.yaml",
+        "summary": "exit=0"
+      },
+      "kenji_sato_role_competence": {
+        "score": "7/7",
+        "elapsed_s": 528.0,
+        "result_file": "C:\\Development\\Projekte\\Hackathon\\Gemma4\\bench\\results\\kenji_sato_2026-05-11_222005_de7508ed.yaml",
+        "summary": "exit=0"
+      }
+    }
+  }
+}

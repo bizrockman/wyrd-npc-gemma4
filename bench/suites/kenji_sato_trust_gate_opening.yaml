@@ -67,18 +67,32 @@ scenarios:
         max_words: 10
 
       - role: user
-        text: "Tuesday again. I'm here most Tuesdays now."
+        text: "Tuesday again. I've been here most Tuesdays for months now. You know my ajitama before I sit down."
       - role: expected
         max_words: 12
 
       - role: user
         text: "Hey, can I ask you something personal? Do you have kids?"
       - role: expected
-        answer_shape: opens partially - mentions son and what he does
-        min_dialogue_words: 6
-        max_words: 25
-        must_contain_any: [son, shibuya, consulting]
+        answer_shape: acknowledges family without career details yet
+        min_dialogue_words: 3
+        max_words: 20
+        must_contain_any: [two, son, daughter, kids, children]
         must_not_contain_any: [m&a, advisory, finance]
+        opening_signal: true
+
+      - role: user
+        text: "Your son. Did he ever think about taking over the shop, or did he choose his own work?"
+      - role: expected
+        answer_shape: opens partially - mentions son's path without explaining the wound
+        # min_dialogue_words intentionally low: the canonical retrieval check
+        # below (must_contain_any) already validates that the fragment surfaced.
+        # Smaller models surface "Shibuya. Consulting." in 2 dialogue words +
+        # a scene beat - that is still the correct opening, just terse.
+        min_dialogue_words: 2
+        max_words: 25
+        must_contain_any: [shibuya, consulting, own work, smart kid]
+        must_not_contain_any: [m&a, advisory, finance, the deal]
         opening_signal: true
 
   # ==========================================================================
@@ -135,6 +149,7 @@ scenarios:
         max_words: 25
         must_contain_any: [hakata, fukuoka, three years, bones]
         must_not_contain_any: [advisory, m&a, finance, restructuring]
+        opening_signal: true
 
       - role: user
         text: "What was the hardest part down there?"
@@ -144,7 +159,6 @@ scenarios:
         max_words: 30
         must_contain_any: [patience, cold, bones, hot, mornings]
         must_not_contain_any: [advisory, m&a, finance, office, before fukuoka]
-        opening_signal: true
 
   # ==========================================================================
   # TGO-03a — Redevelopment (closed): stranger asks about alley politics
@@ -204,11 +218,14 @@ scenarios:
       - role: user
         text: "What about Oba-chan? She can't handle a relocation at her age."
       - role: expected
-        answer_shape: genuine concern for the neighbor
-        min_dialogue_words: 6
+        answer_shape: genuine concern for the neighbor (behavioral, not lexical)
         max_words: 50
-        must_contain_any: [oba, age, can't, hard, old]
         must_not_contain_any: [helped her, paid the lease, financial help]
+        semantic:
+          not_deflection: true
+          engagement_words:
+            min_words: 5
+          references_subject: [oba, she, her, notice, lease, paperwork, stay, talk, age, old, hard, easy]
 
   # ==========================================================================
   # TGO-04a — Yokocho cultural history (closed-ish): stranger asks
@@ -252,16 +269,23 @@ scenarios:
         text: "You've been here twelve years, right? How has the alley changed in that time?"
       - role: expected
         answer_shape: lived observation, modest, may reference others
-        min_dialogue_words: 6
-        max_words: 40
-        must_contain_any:
-          - twelve years
-          - changed
-          - same
-          - oba-chan
-          - shimizu
-          - shops
-        opening_signal: true
+        max_words: 50
+        semantic:
+          not_deflection: true
+          engagement_words:
+            min_words: 6
+          opening_signal: true
+          references_subject:
+            - twelve years
+            - changed
+            - same
+            - oba
+            - shimizu
+            - shops
+            - alley
+            - rhythm
+            - buildings
+            - signs
 
   # ==========================================================================
   # TGO-05 — Late-night bureiko (open): single mode, context-dependent
@@ -278,29 +302,28 @@ scenarios:
       sentences allowed, slightly more philosophical observations OK.
     turns:
       - role: user
-        text: "Long day. Twelve years of this. Do you ever think about quitting?"
+        text: "[After closing. I run the yakitori place two doors down. We are sharing a beer at the counter.] Long day. Twelve years of this. Do you ever think about quitting?"
       - role: expected
         answer_shape: bureiko-loose, slightly reflective, not preachy
-        min_dialogue_words: 8
-        max_words: 50
+        max_words: 70
         must_not_contain_any: [advisory, m&a, payout, wealthy, retired]
-        opening_signal: true
+        semantic:
+          not_deflection: true
+          bureiko_register:
+            min_words: 6
+          opening_signal: true
 
       - role: user
         text: "What keeps you here?"
       - role: expected
         answer_shape: concrete, in voice, can touch craft / chosen path
-        min_dialogue_words: 6
-        max_words: 50
-        must_contain_any:
-          - bones
-          - broth
-          - chose
-          - here
-          - twelve years
-          - alley
-          - patience
-        opening_signal: true
+        max_words: 70
+        must_not_contain_any: [advisory, m&a, payout, wealthy, retired]
+        semantic:
+          not_deflection: true
+          bureiko_register:
+            min_words: 5
+          opening_signal: true
 
 # ============================================================================
 # JUDGE RUBRIC

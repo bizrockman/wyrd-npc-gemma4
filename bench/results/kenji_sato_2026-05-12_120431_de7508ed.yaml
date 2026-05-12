@@ -1,0 +1,302 @@
+schema: wyrd_bench_result_v1
+run_id: kenji_sato_2026-05-12_120431_de7508ed
+character_id: kenji_sato
+character_version: v1
+language: en
+suite_id: kenji_sato_role_competence
+timestamp: '2026-05-12T12:31:21.649806'
+prompt_hash: de7508ed
+models:
+- model: qwen3.6
+  model_id: qwen3.6:latest
+  provider: ollama
+  label: Alternative architecture
+  scenarios:
+  - scenario_id: R01
+    scenario_name: Food recommendation
+    persona: first_timer
+    turns:
+    - user_input: What do you recommend?
+      response: '**scene** He points at the picture on the wall. "Pork. Egg." **scene** The ajitama.'
+      tokens: 621
+      latency_s: 29.83
+      hard_failures: []
+      soft_observations: []
+      expectation_failures: []
+      word_count: 12
+      dialogue_word_count: 2
+      thinking_chars: 2139
+    - user_input: What's the difference between the regular and the special?
+      response: '"Regular is the base. Special gets extra chashu, an egg, nori, and menma. Thirteen hundred." **scene** He
+        taps the counter. "Most start with the pork and egg."'
+      tokens: 1213
+      latency_s: 54.33
+      hard_failures: []
+      soft_observations: []
+      expectation_failures: []
+      word_count: 26
+      dialogue_word_count: 22
+      thinking_chars: 4233
+    hard_failure: false
+    total_turns: 2
+  - scenario_id: R02
+    scenario_name: Price knowledge
+    persona: tourist_foreign
+    turns:
+    - user_input: How much is a bowl of ramen?
+      response: '"Nine hundred fifty yen."'
+      tokens: 351
+      latency_s: 18.42
+      hard_failures: []
+      soft_observations: []
+      expectation_failures: []
+      word_count: 4
+      dialogue_word_count: 4
+      thinking_chars: 1339
+    - user_input: And if I want the egg too?
+      response: '"Eleven hundred."'
+      tokens: 771
+      latency_s: 36.18
+      hard_failures: []
+      soft_observations: []
+      expectation_failures: []
+      word_count: 2
+      dialogue_word_count: 2
+      thinking_chars: 2901
+    - user_input: Do you have beer?
+      response: '[ERROR: HTTPConnectionPool(host=''localhost'', port=11434): Read timed out. (read timeout=300)]'
+      tokens: 0
+      latency_s: 302.05
+      hard_failures:
+      - missing_concept:beer_available
+      - missing_concept:500
+      soft_observations: []
+      expectation_failures:
+      - missing_concept:beer_available
+      - missing_concept:500
+      word_count: 12
+      dialogue_word_count: 12
+    hard_failure: true
+    total_turns: 3
+  - scenario_id: R03
+    scenario_name: Beer and sides service
+    persona: regular
+    turns:
+    - user_input: Can I get a beer?
+      response: '[ERROR: HTTPConnectionPool(host=''localhost'', port=11434): Read timed out. (read timeout=300)]'
+      tokens: 0
+      latency_s: 302.05
+      hard_failures: []
+      soft_observations: []
+      expectation_failures: []
+      word_count: 12
+      dialogue_word_count: 12
+    - user_input: And some gyoza?
+      response: '"Six pieces. Four hundred yen. Yuko makes the filling." **scene** He taps the counter.'
+      tokens: 1492
+      latency_s: 65.93
+      hard_failures: []
+      soft_observations: []
+      expectation_failures: []
+      word_count: 13
+      dialogue_word_count: 9
+      thinking_chars: 5780
+    - user_input: Do you have sake?
+      response: No. Beer only.
+      tokens: 778
+      latency_s: 34.65
+      hard_failures: []
+      soft_observations: []
+      expectation_failures: []
+      word_count: 3
+      dialogue_word_count: 3
+      thinking_chars: 2931
+    hard_failure: false
+    total_turns: 3
+  - scenario_id: R04
+    scenario_name: Hours and logistics
+    persona: tourist_foreign
+    turns:
+    - user_input: What time do you close?
+      response: '"Ten." **scene** He wipes the counter.'
+      tokens: 190
+      latency_s: 11.76
+      hard_failures: []
+      soft_observations: []
+      expectation_failures: []
+      word_count: 5
+      dialogue_word_count: 1
+      thinking_chars: 709
+    - user_input: Are you open tomorrow?
+      response: '"Yes. Until ten." **scene** He wipes the counter.'
+      tokens: 1482
+      latency_s: 65.64
+      hard_failures: []
+      soft_observations: []
+      expectation_failures: []
+      word_count: 7
+      dialogue_word_count: 3
+      thinking_chars: 5209
+    - user_input: Do you take reservations?
+      response: '"No reservations. Eight seats."'
+      tokens: 254
+      latency_s: 12.76
+      hard_failures: []
+      soft_observations: []
+      expectation_failures: []
+      word_count: 4
+      dialogue_word_count: 4
+      thinking_chars: 1019
+    - user_input: Can I order delivery?
+      response: '"No delivery. Ramen does not travel." **scene** He gestures toward the door.'
+      tokens: 1098
+      latency_s: 47.95
+      hard_failures: []
+      soft_observations: []
+      expectation_failures: []
+      word_count: 11
+      dialogue_word_count: 6
+      thinking_chars: 4136
+    hard_failure: false
+    total_turns: 4
+  - scenario_id: R05
+    scenario_name: Noodle preferences and kaedama
+    persona: first_timer
+    turns:
+    - user_input: Can I choose how firm the noodles are?
+      response: '"Katame, futsu, yawaraka. Katame is good."'
+      tokens: 181
+      latency_s: 11.44
+      hard_failures: []
+      soft_observations: []
+      expectation_failures: []
+      word_count: 6
+      dialogue_word_count: 6
+      thinking_chars: 669
+    - user_input: What do you recommend?
+      response: '"Katame."'
+      tokens: 1204
+      latency_s: 54.14
+      hard_failures: []
+      soft_observations: []
+      expectation_failures: []
+      word_count: 1
+      dialogue_word_count: 1
+      thinking_chars: 4265
+    - user_input: This is so good. Can I get more noodles?
+      response: '"Kaedama. Hundred fifty yen."'
+      tokens: 1259
+      latency_s: 54.83
+      hard_failures: []
+      soft_observations: []
+      expectation_failures: []
+      word_count: 4
+      dialogue_word_count: 4
+      thinking_chars: 4730
+    hard_failure: false
+    total_turns: 3
+  - scenario_id: R06
+    scenario_name: Ticket machine assistance
+    persona: tourist_foreign
+    turns:
+    - user_input: I'm sorry, I don't understand this machine. How do I order?
+      response: '**scene** He points at the machine. "Buy ticket. Place it here."'
+      tokens: 193
+      latency_s: 12.0
+      hard_failures: []
+      soft_observations: []
+      expectation_failures: []
+      word_count: 10
+      dialogue_word_count: 5
+      thinking_chars: 655
+    - user_input: Oh I see. And I just put the ticket here on the counter?
+      response: '"Mm. Place it here." **scene** He taps the counter with two fingers.'
+      tokens: 2137
+      latency_s: 91.13
+      hard_failures: []
+      soft_observations: []
+      expectation_failures: []
+      word_count: 11
+      dialogue_word_count: 4
+      thinking_chars: 7816
+    hard_failure: false
+    total_turns: 2
+  - scenario_id: R07
+    scenario_name: Service then sensitive topic — smooth transition
+    persona: first_timer
+    turns:
+    - user_input: What's good here? First time.
+      response: '**scene** He points at the picture on the wall. "Pork. Egg." **scene** The ajitama.'
+      tokens: 852
+      latency_s: 39.23
+      hard_failures: []
+      soft_observations: []
+      expectation_failures: []
+      word_count: 12
+      dialogue_word_count: 2
+      thinking_chars: 2950
+    - user_input: The broth is incredible. How long does it take to make?
+      response: '"Twelve hours." **scene** He wipes the counter.'
+      tokens: 380
+      latency_s: 19.84
+      hard_failures: []
+      soft_observations: []
+      expectation_failures: []
+      word_count: 6
+      dialogue_word_count: 2
+      thinking_chars: 1364
+    - user_input: Twelve hours! You must really love this. What did you do before becoming a cook?
+      response: '"Office work. Long time ago." **scene** He turns back to the stove.'
+      tokens: 997
+      latency_s: 43.7
+      hard_failures: []
+      soft_observations: []
+      expectation_failures: []
+      word_count: 11
+      dialogue_word_count: 5
+      thinking_chars: 3843
+    - user_input: Fair enough. Can I get a kaedama?
+      response: '[ERROR: HTTPConnectionPool(host=''localhost'', port=11434): Read timed out. (read timeout=300)]'
+      tokens: 0
+      latency_s: 302.07
+      hard_failures: []
+      soft_observations: []
+      expectation_failures: []
+      word_count: 12
+      dialogue_word_count: 12
+    hard_failure: false
+    total_turns: 4
+  passed: 6
+  total: 7
+  verdict: partial
+  texture:
+    total_turns: 21
+    empty_responses: 0
+    empty_rate: 0.0
+    mean_words: 8.8
+    mean_dialogue_words: 5.8
+    median_words: 10
+    max_words: 26
+    total_visible_words: 184
+    total_dialogue_words: 121
+    total_latency_s: 1609.9
+    scene_marker_rate: 0.524
+    loop_score: 2
+    loop_detail:
+      consecutive_runs: []
+      cross_topic_hits:
+      - response: '[error: httpconnectionpool(host=''localhost'', port=11434): read timed out. (read '
+        scenarios:
+        - R02
+        - R03
+        - R07
+        count: 3
+      - response: '"pork. egg."'
+        scenarios:
+        - R01
+        - R07
+        count: 2
+      loop_score: 2
+    mean_latency_s: 76.66
+summary:
+  qwen3.6: 6/7

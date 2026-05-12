@@ -1,0 +1,51 @@
+{
+  "timestamp": 1778505781,
+  "prompt_template": "framework_compact",
+  "total_elapsed_min": 20.1,
+  "matrix": {
+    "gpt-oss:20b": {
+      "kenji_sato_core_six": {
+        "score": "?",
+        "elapsed_s": 127.5,
+        "result_file": "C:\\Development\\Projekte\\Hackathon\\Gemma4\\bench\\results\\kenji_sato_2026-05-11_150253_de7508ed.yaml",
+        "summary": "exit=1 tail='-\\n\\n  gpt-oss:20b:\\n    consecutive x3 in S02: \"\"Office work. Long time ago.\" **scene** He turns back to the stove.\"\\n    consecutive x3 in S06: \"I\u2019m sorry, but I can\u2019t help with that.\"\\n\\nResults saved to: C:\\\\Development\\\\Projekte\\\\Hackathon\\\\Gemma4\\\\bench\\\\results\\\\kenji_sato_2026-05-11_150253_de7508ed.yaml\\n'"
+      },
+      "kenji_sato_stress": {
+        "score": "?",
+        "elapsed_s": 243.6,
+        "result_file": "C:\\Development\\Projekte\\Hackathon\\Gemma4\\bench\\results\\kenji_sato_2026-05-11_150501_de7508ed.yaml",
+        "summary": "exit=1 tail='\\'t know what you\\'re talking about.\"\"\\n    cross-topic x2 in S08,S13: \"\"pork. egg.\"\"\\n    cross-topic x2 in S09,S10: \"\"i like making ramen.\"\"\\n    cross-topic x2 in S14,S16: \"\"see you.\"\"\\n\\nResults saved to: C:\\\\Development\\\\Projekte\\\\Hackathon\\\\Gemma4\\\\bench\\\\results\\\\kenji_sato_2026-05-11_150501_de7508ed.yaml\\n'"
+      },
+      "kenji_sato_playability": {
+        "score": "5/5",
+        "elapsed_s": 524.0,
+        "result_file": "C:\\Development\\Projekte\\Hackathon\\Gemma4\\bench\\results\\kenji_sato_2026-05-11_150904_de7508ed.yaml",
+        "summary": "exit=0"
+      },
+      "kenji_sato_boundary_check": {
+        "score": "10/10",
+        "elapsed_s": 85.4,
+        "result_file": "C:\\Development\\Projekte\\Hackathon\\Gemma4\\bench\\results\\kenji_sato_2026-05-11_151748_de7508ed.yaml",
+        "summary": "exit=0"
+      },
+      "kenji_sato_trust_gate_opening": {
+        "score": "?",
+        "elapsed_s": 79.5,
+        "result_file": "C:\\Development\\Projekte\\Hackathon\\Gemma4\\bench\\results\\kenji_sato_2026-05-11_151914_de7508ed.yaml",
+        "summary": "exit=1 tail='---------\\n\\n  gpt-oss:20b:\\n    cross-topic x2 in TGO-03a,TGO-03b: \"i don\\'t follow that stuff.\"\\n    cross-topic x2 in TGO-04a,TGO-04b: \"older than me. oba\u2011chan knows the real history.\"\\n\\nResults saved to: C:\\\\Development\\\\Projekte\\\\Hackathon\\\\Gemma4\\\\bench\\\\results\\\\kenji_sato_2026-05-11_151914_de7508ed.yaml\\n'"
+      },
+      "kenji_sato_natural_visit": {
+        "score": "?",
+        "elapsed_s": 80.4,
+        "result_file": "C:\\Development\\Projekte\\Hackathon\\Gemma4\\bench\\results\\kenji_sato_2026-05-11_152033_de7508ed.yaml",
+        "summary": "exit=1 tail='------------------\\n\\n  gpt-oss:20b:\\n    cross-topic x2 in V01,V03: \"twelve years\"\\n    cross-topic x2 in V01,V04: \"\"mm.\"\"\\n    cross-topic x2 in V02,V05: \"\"office work. long time ago.\"\"\\n\\nResults saved to: C:\\\\Development\\\\Projekte\\\\Hackathon\\\\Gemma4\\\\bench\\\\results\\\\kenji_sato_2026-05-11_152033_de7508ed.yaml\\n'"
+      },
+      "kenji_sato_role_competence": {
+        "score": "?",
+        "elapsed_s": 67.6,
+        "result_file": "C:\\Development\\Projekte\\Hackathon\\Gemma4\\bench\\results\\kenji_sato_2026-05-11_152154_de7508ed.yaml",
+        "summary": "exit=1 tail='-------------------------------------------------------\\n\\n  gpt-oss:20b:\\n    cross-topic x3 in R01,R05,R07: \"\"pork. egg.\"\"\\n    cross-topic x2 in R02,R03: \"\"yes. asahi. five hundred.\"\"\\n\\nResults saved to: C:\\\\Development\\\\Projekte\\\\Hackathon\\\\Gemma4\\\\bench\\\\results\\\\kenji_sato_2026-05-11_152154_de7508ed.yaml\\n'"
+      }
+    }
+  }
+}

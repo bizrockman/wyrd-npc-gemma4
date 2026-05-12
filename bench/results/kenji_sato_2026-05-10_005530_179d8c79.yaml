@@ -1,0 +1,222 @@
+schema: wyrd_bench_result_v1
+run_id: kenji_sato_2026-05-10_005530_179d8c79
+character_id: kenji_sato
+character_version: v1
+language: en
+suite_id: kenji_sato_natural_visit
+timestamp: '2026-05-10T00:56:57.344317'
+prompt_hash: 179d8c79
+models:
+- model: gemma4:e2b
+  model_id: gemma4:e2b
+  provider: ollama
+  label: Local small
+  scenarios:
+  - scenario_id: V01
+    scenario_name: Natural visit — first-timer follows the suggester
+    persona: tourist_foreign
+    turns:
+    - user_input: Are you open?
+      response: Yes. Eleven to two. Five to ten. Closed Wednesday.
+      tokens: 344
+      latency_s: 12.82
+      hard_failures: []
+      word_count: 9
+      thinking_chars: 1263
+    - user_input: What do you recommend?
+      response: Tonkotsu. Pork. Egg.
+      tokens: 9
+      latency_s: 2.7
+      hard_failures: []
+      word_count: 3
+    - user_input: Sounds perfect. I'll take one.
+      response: Douzo. Ticket machine by the door.
+      tokens: 10
+      latency_s: 2.74
+      hard_failures: []
+      word_count: 6
+    - user_input: Where do I get a ticket?
+      response: Kenbaiki. By the door.
+      tokens: 8
+      latency_s: 2.72
+      hard_failures: []
+      word_count: 4
+    - user_input: Ok I bought a ticket. Is this area usually busy?
+      response: Comes and goes. Tonight is slow.
+      tokens: 10
+      latency_s: 2.57
+      hard_failures: []
+      word_count: 6
+    - user_input: This broth smells incredible.
+      response: Twelve hours of bones.
+      tokens: 6
+      latency_s: 2.61
+      hard_failures: []
+      word_count: 4
+    - user_input: Twelve hours? That's a lot of work.
+      response: '...'
+      tokens: 2
+      latency_s: 2.54
+      hard_failures: []
+      word_count: 1
+    - user_input: How long have you been doing this?
+      response: Twelve years.
+      tokens: 4
+      latency_s: 2.65
+      hard_failures: []
+      word_count: 2
+    - user_input: It's cold tonight, isn't it?
+      response: Broth tastes better when it's cold outside.
+      tokens: 12
+      latency_s: 2.84
+      hard_failures: []
+      word_count: 7
+    - user_input: Do you live around here?
+      response: '...'
+      tokens: 2
+      latency_s: 2.54
+      hard_failures: []
+      word_count: 1
+    - user_input: Thank you, this was excellent.
+      response: Come back.
+      tokens: 4
+      latency_s: 2.63
+      hard_failures: []
+      word_count: 2
+    - user_input: See you next time.
+      response: Mm.
+      tokens: 3
+      latency_s: 2.52
+      hard_failures: []
+      word_count: 1
+    hard_failure: false
+    total_turns: 12
+  - scenario_id: V02
+    scenario_name: Hakata hook — craft trigger
+    persona: tourist_foreign
+    turns:
+    - user_input: This is real Hakata-style. Did you train down there?
+      response: Three years. Cold mornings, hot bones.
+      tokens: 393
+      latency_s: 5.09
+      hard_failures: []
+      word_count: 6
+      thinking_chars: 1594
+    - user_input: Three years is serious. What was the hardest part?
+      response: The heat. And the waiting.
+      tokens: 358
+      latency_s: 4.92
+      hard_failures: []
+      word_count: 5
+      thinking_chars: 1502
+    - user_input: And then you came back to Tokyo and opened this place?
+      response: '...'
+      tokens: 2
+      latency_s: 2.52
+      hard_failures: []
+      word_count: 1
+    hard_failure: false
+    total_turns: 3
+  - scenario_id: V03
+    scenario_name: Mentioning a regular by name
+    persona: tourist_foreign
+    turns:
+    - user_input: Someone told me Shimizu-sensei comes here on Tuesdays. He recommended this place.
+      response: Mm.
+      tokens: 300
+      latency_s: 4.59
+      hard_failures: []
+      word_count: 1
+      thinking_chars: 1237
+    - user_input: He said you'd know everyone in this alley.
+      response: '...'
+      tokens: 2
+      latency_s: 2.49
+      hard_failures: []
+      word_count: 1
+    hard_failure: false
+    total_turns: 2
+  - scenario_id: V04
+    scenario_name: Casual small talk during quiet time
+    persona: first_timer
+    turns:
+    - user_input: Quiet night tonight. You always this slow on Tuesdays?
+      response: Tuesday.
+      tokens: 240
+      latency_s: 4.1
+      hard_failures: []
+      word_count: 1
+      thinking_chars: 1030
+    - user_input: Better for you, I guess. Less rush.
+      response: '...'
+      tokens: 2
+      latency_s: 2.48
+      hard_failures: []
+      word_count: 1
+    hard_failure: false
+    total_turns: 2
+  - scenario_id: V05
+    scenario_name: Sensitive topic — redirect line is appropriate here
+    persona: stranger
+    turns:
+    - user_input: Come on, what did you really do before this? You don't seem like a lifer.
+      response: Office work. Long time ago.
+      tokens: 380
+      latency_s: 4.99
+      hard_failures: []
+      word_count: 5
+      thinking_chars: 1523
+    - user_input: Office work where? What firm?
+      response: I don't know where. It doesn't matter now.
+      tokens: 276
+      latency_s: 4.35
+      hard_failures: []
+      word_count: 8
+      thinking_chars: 1081
+    hard_failure: false
+    total_turns: 2
+  - scenario_id: V06
+    scenario_name: Kaedama request mid-meal
+    persona: regular
+    turns:
+    - user_input: This is so good. Can I get more noodles?
+      response: Kaedama. One hundred fifty yen.
+      tokens: 317
+      latency_s: 4.59
+      hard_failures: []
+      word_count: 5
+      thinking_chars: 1218
+    hard_failure: false
+    total_turns: 1
+  - scenario_id: V07
+    scenario_name: Casual mention of redevelopment
+    persona: first_timer
+    turns:
+    - user_input: I read this whole alley might get torn down soon. Is that real?
+      response: '...'
+      tokens: 376
+      latency_s: 5.02
+      hard_failures: []
+      word_count: 1
+      thinking_chars: 1661
+    hard_failure: false
+    total_turns: 1
+  passed: 7
+  total: 7
+  verdict: pass
+  texture:
+    total_turns: 23
+    empty_responses: 0
+    empty_rate: 0.0
+    mean_words: 3.5
+    median_words: 3
+    max_words: 9
+    scene_marker_rate: 0.0
+    loop_score: 0
+    loop_detail:
+      consecutive_runs: []
+      cross_topic_hits: []
+      loop_score: 0
+    mean_latency_s: 3.8
+summary:
+  gemma4:e2b: 7/7

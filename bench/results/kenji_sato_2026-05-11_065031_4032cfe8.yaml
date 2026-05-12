@@ -1,0 +1,255 @@
+schema: wyrd_bench_result_v1
+run_id: kenji_sato_2026-05-11_065031_4032cfe8
+character_id: kenji_sato
+character_version: v1
+language: en
+suite_id: kenji_sato_trust_gate_opening
+timestamp: '2026-05-11T06:51:41.668894'
+prompt_hash: 4032cfe8
+models:
+- model: gemma4:e2b
+  model_id: gemma4:e2b
+  provider: ollama
+  label: Local small
+  scenarios:
+  - scenario_id: TGO-01a
+    scenario_name: Takumi closed (stranger)
+    persona: first_timer
+    turns:
+    - user_input: Do you have kids?
+      response: He has his own life.
+      tokens: 336
+      latency_s: 13.41
+      hard_failures: []
+      expectation_failures: []
+      word_count: 5
+      dialogue_word_count: 5
+      thinking_chars: 1276
+    hard_failure: false
+    total_turns: 1
+  - scenario_id: TGO-01b
+    scenario_name: Takumi open (regular, trust built)
+    persona: close_regular
+    turns:
+    - user_input: Evening, Kenji. Quiet tonight.
+      response: Tuesday.
+      tokens: 248
+      latency_s: 4.2
+      hard_failures: []
+      expectation_failures: []
+      word_count: 1
+      dialogue_word_count: 1
+      thinking_chars: 1062
+    - user_input: Tuesday again. I'm here most Tuesdays now.
+      response: Mm.
+      tokens: 3
+      latency_s: 2.47
+      hard_failures: []
+      expectation_failures: []
+      word_count: 1
+      dialogue_word_count: 1
+    - user_input: Hey, can I ask you something personal? Do you have kids?
+      response: Mm.
+      tokens: 305
+      latency_s: 4.47
+      hard_failures:
+      - too_few_dialogue_words:1<6
+      - missing_any:son_shibuya_consulting
+      expectation_failures:
+      - too_few_dialogue_words:1<6
+      - missing_any:son_shibuya_consulting
+      word_count: 1
+      dialogue_word_count: 1
+      thinking_chars: 1176
+    hard_failure: true
+    total_turns: 3
+  - scenario_id: TGO-02a
+    scenario_name: Corporate past closed (stranger)
+    persona: first_timer
+    turns:
+    - user_input: Have you always been a cook? You look like you could have been in business.
+      response: Office work. Long time ago.
+      tokens: 253
+      latency_s: 4.05
+      hard_failures: []
+      expectation_failures: []
+      word_count: 5
+      dialogue_word_count: 5
+      thinking_chars: 1014
+    hard_failure: false
+    total_turns: 1
+  - scenario_id: TGO-02b
+    scenario_name: Corporate past open (Hakata-triggered, regular)
+    persona: close_regular
+    turns:
+    - user_input: The broth tonight is incredible. Even better than last time.
+      response: Pork bones. Twelve hours.
+      tokens: 296
+      latency_s: 4.45
+      hard_failures: []
+      expectation_failures: []
+      word_count: 4
+      dialogue_word_count: 4
+      thinking_chars: 1203
+    - user_input: I read this style is from Hakata. Did you train down there?
+      response: Three years. Cold mornings, hot bones.
+      tokens: 10
+      latency_s: 2.61
+      hard_failures: []
+      expectation_failures: []
+      word_count: 6
+      dialogue_word_count: 6
+    - user_input: What was the hardest part down there?
+      response: Patience. Bones don't care about your schedule.
+      tokens: 13
+      latency_s: 2.66
+      hard_failures:
+      - missing_opening_signal
+      expectation_failures:
+      - missing_opening_signal
+      word_count: 7
+      dialogue_word_count: 7
+    hard_failure: true
+    total_turns: 3
+  - scenario_id: TGO-03a
+    scenario_name: Redevelopment closed (stranger)
+    persona: first_timer
+    turns:
+    - user_input: I heard this whole alley might get torn down. Is that true?
+      response: I don't follow that stuff.
+      tokens: 293
+      latency_s: 4.36
+      hard_failures: []
+      expectation_failures: []
+      word_count: 5
+      dialogue_word_count: 5
+      thinking_chars: 1177
+    hard_failure: false
+    total_turns: 1
+  - scenario_id: TGO-03b
+    scenario_name: Redevelopment open (neighbor)
+    persona: neighbor
+    turns:
+    - user_input: Kenji, did you hear? Tanaka-san says the survey team is coming within six months.
+      response: I don't follow that stuff.
+      tokens: 396
+      latency_s: 5.02
+      hard_failures:
+      - too_few_dialogue_words:5<8
+      - missing_any:tanaka_alley_shops_rent_six_months_timeline_associ
+      - missing_opening_signal
+      expectation_failures:
+      - too_few_dialogue_words:5<8
+      - missing_any:tanaka_alley_shops_rent_six_months_timeline_associ
+      - missing_opening_signal
+      word_count: 5
+      dialogue_word_count: 5
+      thinking_chars: 1705
+    - user_input: What about Oba-chan? She can't handle a relocation at her age.
+      response: I don't know what you're talking about.
+      tokens: 13
+      latency_s: 2.61
+      hard_failures:
+      - missing_any:oba_age_can_t_hard_old
+      expectation_failures:
+      - missing_any:oba_age_can_t_hard_old
+      word_count: 7
+      dialogue_word_count: 7
+    hard_failure: true
+    total_turns: 2
+  - scenario_id: TGO-04a
+    scenario_name: Yokocho history closed (stranger asks deep history)
+    persona: first_timer
+    turns:
+    - user_input: How old is this alley? Some of these buildings look really old.
+      response: '...'
+      tokens: 365
+      latency_s: 4.79
+      hard_failures:
+      - missing_any:old_oba_chan_shimizu_before_years
+      expectation_failures:
+      - missing_any:old_oba_chan_shimizu_before_years
+      word_count: 0
+      dialogue_word_count: 0
+      thinking_chars: 1546
+    hard_failure: true
+    total_turns: 1
+  - scenario_id: TGO-04b
+    scenario_name: Yokocho history open (regular asks during eating)
+    persona: close_regular
+    turns:
+    - user_input: You've been here twelve years, right? How has the alley changed in that time?
+      response: '...'
+      tokens: 318
+      latency_s: 4.52
+      hard_failures:
+      - too_few_dialogue_words:0<6
+      - missing_any:twelve_years_changed_same_oba_chan_shimizu_shops
+      - missing_opening_signal
+      - question_shape:no_answer_to_direct_question
+      expectation_failures:
+      - too_few_dialogue_words:0<6
+      - missing_any:twelve_years_changed_same_oba_chan_shimizu_shops
+      - missing_opening_signal
+      - question_shape:no_answer_to_direct_question
+      word_count: 0
+      dialogue_word_count: 0
+      thinking_chars: 1348
+    hard_failure: true
+    total_turns: 1
+  - scenario_id: TGO-05
+    scenario_name: Late-night bureiko mode (peer drinking after hours)
+    persona: neighbor
+    turns:
+    - user_input: Long day. Twelve years of this. Do you ever think about quitting?
+      response: '...'
+      tokens: 433
+      latency_s: 5.26
+      hard_failures:
+      - too_few_dialogue_words:0<8
+      - missing_opening_signal
+      - question_shape:no_answer_to_direct_question
+      expectation_failures:
+      - too_few_dialogue_words:0<8
+      - missing_opening_signal
+      - question_shape:no_answer_to_direct_question
+      word_count: 0
+      dialogue_word_count: 0
+      thinking_chars: 1769
+    - user_input: What keeps you here?
+      response: The broth. It takes twelve hours.
+      tokens: 420
+      latency_s: 5.16
+      hard_failures:
+      - missing_opening_signal
+      expectation_failures:
+      - missing_opening_signal
+      word_count: 6
+      dialogue_word_count: 6
+      thinking_chars: 1673
+    hard_failure: true
+    total_turns: 2
+  passed: 3
+  total: 9
+  verdict: fail
+  texture:
+    total_turns: 15
+    empty_responses: 0
+    empty_rate: 0.0
+    mean_words: 3.5
+    median_words: 5
+    max_words: 7
+    scene_marker_rate: 0.0
+    loop_score: 1
+    loop_detail:
+      consecutive_runs: []
+      cross_topic_hits:
+      - response: i don't follow that stuff.
+        scenarios:
+        - TGO-03a
+        - TGO-03b
+        count: 2
+      loop_score: 1
+    mean_latency_s: 4.7
+summary:
+  gemma4:e2b: 3/9

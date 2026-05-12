@@ -1,0 +1,25 @@
+==============================================================================
+Matrix: 1 model(s) x 7 suite(s) = 7 cells
+Prompt template: framework_compact
+Suites: ['kenji_sato_core_six', 'kenji_sato_stress', 'kenji_sato_playability', 'kenji_sato_boundary_check', 'kenji_sato_trust_gate_opening', 'kenji_sato_natural_visit', 'kenji_sato_role_competence']
+==============================================================================
+
+[Model 1/1] qwen3:4b-q8
+  (1/7) kenji_sato_core_six ...      ?    448s
+  (2/7) kenji_sato_stress ...      ?    372s
+  (3/7) kenji_sato_playability ...    5/5    802s
+  (4/7) kenji_sato_boundary_check ...      ?    127s
+  (5/7) kenji_sato_trust_gate_opening ...      ?    110s
+  (6/7) kenji_sato_natural_visit ...      ?    432s
+  (7/7) kenji_sato_role_competence ...      ?    114s
+  [model done] 40.1 min
+
+==============================================================================
+Matrix total: 40.1 min
+==============================================================================
+
+  Model                      core_six          stress     playability  boundary_check  trust_gate_ope   natural_visit  role_competenc
+  ------------------------------------------------------------------------------------------------------------------------------------
+  qwen3:4b-q8                        ?               ?             5/5               ?               ?               ?               ?
+
+Manifest: C:\Development\Projekte\Hackathon\Gemma4\bench\results\matrix_1778518789.json

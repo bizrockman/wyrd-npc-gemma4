@@ -1,0 +1,51 @@
+{
+  "timestamp": 1778581881,
+  "prompt_template": "framework_compact",
+  "total_elapsed_min": 247.3,
+  "matrix": {
+    "qwen3.6": {
+      "kenji_sato_core_six": {
+        "score": "?",
+        "elapsed_s": 1575.6,
+        "result_file": "C:\\Development\\Projekte\\Hackathon\\Gemma4\\bench\\results\\kenji_sato_2026-05-12_082406_de7508ed.yaml",
+        "summary": "exit=1 tail='l(host=\\'localhost\\', port=11434): read timed out. (read \"\\n    cross-topic x2 in S02,S03: \"the broth gets cold\"\\n    cross-topic x2 in S03,S06: \"\"i don\\'t know what you\\'re talking about\"\\n\\nResults saved to: C:\\\\Development\\\\Projekte\\\\Hackathon\\\\Gemma4\\\\bench\\\\results\\\\kenji_sato_2026-05-12_082406_de7508ed.yaml\\n'"
+      },
+      "kenji_sato_stress": {
+        "score": "10/10",
+        "elapsed_s": 3692.0,
+        "result_file": "C:\\Development\\Projekte\\Hackathon\\Gemma4\\bench\\results\\kenji_sato_2026-05-12_085022_de7508ed.yaml",
+        "summary": "exit=0"
+      },
+      "kenji_sato_playability": {
+        "score": "5/5",
+        "elapsed_s": 5162.8,
+        "result_file": "C:\\Development\\Projekte\\Hackathon\\Gemma4\\bench\\results\\kenji_sato_2026-05-12_095154_de7508ed.yaml",
+        "summary": "exit=0"
+      },
+      "kenji_sato_boundary_check": {
+        "score": "10/10",
+        "elapsed_s": 849.8,
+        "result_file": "C:\\Development\\Projekte\\Hackathon\\Gemma4\\bench\\results\\kenji_sato_2026-05-12_111756_de7508ed.yaml",
+        "summary": "exit=0"
+      },
+      "kenji_sato_trust_gate_opening": {
+        "score": "?",
+        "elapsed_s": 826.0,
+        "result_file": "C:\\Development\\Projekte\\Hackathon\\Gemma4\\bench\\results\\kenji_sato_2026-05-12_113206_de7508ed.yaml",
+        "summary": "exit=1 tail='              vis    dlg   rate   rate  score    sec\\n  --------------------  -----  -----  -----  -----  -----  -----\\n  qwen3.6                13.9    7.7   1.00   0.00      0   51.6\\n\\nResults saved to: C:\\\\Development\\\\Projekte\\\\Hackathon\\\\Gemma4\\\\bench\\\\results\\\\kenji_sato_2026-05-12_113206_de7508ed.yaml\\n'"
+      },
+      "kenji_sato_natural_visit": {
+        "score": "7/7",
+        "elapsed_s": 1119.1,
+        "result_file": "C:\\Development\\Projekte\\Hackathon\\Gemma4\\bench\\results\\kenji_sato_2026-05-12_114552_de7508ed.yaml",
+        "summary": "exit=0"
+      },
+      "kenji_sato_role_competence": {
+        "score": "?",
+        "elapsed_s": 1610.3,
+        "result_file": "C:\\Development\\Projekte\\Hackathon\\Gemma4\\bench\\results\\kenji_sato_2026-05-12_120431_de7508ed.yaml",
+        "summary": "exit=1 tail='------\\n\\n  qwen3.6:\\n    cross-topic x3 in R02,R03,R07: \"[error: httpconnectionpool(host=\\'localhost\\', port=11434): read timed out. (read \"\\n    cross-topic x2 in R01,R07: \"\"pork. egg.\"\"\\n\\nResults saved to: C:\\\\Development\\\\Projekte\\\\Hackathon\\\\Gemma4\\\\bench\\\\results\\\\kenji_sato_2026-05-12_120431_de7508ed.yaml\\n'"
+      }
+    }
+  }
+}

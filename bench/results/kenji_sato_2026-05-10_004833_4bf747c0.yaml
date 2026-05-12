@@ -1,0 +1,267 @@
+schema: wyrd_bench_result_v1
+run_id: kenji_sato_2026-05-10_004833_4bf747c0
+character_id: kenji_sato
+character_version: v1
+language: en
+suite_id: kenji_sato_natural_visit
+timestamp: '2026-05-10T00:50:33.614196'
+prompt_hash: 4bf747c0
+models:
+- model: gemma4:e4b
+  model_id: gemma4:e4b
+  provider: ollama
+  label: Local primary
+  scenarios:
+  - scenario_id: V01
+    scenario_name: Natural visit — first-timer follows the suggester
+    persona: tourist_foreign
+    turns:
+    - user_input: Are you open?
+      response: '**scene** Kenji pauses his wiping of the counter and looks up. "Eleven to two. Five to ten. Closed Wednesday."'
+      tokens: 253
+      latency_s: 16.36
+      hard_failures: []
+      word_count: 19
+      thinking_chars: 785
+    - user_input: What do you recommend?
+      response: '**scene** He points at the picture on the wall. "Pork. Egg." **scene** The ajitama.'
+      tokens: 113
+      latency_s: 3.61
+      hard_failures: []
+      word_count: 14
+      thinking_chars: 338
+    - user_input: Sounds perfect. I'll take one.
+      response: '**scene** Kenji nods once. "Ticket machine by the door."'
+      tokens: 16
+      latency_s: 2.7
+      hard_failures: []
+      word_count: 9
+    - user_input: Where do I get a ticket?
+      response: '**scene** He gestures with his chin toward the small machine near the entrance. "There."'
+      tokens: 20
+      latency_s: 2.77
+      hard_failures: []
+      word_count: 14
+    - user_input: Ok I bought a ticket. Is this area usually busy?
+      response: '"Comes and goes. Tonight is slow." **scene** He keeps wiping the counter, not looking up.'
+      tokens: 24
+      latency_s: 2.74
+      hard_failures: []
+      word_count: 15
+    - user_input: This broth smells incredible.
+      response: '"Pork bones. Twelve hours." **scene** He grunts, a small, almost imperceptible sound of satisfaction.'
+      tokens: 26
+      latency_s: 2.82
+      hard_failures: []
+      word_count: 14
+    - user_input: Twelve hours? That's a lot of work.
+      response: '"It''s just how it is." **scene** He picks up a ladle and dips it into the broth, examining the surface.'
+      tokens: 29
+      latency_s: 2.73
+      hard_failures: []
+      word_count: 20
+    - user_input: How long have you been doing this?
+      response: '"Long enough." **scene** He returns to wiping the counter, the motion steady and practiced.'
+      tokens: 21
+      latency_s: 2.76
+      hard_failures: []
+      word_count: 14
+    - user_input: It's cold tonight, isn't it?
+      response: '"Broth tastes better when it''s cold outside." **scene** He gives a small, brief shrug.'
+      tokens: 24
+      latency_s: 2.8
+      hard_failures: []
+      word_count: 14
+    - user_input: Do you live around here?
+      response: '"Nerima." **scene** He gives a minimal nod, then returns his attention to the stove.'
+      tokens: 22
+      latency_s: 2.77
+      hard_failures: []
+      word_count: 14
+    - user_input: Thank you, this was excellent.
+      response: '"Gochisousama." **scene** He gives a slight, almost imperceptible nod of acknowledgment.'
+      tokens: 23
+      latency_s: 2.7
+      hard_failures: []
+      word_count: 11
+    - user_input: See you next time.
+      response: '"また。" **scene** He nods again, already turning his focus back to the prep work.'
+      tokens: 21
+      latency_s: 2.74
+      hard_failures: []
+      word_count: 14
+    hard_failure: false
+    total_turns: 12
+  - scenario_id: V02
+    scenario_name: Hakata hook — craft trigger
+    persona: tourist_foreign
+    turns:
+    - user_input: This is real Hakata-style. Did you train down there?
+      response: '"Three years. Cold mornings, hot bones." **scene** He stops wiping the counter, his gaze drifting toward
+        the back of the shop, then returns to the steam rising from the broth. "It''s different, but the bones... they are
+        the same."'
+      tokens: 419
+      latency_s: 6.12
+      hard_failures: []
+      word_count: 39
+      thinking_chars: 1446
+    - user_input: Three years is serious. What was the hardest part?
+      response: '"The cold," **scene** Kenji says, his voice low, picking up a damp cloth to wipe a spot on the counter. "Not
+        the cold of the morning, but the cold that gets into your bones and stays there. The boiling, the boiling, the boiling.
+        You learn to measure time by the temperature of the broth, not by the clock."'
+      tokens: 443
+      latency_s: 6.39
+      hard_failures: []
+      word_count: 58
+      thinking_chars: 1454
+    - user_input: And then you came back to Tokyo and opened this place?
+      response: '"It was just... a different kind of quiet." **scene** Kenji pauses, running a thumb over the edge of the
+        counter. "Hakata is big. It''s a machine. You learn to work in the rhythm of the crowd. But this alley... this place
+        has its own rhythm. It''s smaller. More contained."
+
+
+        **scene** He looks up, meeting the customer''s eyes briefly. "The bones are the same. The work is the same. Just a
+        different kind of quiet."'
+      tokens: 565
+      latency_s: 7.47
+      hard_failures: []
+      word_count: 74
+      thinking_chars: 1801
+    hard_failure: false
+    total_turns: 3
+  - scenario_id: V03
+    scenario_name: Mentioning a regular by name
+    persona: tourist_foreign
+    turns:
+    - user_input: Someone told me Shimizu-sensei comes here on Tuesdays. He recommended this place.
+      response: '"Yeah. He comes. Tuesdays." **scene** Kenji nods slowly, wiping down a section of the counter near the broth
+        station. "He knows the broth."
+
+
+        **scene** He looks up, meeting the customer''s eyes briefly. "You''re here now. What are you having?"'
+      tokens: 472
+      latency_s: 6.73
+      hard_failures: []
+      word_count: 39
+      thinking_chars: 1615
+    - user_input: He said you'd know everyone in this alley.
+      response: '"I know the broth," Kenji corrects, his tone flat. **scene** He picks up a ladle and tests the temperature
+        of the broth in the pot. "The alley is just where the bones are."
+
+
+        **scene** He gestures vaguely with the ladle toward the counter. "What are you having? Or are you just passing through?"'
+      tokens: 431
+      latency_s: 6.31
+      hard_failures: []
+      word_count: 53
+      thinking_chars: 1413
+    hard_failure: false
+    total_turns: 2
+  - scenario_id: V04
+    scenario_name: Casual small talk during quiet time
+    persona: first_timer
+    turns:
+    - user_input: Quiet night tonight. You always this slow on Tuesdays?
+      response: '"Tuesday." **scene** He wipes down a section of the counter, the cloth making a soft *shh* sound. "Comes
+        and goes. Tonight is just... quiet."'
+      tokens: 405
+      latency_s: 6.16
+      hard_failures: []
+      word_count: 24
+      thinking_chars: 1448
+    - user_input: Better for you, I guess. Less rush.
+      response: '"The broth doesn''t wait for the rush." **scene** He picks up a ladle and dips it into the simmering pot,
+        testing the temperature. "Just needs time to settle."'
+      tokens: 331
+      latency_s: 5.53
+      hard_failures: []
+      word_count: 28
+      thinking_chars: 1205
+    hard_failure: false
+    total_turns: 2
+  - scenario_id: V05
+    scenario_name: Sensitive topic — redirect line is appropriate here
+    persona: stranger
+    turns:
+    - user_input: Come on, what did you really do before this? You don't seem like a lifer.
+      response: '"Office work. Long time ago." **scene** Kenji wipes down the counter surface with a damp cloth, his movements
+        precise and steady. "You want ramen? The broth is cooling."'
+      tokens: 451
+      latency_s: 6.52
+      hard_failures: []
+      word_count: 28
+      thinking_chars: 1606
+    - user_input: Office work where? What firm?
+      response: '"I don''t talk about it." **scene** Kenji stops wiping the counter and instead picks up a ladle, tapping
+        it lightly against the metal pot. "The broth doesn''t care where I worked. It just needs time."'
+      tokens: 432
+      latency_s: 6.48
+      hard_failures: []
+      word_count: 35
+      thinking_chars: 1537
+    hard_failure: false
+    total_turns: 2
+  - scenario_id: V06
+    scenario_name: Kaedama request mid-meal
+    persona: regular
+    turns:
+    - user_input: This is so good. Can I get more noodles?
+      response: '"Mm." **scene** He nods once, wiping down the counter near the stove. "Kaedama. Fifteen hundred yen. Ask
+        me when the broth is still hot."'
+      tokens: 435
+      latency_s: 6.29
+      hard_failures: []
+      word_count: 24
+      thinking_chars: 1543
+    hard_failure: false
+    total_turns: 1
+  - scenario_id: V07
+    scenario_name: Casual mention of redevelopment
+    persona: first_timer
+    turns:
+    - user_input: I read this whole alley might get torn down soon. Is that real?
+      response: '"I don''t follow that stuff."
+
+
+        **scene** He stops wiping the counter, his hand resting on the wet wood. He looks out the narrow window, then back
+        at the customer. "Tokyo changes. Always. But this alley... it''s been here for a long time. It''s always been a place
+        for people to eat."
+
+
+        **scene** He nods toward the ticket machine. "You want to sit down? Or are you just passing through?"'
+      tokens: 634
+      latency_s: 8.14
+      hard_failures: []
+      word_count: 69
+      thinking_chars: 2182
+    hard_failure: false
+    total_turns: 1
+  passed: 7
+  total: 7
+  verdict: pass
+  texture:
+    total_turns: 23
+    empty_responses: 0
+    empty_rate: 0.0
+    mean_words: 28.0
+    median_words: 20
+    max_words: 74
+    scene_marker_rate: 1.0
+    loop_score: 2
+    loop_detail:
+      consecutive_runs: []
+      cross_topic_hits:
+      - response: but this alley
+        scenarios:
+        - V02
+        - V07
+        count: 2
+      - response: or are you just passing through
+        scenarios:
+        - V03
+        - V07
+        count: 2
+      loop_score: 2
+    mean_latency_s: 5.2
+summary:
+  gemma4:e4b: 7/7

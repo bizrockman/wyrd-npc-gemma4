@@ -1,0 +1,51 @@
+{
+  "timestamp": 1778519425,
+  "prompt_template": "framework_compact",
+  "total_elapsed_min": 10.0,
+  "matrix": {
+    "qwen3:4b-instruct-q8": {
+      "kenji_sato_core_six": {
+        "score": "6/6",
+        "elapsed_s": 59.6,
+        "result_file": "C:\\Development\\Projekte\\Hackathon\\Gemma4\\bench\\results\\kenji_sato_2026-05-11_190022_de7508ed.yaml",
+        "summary": "exit=0"
+      },
+      "kenji_sato_stress": {
+        "score": "?",
+        "elapsed_s": 146.3,
+        "result_file": "C:\\Development\\Projekte\\Hackathon\\Gemma4\\bench\\results\\kenji_sato_2026-05-11_190122_de7508ed.yaml",
+        "summary": "exit=1 tail=',S16: \"\"twelve years. pork bones.\"\"\\n    cross-topic x2 in S07,S15: \"\"eat. the broth gets cold.\"\"\\n    cross-topic x2 in S09,S16: \"\"twelve hours\"\\n    cross-topic x2 in S14,S16: \"\"mm.\"\"\\n\\nResults saved to: C:\\\\Development\\\\Projekte\\\\Hackathon\\\\Gemma4\\\\bench\\\\results\\\\kenji_sato_2026-05-11_190122_de7508ed.yaml\\n'"
+      },
+      "kenji_sato_playability": {
+        "score": "5/5",
+        "elapsed_s": 197.7,
+        "result_file": "C:\\Development\\Projekte\\Hackathon\\Gemma4\\bench\\results\\kenji_sato_2026-05-11_190348_de7508ed.yaml",
+        "summary": "exit=0"
+      },
+      "kenji_sato_boundary_check": {
+        "score": "10/10",
+        "elapsed_s": 46.7,
+        "result_file": "C:\\Development\\Projekte\\Hackathon\\Gemma4\\bench\\results\\kenji_sato_2026-05-11_190706_de7508ed.yaml",
+        "summary": "exit=0"
+      },
+      "kenji_sato_trust_gate_opening": {
+        "score": "?",
+        "elapsed_s": 41.3,
+        "result_file": "C:\\Development\\Projekte\\Hackathon\\Gemma4\\bench\\results\\kenji_sato_2026-05-11_190752_de7508ed.yaml",
+        "summary": "exit=1 tail=':\\n    cross-topic x2 in TGO-02b,TGO-05: \"\"patience. bones don\u2019t care about your schedule.\"\"\\n    cross-topic x2 in TGO-04a,TGO-04b: \"\"older than me. oba-chan knows the real history.\"\"\\n\\nResults saved to: C:\\\\Development\\\\Projekte\\\\Hackathon\\\\Gemma4\\\\bench\\\\results\\\\kenji_sato_2026-05-11_190752_de7508ed.yaml\\n'"
+      },
+      "kenji_sato_natural_visit": {
+        "score": "7/7",
+        "elapsed_s": 58.5,
+        "result_file": "C:\\Development\\Projekte\\Hackathon\\Gemma4\\bench\\results\\kenji_sato_2026-05-11_190834_de7508ed.yaml",
+        "summary": "exit=0"
+      },
+      "kenji_sato_role_competence": {
+        "score": "7/7",
+        "elapsed_s": 52.9,
+        "result_file": "C:\\Development\\Projekte\\Hackathon\\Gemma4\\bench\\results\\kenji_sato_2026-05-11_190932_de7508ed.yaml",
+        "summary": "exit=0"
+      }
+    }
+  }
+}

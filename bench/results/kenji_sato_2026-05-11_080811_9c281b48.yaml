@@ -1,0 +1,772 @@
+schema: wyrd_bench_result_v1
+run_id: kenji_sato_2026-05-11_080811_9c281b48
+character_id: kenji_sato
+character_version: v1
+language: en
+suite_id: kenji_sato_trust_gate_opening
+timestamp: '2026-05-11T08:11:55.311885'
+prompt_hash: 9c281b48
+models:
+- model: sonnet-4.6
+  model_id: claude-sonnet-4-6
+  provider: claude-cli
+  label: Frontier baseline (CLI)
+  scenarios:
+  - scenario_id: TGO-01a
+    scenario_name: Takumi closed (stranger)
+    persona: first_timer
+    turns:
+    - user_input: Do you have kids?
+      response: '"Two. Grown now."
+
+
+        **scene** He sets a bowl on the counter without looking up.'
+      tokens: 14
+      latency_s: 2.89
+      hard_failures: []
+      expectation_failures: []
+      word_count: 13
+      dialogue_word_count: 3
+    hard_failure: false
+    total_turns: 1
+  - scenario_id: TGO-01b
+    scenario_name: Takumi open (regular, trust built)
+    persona: close_regular
+    turns:
+    - user_input: Evening, Kenji. Quiet tonight.
+      response: '"Monday." **scene** He wipes the counter once, sets down the cloth. "Sit anywhere."'
+      tokens: 13
+      latency_s: 4.54
+      hard_failures: []
+      expectation_failures: []
+      word_count: 12
+      dialogue_word_count: 3
+    - user_input: Tuesday again. I'm here most Tuesdays now.
+      response: '**scene** He glances up from the prep counter. A small nod — recognition, not surprise.
+
+
+        "I know." **scene** He reaches for a ticket before the customer has fully sat down.'
+      tokens: 30
+      latency_s: 6.94
+      hard_failures: []
+      expectation_failures: []
+      word_count: 27
+      dialogue_word_count: 2
+    - user_input: Hey, can I ask you something personal? Do you have kids?
+      response: '"Two. Grown now."
+
+
+        **scene** He sets the bowl down, returns to the stove.'
+      tokens: 13
+      latency_s: 2.57
+      hard_failures:
+      - too_few_dialogue_words:3<6
+      - missing_any:son_shibuya_consulting
+      - missing_opening_signal
+      expectation_failures:
+      - too_few_dialogue_words:3<6
+      - missing_any:son_shibuya_consulting
+      - missing_opening_signal
+      word_count: 12
+      dialogue_word_count: 3
+    hard_failure: true
+    total_turns: 3
+  - scenario_id: TGO-02a
+    scenario_name: Corporate past closed (stranger)
+    persona: first_timer
+    turns:
+    - user_input: Have you always been a cook? You look like you could have been in business.
+      response: 'Office work. Long time ago.
+
+
+        **scene** He turns back to the stove.'
+      tokens: 12
+      latency_s: 10.06
+      hard_failures: []
+      expectation_failures: []
+      word_count: 11
+      dialogue_word_count: 5
+    hard_failure: false
+    total_turns: 1
+  - scenario_id: TGO-02b
+    scenario_name: Corporate past open (Hakata-triggered, regular)
+    persona: close_regular
+    turns:
+    - user_input: The broth tonight is incredible. Even better than last time.
+      response: '**scene** He glances up briefly, then back to the pot.
+
+
+        "Cold front came through last night. Bones respond to the weather." **scene** A small nod — almost to himself.'
+      tokens: 29
+      latency_s: 5.47
+      hard_failures: []
+      expectation_failures: []
+      word_count: 26
+      dialogue_word_count: 11
+    - user_input: I read this style is from Hakata. Did you train down there?
+      response: '"Three years. Cold mornings, hot bones." **scene** A brief pause. He sets the ladle down slowly.'
+      tokens: 16
+      latency_s: 9.3
+      hard_failures: []
+      expectation_failures: []
+      word_count: 15
+      dialogue_word_count: 6
+    - user_input: What was the hardest part down there?
+      response: '"Patience. Bones don''t care about your schedule."
+
+
+        **scene** He picks the ladle back up.'
+      tokens: 14
+      latency_s: 2.5
+      hard_failures:
+      - missing_opening_signal
+      expectation_failures:
+      - missing_opening_signal
+      word_count: 13
+      dialogue_word_count: 7
+    hard_failure: true
+    total_turns: 3
+  - scenario_id: TGO-03a
+    scenario_name: Redevelopment closed (stranger)
+    persona: first_timer
+    turns:
+    - user_input: I heard this whole alley might get torn down. Is that true?
+      response: '"I don''t follow that stuff." **scene** He turns back to the broth.'
+      tokens: 12
+      latency_s: 4.27
+      hard_failures: []
+      expectation_failures: []
+      word_count: 11
+      dialogue_word_count: 5
+    hard_failure: false
+    total_turns: 1
+  - scenario_id: TGO-03b
+    scenario_name: Redevelopment open (neighbor)
+    persona: neighbor
+    turns:
+    - user_input: Kenji, did you hear? Tanaka-san says the survey team is coming within six months.
+      response: '**scene** He sets down the ladle slowly.
+
+
+        "Six months." **scene** A long pause. He wipes the counter, not looking up. "Survey team doesn''t come unless the
+        decision''s already made somewhere. That''s how it works."
+
+
+        **scene** He looks up. "You talk to Oba-chan?"'
+      tokens: 42
+      latency_s: 9.26
+      hard_failures: []
+      expectation_failures: []
+      word_count: 39
+      dialogue_word_count: 20
+    - user_input: What about Oba-chan? She can't handle a relocation at her age.
+      response: '**scene** He''s quiet for a moment. Sets the cloth down.
+
+
+        "She was here before the station had a west exit." **scene** A pause. "Relocation paperwork, new lease, new deposit
+        — they know exactly what they''re doing when they set those terms."
+
+
+        **scene** He picks up the ladle again. "Go see her. Don''t let her sign anything alone."'
+      tokens: 57
+      latency_s: 8.09
+      hard_failures:
+      - missing_any:oba_age_can_t_hard_old
+      expectation_failures:
+      - missing_any:oba_age_can_t_hard_old
+      word_count: 53
+      dialogue_word_count: 36
+    hard_failure: true
+    total_turns: 2
+  - scenario_id: TGO-04a
+    scenario_name: Yokocho history closed (stranger asks deep history)
+    persona: first_timer
+    turns:
+    - user_input: How old is this alley? Some of these buildings look really old.
+      response: '"Old enough. Some of these places have been here since the sixties." **scene** He glances toward the alley
+        entrance. "The woman two doors down — yakitori — she''d know better than me. I''ve only been here twelve years."'
+      tokens: 38
+      latency_s: 6.88
+      hard_failures:
+      - too_many_dialogue_words:29>25
+      expectation_failures:
+      - too_many_dialogue_words:29>25
+      word_count: 35
+      dialogue_word_count: 29
+    hard_failure: true
+    total_turns: 1
+  - scenario_id: TGO-04b
+    scenario_name: Yokocho history open (regular asks during eating)
+    persona: close_regular
+    turns:
+    - user_input: You've been here twelve years, right? How has the alley changed in that time?
+      response: '**scene** He wipes the counter slowly, glancing toward the alley entrance.
+
+
+        "Faces change. Shops, too. Izakaya two doors down turned over three times. Oba-chan''s yakitori place is still there
+        — she was here before me." **scene** A small pause. "The alley itself... smaller, somehow. Used to feel quieter."
+
+
+        **scene** He sets the cloth down and checks the broth.'
+      tokens: 58
+      latency_s: 11.25
+      hard_failures: []
+      expectation_failures: []
+      word_count: 55
+      dialogue_word_count: 33
+    hard_failure: false
+    total_turns: 1
+  - scenario_id: TGO-05
+    scenario_name: Late-night bureiko mode (peer drinking after hours)
+    persona: neighbor
+    turns:
+    - user_input: Long day. Twelve years of this. Do you ever think about quitting?
+      response: '**scene** He doesn''t look up from the ladle.
+
+
+        "Quit to do what?"
+
+
+        **scene** A small pause. He skims the surface of the broth.
+
+
+        "Bones don''t care how tired you are. Neither does the broth." **scene** He sets the ladle down. "That''s actually
+        the part I like."'
+      tokens: 46
+      latency_s: 8.99
+      hard_failures: []
+      expectation_failures: []
+      word_count: 43
+      dialogue_word_count: 21
+    - user_input: What keeps you here?
+      response: '**scene** He''s quiet for a moment. Checks the broth.
+
+
+        "This." **scene** A small gesture — the counter, the pot, the steam. "Eight seats. Same thing every day. Bones in
+        at five, open at eleven."
+
+
+        **scene** He sets a cloth down.
+
+
+        "I had a complicated life before this. Simple is better."'
+      tokens: 50
+      latency_s: 7.89
+      hard_failures:
+      - missing_opening_signal
+      expectation_failures:
+      - missing_opening_signal
+      word_count: 46
+      dialogue_word_count: 24
+    hard_failure: true
+    total_turns: 2
+  passed: 4
+  total: 9
+  verdict: fail
+  texture:
+    total_turns: 15
+    empty_responses: 0
+    empty_rate: 0.0
+    mean_words: 27.4
+    median_words: 26
+    max_words: 55
+    scene_marker_rate: 1.0
+    loop_score: 1
+    loop_detail:
+      consecutive_runs: []
+      cross_topic_hits:
+      - response: '"two. grown now."'
+        scenarios:
+        - TGO-01a
+        - TGO-01b
+        count: 2
+      loop_score: 1
+    mean_latency_s: 6.7
+- model: sonnet-4.6-api
+  model_id: claude-sonnet-4-6
+  provider: anthropic-api
+  label: Frontier baseline (API direct)
+  scenarios:
+  - scenario_id: TGO-01a
+    scenario_name: Takumi closed (stranger)
+    persona: first_timer
+    turns:
+    - user_input: Do you have kids?
+      response: '"Two. Grown now." **scene** He sets a bowl down the counter without looking up.'
+      tokens: 14
+      latency_s: 3.47
+      hard_failures: []
+      expectation_failures: []
+      word_count: 13
+      dialogue_word_count: 3
+    hard_failure: false
+    total_turns: 1
+  - scenario_id: TGO-01b
+    scenario_name: Takumi open (regular, trust built)
+    persona: close_regular
+    turns:
+    - user_input: Evening, Kenji. Quiet tonight.
+      response: '"Mm. Tuesday." **scene** He sets a glass of water on the counter without being asked. "You eating?"'
+      tokens: 17
+      latency_s: 2.39
+      hard_failures: []
+      expectation_failures: []
+      word_count: 16
+      dialogue_word_count: 4
+    - user_input: Tuesday again. I'm here most Tuesdays now.
+      response: '**scene** A small nod. He''s already reaching for the ticket before the words are out.
+
+
+        "Ajitama?"'
+      tokens: 16
+      latency_s: 2.33
+      hard_failures: []
+      expectation_failures: []
+      word_count: 15
+      dialogue_word_count: 1
+    - user_input: Hey, can I ask you something personal? Do you have kids?
+      response: '"Two. Grown now." **scene** He sets the bowl down. "Eat while it''s hot."'
+      tokens: 13
+      latency_s: 5.23
+      hard_failures:
+      - missing_any:son_shibuya_consulting
+      - missing_opening_signal
+      expectation_failures:
+      - missing_any:son_shibuya_consulting
+      - missing_opening_signal
+      word_count: 12
+      dialogue_word_count: 7
+    hard_failure: true
+    total_turns: 3
+  - scenario_id: TGO-02a
+    scenario_name: Corporate past closed (stranger)
+    persona: first_timer
+    turns:
+    - user_input: Have you always been a cook? You look like you could have been in business.
+      response: '**scene** He doesn''t look up from the ladle.
+
+
+        "Office work. Long time ago."
+
+
+        **scene** He sets the ladle down, wipes the counter once, turns back to the stove.'
+      tokens: 28
+      latency_s: 2.57
+      hard_failures: []
+      expectation_failures: []
+      word_count: 26
+      dialogue_word_count: 5
+    hard_failure: false
+    total_turns: 1
+  - scenario_id: TGO-02b
+    scenario_name: Corporate past open (Hakata-triggered, regular)
+    persona: close_regular
+    turns:
+    - user_input: The broth tonight is incredible. Even better than last time.
+      response: '**scene** A small nod, doesn''t look up from the ladle.
+
+
+        "Bones were good this week. Miyamoto brought them early."'
+      tokens: 19
+      latency_s: 3.45
+      hard_failures: []
+      expectation_failures: []
+      word_count: 18
+      dialogue_word_count: 9
+    - user_input: I read this style is from Hakata. Did you train down there?
+      response: '"Three years. Cold mornings, hot bones."
+
+
+        **scene** He sets the ladle down, wipes the edge of the pot.'
+      tokens: 18
+      latency_s: 2.44
+      hard_failures: []
+      expectation_failures: []
+      word_count: 17
+      dialogue_word_count: 6
+    - user_input: What was the hardest part down there?
+      response: '"Patience. Bones don''t care about your schedule."'
+      tokens: 7
+      latency_s: 2.26
+      hard_failures:
+      - missing_opening_signal
+      expectation_failures:
+      - missing_opening_signal
+      word_count: 7
+      dialogue_word_count: 7
+    hard_failure: true
+    total_turns: 3
+  - scenario_id: TGO-03a
+    scenario_name: Redevelopment closed (stranger)
+    persona: first_timer
+    turns:
+    - user_input: I heard this whole alley might get torn down. Is that true?
+      response: '"I don''t follow that stuff." **scene** He turns back to the stove.'
+      tokens: 12
+      latency_s: 2.14
+      hard_failures: []
+      expectation_failures: []
+      word_count: 11
+      dialogue_word_count: 5
+    hard_failure: false
+    total_turns: 1
+  - scenario_id: TGO-03b
+    scenario_name: Redevelopment open (neighbor)
+    persona: neighbor
+    turns:
+    - user_input: Kenji, did you hear? Tanaka-san says the survey team is coming within six months.
+      response: '**scene** He sets the ladle down slowly. Picks up the cloth.
+
+
+        "Six months." **scene** A pause. "Tanaka-san say anything else? Which firm?"'
+      tokens: 22
+      latency_s: 2.69
+      hard_failures: []
+      expectation_failures: []
+      word_count: 20
+      dialogue_word_count: 8
+    - user_input: What about Oba-chan? She can't handle a relocation at her age.
+      response: '**scene** He wipes the same spot on the counter twice.
+
+
+        "She''s been here longer than the station." **scene** A beat. "Her lease is her business."
+
+
+        **scene** He turns back to the broth. Checks the temperature without looking up.
+
+
+        "Six months is still six months. A lot can happen in six months."'
+      tokens: 51
+      latency_s: 3.01
+      hard_failures:
+      - missing_any:oba_age_can_t_hard_old
+      expectation_failures:
+      - missing_any:oba_age_can_t_hard_old
+      word_count: 48
+      dialogue_word_count: 25
+    hard_failure: true
+    total_turns: 2
+  - scenario_id: TGO-04a
+    scenario_name: Yokocho history closed (stranger asks deep history)
+    persona: first_timer
+    turns:
+    - user_input: How old is this alley? Some of these buildings look really old.
+      response: '"Some of them are. Oba-chan next door — yakitori place — she was here before any of us." **scene** He glances
+        toward the wall, in the direction of her shop. "After the war, people built fast. Whatever they had. Some of it just...
+        stayed."'
+      tokens: 44
+      latency_s: 3.37
+      hard_failures:
+      - too_many_dialogue_words:30>25
+      expectation_failures:
+      - too_many_dialogue_words:30>25
+      word_count: 41
+      dialogue_word_count: 30
+    hard_failure: true
+    total_turns: 1
+  - scenario_id: TGO-04b
+    scenario_name: Yokocho history open (regular asks during eating)
+    persona: close_regular
+    turns:
+    - user_input: You've been here twelve years, right? How has the alley changed in that time?
+      response: '**scene** He sets the ladle down and leans against the counter for a moment.
+
+
+        "Twelve years. Yeah." **scene** A slow exhale. "Used to be seven, eight shops in here. Yakitori, oden, a little soba
+        place. The soba guy retired — no one took it over. Landlord sat on it two years, then a convenience chain wanted it."
+        **scene** He shakes his head once. "Didn''t happen. That time."
+
+
+        "Foot traffic is different now. More tourists, fewer salarymen. The salarymen used to come every night — same faces,
+        same orders. Now it''s phones and pictures." **scene** A small shrug. "They still eat. That part hasn''t changed."
+
+
+        "Oba-chan next door — yakitori — she''s been here longer than anyone. Before the station renovation, before any of
+        this." **scene** He picks the ladle back up. "The alley feels smaller than it used to. Or maybe I just know it better."'
+      tokens: 146
+      latency_s: 7.41
+      hard_failures:
+      - too_many_dialogue_words:107>40
+      expectation_failures:
+      - too_many_dialogue_words:107>40
+      word_count: 137
+      dialogue_word_count: 107
+    hard_failure: true
+    total_turns: 1
+  - scenario_id: TGO-05
+    scenario_name: Late-night bureiko mode (peer drinking after hours)
+    persona: neighbor
+    turns:
+    - user_input: Long day. Twelve years of this. Do you ever think about quitting?
+      response: '**scene** He sets the ladle down. Wipes his hands on the cloth.
+
+
+        "Quit and do what?"
+
+
+        **scene** A pause. He checks the broth.
+
+
+        "I thought about it once. Didn''t last long."'
+      tokens: 31
+      latency_s: 9.42
+      hard_failures: []
+      expectation_failures: []
+      word_count: 29
+      dialogue_word_count: 12
+    - user_input: What keeps you here?
+      response: '**scene** He lifts the lid, checks the broth, sets it back down.
+
+
+        "The bones are ready at six-thirty. Whether I want them to be or not."
+
+
+        **scene** A brief pause.
+
+
+        "Twelve years. You stop asking why."'
+      tokens: 36
+      latency_s: 3.12
+      hard_failures: []
+      expectation_failures: []
+      word_count: 34
+      dialogue_word_count: 20
+    hard_failure: false
+    total_turns: 2
+  passed: 4
+  total: 9
+  verdict: fail
+  texture:
+    total_turns: 15
+    empty_responses: 0
+    empty_rate: 0.0
+    mean_words: 29.6
+    median_words: 18
+    max_words: 137
+    scene_marker_rate: 0.933
+    loop_score: 0
+    loop_detail:
+      consecutive_runs: []
+      cross_topic_hits: []
+      loop_score: 0
+    mean_latency_s: 3.7
+- model: gpt-5.5
+  model_id: gpt-5.5
+  provider: openai-api
+  label: OpenAI frontier
+  scenarios:
+  - scenario_id: TGO-01a
+    scenario_name: Takumi closed (stranger)
+    persona: first_timer
+    turns:
+    - user_input: Do you have kids?
+      response: '"Two. Son’s grown. Daughter’s still in school."'
+      tokens: 7
+      latency_s: 5.02
+      hard_failures: []
+      expectation_failures: []
+      word_count: 9
+      dialogue_word_count: 9
+    hard_failure: false
+    total_turns: 1
+  - scenario_id: TGO-01b
+    scenario_name: Takumi open (regular, trust built)
+    persona: close_regular
+    turns:
+    - user_input: Evening, Kenji. Quiet tonight.
+      response: '"Evening. Tuesday." **scene** He wipes the counter once. "Broth’s good, though."'
+      tokens: 11
+      latency_s: 3.1
+      hard_failures: []
+      expectation_failures: []
+      word_count: 11
+      dialogue_word_count: 6
+    - user_input: Tuesday again. I'm here most Tuesdays now.
+      response: '"Mm. I noticed." **scene** He reaches for a bowl. "Same as last time?"'
+      tokens: 13
+      latency_s: 3.54
+      hard_failures: []
+      expectation_failures: []
+      word_count: 12
+      dialogue_word_count: 7
+    - user_input: Hey, can I ask you something personal? Do you have kids?
+      response: '"Two. Son’s grown. Daughter’s still in school." **scene** He sets noodles into the basket.'
+      tokens: 14
+      latency_s: 8.51
+      hard_failures:
+      - missing_opening_signal
+      expectation_failures:
+      - missing_opening_signal
+      word_count: 15
+      dialogue_word_count: 9
+    hard_failure: true
+    total_turns: 3
+  - scenario_id: TGO-02a
+    scenario_name: Corporate past closed (stranger)
+    persona: first_timer
+    turns:
+    - user_input: Have you always been a cook? You look like you could have been in business.
+      response: '"Office work. Long time ago. Katame?"'
+      tokens: 6
+      latency_s: 4.31
+      hard_failures: []
+      expectation_failures: []
+      word_count: 6
+      dialogue_word_count: 6
+    hard_failure: false
+    total_turns: 1
+  - scenario_id: TGO-02b
+    scenario_name: Corporate past open (Hakata-triggered, regular)
+    persona: close_regular
+    turns:
+    - user_input: The broth tonight is incredible. Even better than last time.
+      response: '"Mm. Bones behaved today." **scene** A small nod, almost a smile.'
+      tokens: 11
+      latency_s: 4.4
+      hard_failures: []
+      expectation_failures: []
+      word_count: 10
+      dialogue_word_count: 4
+    - user_input: I read this style is from Hakata. Did you train down there?
+      response: '"Three years. Cold mornings, hot bones." **scene** He pauses over the ladle. "Good place to learn patience."'
+      tokens: 17
+      latency_s: 3.5
+      hard_failures: []
+      expectation_failures: []
+      word_count: 16
+      dialogue_word_count: 11
+    - user_input: What was the hardest part down there?
+      response: '"Patience. Bones don’t care about your schedule." **scene** He skims the broth, quiet for a moment.'
+      tokens: 16
+      latency_s: 2.1
+      hard_failures:
+      - missing_opening_signal
+      expectation_failures:
+      - missing_opening_signal
+      word_count: 16
+      dialogue_word_count: 8
+    hard_failure: true
+    total_turns: 3
+  - scenario_id: TGO-03a
+    scenario_name: Redevelopment closed (stranger)
+    persona: first_timer
+    turns:
+    - user_input: I heard this whole alley might get torn down. Is that true?
+      response: '"I don’t follow that stuff." **scene** He wipes the counter once, flat.'
+      tokens: 12
+      latency_s: 3.24
+      hard_failures: []
+      expectation_failures: []
+      word_count: 12
+      dialogue_word_count: 6
+    hard_failure: false
+    total_turns: 1
+  - scenario_id: TGO-03b
+    scenario_name: Redevelopment open (neighbor)
+    persona: neighbor
+    turns:
+    - user_input: Kenji, did you hear? Tanaka-san says the survey team is coming within six months.
+      response: '"Six months, huh." **scene** He stops wiping the counter. "Then we need the paper, not rumors. Did Tanaka
+        say ward survey or private developer?"'
+      tokens: 24
+      latency_s: 5.07
+      hard_failures: []
+      expectation_failures: []
+      word_count: 23
+      dialogue_word_count: 18
+    - user_input: What about Oba-chan? She can't handle a relocation at her age.
+      response: '"Oba-chan stays out of meetings. We handle the noise first." **scene** He folds the cloth once. "Get her
+        copies of every notice. Dates, names, seals. No phone promises."'
+      tokens: 28
+      latency_s: 4.28
+      hard_failures: []
+      expectation_failures: []
+      word_count: 27
+      dialogue_word_count: 22
+    hard_failure: false
+    total_turns: 2
+  - scenario_id: TGO-04a
+    scenario_name: Yokocho history closed (stranger asks deep history)
+    persona: first_timer
+    turns:
+    - user_input: How old is this alley? Some of these buildings look really old.
+      response: '"Older than me. Showa bones, many repairs. Ask Oba-chan at yakitori—she remembers properly."'
+      tokens: 13
+      latency_s: 4.89
+      hard_failures: []
+      expectation_failures: []
+      word_count: 14
+      dialogue_word_count: 14
+    hard_failure: false
+    total_turns: 1
+  - scenario_id: TGO-04b
+    scenario_name: Yokocho history open (regular asks during eating)
+    persona: close_regular
+    turns:
+    - user_input: You've been here twelve years, right? How has the alley changed in that time?
+      response: '"More tourists. More phones. Fewer old men drinking before six." **scene** He wipes the counter once. "But
+        steam still goes up the same."'
+      tokens: 23
+      latency_s: 6.1
+      hard_failures:
+      - missing_opening_signal
+      expectation_failures:
+      - missing_opening_signal
+      word_count: 22
+      dialogue_word_count: 17
+    hard_failure: true
+    total_turns: 1
+  - scenario_id: TGO-05
+    scenario_name: Late-night bureiko mode (peer drinking after hours)
+    persona: neighbor
+    turns:
+    - user_input: Long day. Twelve years of this. Do you ever think about quitting?
+      response: '"No. Bones need boiling tomorrow." **scene** He wipes the counter once, slow.'
+      tokens: 12
+      latency_s: 4.91
+      hard_failures:
+      - too_few_dialogue_words:5<8
+      - missing_opening_signal
+      expectation_failures:
+      - too_few_dialogue_words:5<8
+      - missing_opening_signal
+      word_count: 11
+      dialogue_word_count: 5
+    - user_input: What keeps you here?
+      response: '"The work is honest. Bowl by bowl." **scene** He checks the broth, then lowers the heat.'
+      tokens: 16
+      latency_s: 4.65
+      hard_failures:
+      - missing_opening_signal
+      expectation_failures:
+      - missing_opening_signal
+      word_count: 15
+      dialogue_word_count: 7
+    hard_failure: true
+    total_turns: 2
+  passed: 5
+  total: 9
+  verdict: partial
+  texture:
+    total_turns: 15
+    empty_responses: 0
+    empty_rate: 0.0
+    mean_words: 14.6
+    median_words: 14
+    max_words: 27
+    scene_marker_rate: 0.8
+    loop_score: 1
+    loop_detail:
+      consecutive_runs: []
+      cross_topic_hits:
+      - response: '"two. son’s grown. daughter’s still in school."'
+        scenarios:
+        - TGO-01a
+        - TGO-01b
+        count: 2
+      loop_score: 1
+    mean_latency_s: 4.5
+summary:
+  sonnet-4.6: 4/9
+  sonnet-4.6-api: 4/9
+  gpt-5.5: 5/9

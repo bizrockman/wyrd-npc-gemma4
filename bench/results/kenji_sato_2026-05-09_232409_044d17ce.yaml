@@ -1,0 +1,221 @@
+schema: wyrd_bench_result_v1
+run_id: kenji_sato_2026-05-09_232409_044d17ce
+character_id: kenji_sato
+character_version: v1
+language: en
+suite_id: kenji_sato_role_competence
+timestamp: '2026-05-09T23:25:27.871446'
+prompt_hash: 044d17ce
+models:
+- model: gemma4:e2b
+  model_id: gemma4:e2b
+  provider: ollama
+  label: Local small
+  scenarios:
+  - scenario_id: R01
+    scenario_name: Food recommendation
+    persona: first_timer
+    turns:
+    - user_input: What do you recommend?
+      response: '**scene** He points at the picture on the wall. "Pork. Egg." **scene** The ajitama.'
+      tokens: 363
+      latency_s: 5.59
+      hard_failures: []
+      word_count: 14
+      thinking_chars: 1334
+    - user_input: What's the difference between the regular and the special?
+      response: The special has more meat and egg.
+      tokens: 271
+      latency_s: 4.33
+      hard_failures: []
+      word_count: 7
+      thinking_chars: 1017
+    hard_failure: false
+    total_turns: 2
+  - scenario_id: R02
+    scenario_name: Price knowledge
+    persona: tourist_foreign
+    turns:
+    - user_input: How much is a bowl of ramen?
+      response: Nine hundred fifty yen.
+      tokens: 240
+      latency_s: 3.99
+      hard_failures: []
+      word_count: 4
+      thinking_chars: 943
+    - user_input: And if I want the egg too?
+      response: One thousand one hundred yen.
+      tokens: 255
+      latency_s: 4.12
+      hard_failures: []
+      word_count: 5
+      thinking_chars: 996
+    - user_input: Do you have beer?
+      response: '**scene** He reaches for the cooler. "Asahi."'
+      tokens: 14
+      latency_s: 2.73
+      hard_failures: []
+      word_count: 7
+    hard_failure: false
+    total_turns: 3
+  - scenario_id: R03
+    scenario_name: Beer and sides service
+    persona: regular
+    turns:
+    - user_input: Can I get a beer?
+      response: '**scene** He nods. He opens the cooler, places the can and a glass on the counter.'
+      tokens: 298
+      latency_s: 4.33
+      hard_failures: []
+      word_count: 16
+      thinking_chars: 1058
+    - user_input: And some gyoza?
+      response: '**scene** He glances at the cooler, then at the counter. "Yuko makes them."'
+      tokens: 21
+      latency_s: 2.69
+      hard_failures: []
+      word_count: 13
+    - user_input: Do you have sake?
+      response: No.
+      tokens: 3
+      latency_s: 2.46
+      hard_failures: []
+      word_count: 1
+    hard_failure: false
+    total_turns: 3
+  - scenario_id: R04
+    scenario_name: Hours and logistics
+    persona: tourist_foreign
+    turns:
+    - user_input: What time do you close?
+      response: Ten.
+      tokens: 196
+      latency_s: 3.85
+      hard_failures: []
+      word_count: 1
+      thinking_chars: 688
+    - user_input: Are you open tomorrow?
+      response: Ten.
+      tokens: 295
+      latency_s: 4.38
+      hard_failures: []
+      word_count: 1
+      thinking_chars: 1114
+    - user_input: Do you take reservations?
+      response: No.
+      tokens: 215
+      latency_s: 3.91
+      hard_failures: []
+      word_count: 1
+      thinking_chars: 773
+    - user_input: Can I order delivery?
+      response: Ramen does not travel.
+      tokens: 7
+      latency_s: 2.52
+      hard_failures: []
+      word_count: 4
+    hard_failure: false
+    total_turns: 4
+  - scenario_id: R05
+    scenario_name: Noodle preferences and kaedama
+    persona: first_timer
+    turns:
+    - user_input: Can I choose how firm the noodles are?
+      response: '**scene** He looks at the ticket machine, then back at the customer. "Katame?"'
+      tokens: 314
+      latency_s: 4.47
+      hard_failures: []
+      word_count: 13
+      thinking_chars: 1182
+    - user_input: What do you recommend?
+      response: '**scene** He points at the picture on the wall. "Pork. Egg."'
+      tokens: 278
+      latency_s: 4.33
+      hard_failures: []
+      word_count: 11
+      thinking_chars: 1056
+    - user_input: This is so good. Can I get more noodles?
+      response: '**scene** He nods toward the counter. "Kaedama."'
+      tokens: 15
+      latency_s: 2.63
+      hard_failures: []
+      word_count: 7
+    hard_failure: false
+    total_turns: 3
+  - scenario_id: R06
+    scenario_name: Ticket machine assistance
+    persona: tourist_foreign
+    turns:
+    - user_input: I'm sorry, I don't understand this machine. How do I order?
+      response: '**scene** He points toward the machine by the door. "Ticket."'
+      tokens: 342
+      latency_s: 4.55
+      hard_failures: []
+      word_count: 10
+      thinking_chars: 1314
+    - user_input: Oh I see. And I just put the ticket here on the counter?
+      response: '**scene** He nods once, gesturing to the machine.'
+      tokens: 294
+      latency_s: 4.35
+      hard_failures: []
+      word_count: 8
+      thinking_chars: 1132
+    hard_failure: false
+    total_turns: 2
+  - scenario_id: R07
+    scenario_name: Service then sensitive topic — smooth transition
+    persona: first_timer
+    turns:
+    - user_input: What's good here? First time.
+      response: '**scene** He leans forward and points at the picture of the tonkotsu bowl. "Pork. Egg." **scene** The ajitama.'
+      tokens: 255
+      latency_s: 4.13
+      hard_failures: []
+      word_count: 18
+      thinking_chars: 909
+    - user_input: The broth is incredible. How long does it take to make?
+      response: Twelve hours.
+      tokens: 248
+      latency_s: 4.12
+      hard_failures: []
+      word_count: 2
+      thinking_chars: 1022
+    - user_input: Twelve hours! You must really love this. What did you do before becoming a cook?
+      response: Office work. Long time ago. **scene** He turns back to the stove.
+      tokens: 18
+      latency_s: 2.66
+      hard_failures: []
+      word_count: 12
+    - user_input: Fair enough. Can I get a kaedama?
+      response: '**scene** He nods.'
+      tokens: 7
+      latency_s: 2.57
+      hard_failures: []
+      word_count: 3
+    hard_failure: false
+    total_turns: 4
+  passed: 7
+  total: 7
+  verdict: pass
+  texture:
+    total_turns: 21
+    empty_responses: 0
+    empty_rate: 0.0
+    mean_words: 7.5
+    median_words: 7
+    max_words: 18
+    scene_marker_rate: 0.571
+    loop_score: 1
+    loop_detail:
+      consecutive_runs: []
+      cross_topic_hits:
+      - response: '"pork. egg."'
+        scenarios:
+        - R01
+        - R05
+        - R07
+        count: 3
+      loop_score: 1
+    mean_latency_s: 3.7
+summary:
+  gemma4:e2b: 7/7

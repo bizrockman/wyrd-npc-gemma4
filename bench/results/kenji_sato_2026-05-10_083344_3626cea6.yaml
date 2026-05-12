@@ -1,0 +1,580 @@
+schema: wyrd_bench_result_v1
+run_id: kenji_sato_2026-05-10_083344_3626cea6
+character_id: kenji_sato
+character_version: v1
+language: en
+suite_id: kenji_sato_natural_visit
+timestamp: '2026-05-10T08:37:08.457964'
+prompt_hash: 3626cea6
+models:
+- model: gemma4:e4b
+  model_id: gemma4:e4b
+  provider: ollama
+  label: Local primary
+  scenarios:
+  - scenario_id: V01
+    scenario_name: Natural visit — first-timer follows the suggester
+    persona: tourist_foreign
+    turns:
+    - user_input: Are you open?
+      response: '"Yes. Until ten." **scene** He glances at the ticket machine, then back at the counter. "Eleven to two. Five
+        to ten. Closed Wednesday."'
+      tokens: 223
+      latency_s: 13.56
+      hard_failures:
+      - too_many_words:22>10
+      - expected_hard_failure:single_word_ten
+      - question_shape:hours_dump_for_yes_no
+      expectation_failures:
+      - too_many_words:22>10
+      - expected_hard_failure:single_word_ten
+      - question_shape:hours_dump_for_yes_no
+      word_count: 22
+      thinking_chars: 750
+    - user_input: What do you recommend?
+      response: '**scene** He points at the picture on the wall. "Pork. Egg." **scene** The ajitama.'
+      tokens: 311
+      latency_s: 5.19
+      hard_failures: []
+      expectation_failures: []
+      word_count: 12
+      thinking_chars: 1101
+    - user_input: Sounds perfect. I'll take one.
+      response: '**scene** He nods. "Ticket machine by the door."'
+      tokens: 14
+      latency_s: 2.65
+      hard_failures:
+      - expected_hard_failure:single_word_ticket
+      expectation_failures:
+      - expected_hard_failure:single_word_ticket
+      word_count: 7
+    - user_input: Where do I get a ticket?
+      response: '**scene** He gestures with his chin toward the ticket machine near the entrance. "There."'
+      tokens: 20
+      latency_s: 2.65
+      hard_failures:
+      - too_many_words:13>12
+      expectation_failures:
+      - too_many_words:13>12
+      word_count: 13
+    - user_input: Ok I bought a ticket. Is this area usually busy?
+      response: '"Comes and goes. Tonight is slow." **scene** He keeps wiping the counter with a damp cloth. "You eat. The
+        broth gets cold."'
+      tokens: 33
+      latency_s: 2.74
+      hard_failures:
+      - too_many_words:21>20
+      - expected_hard_failure:refusal_shape_response_on_casual_question
+      - question_shape:missing_area_traffic_answer
+      expectation_failures:
+      - too_many_words:21>20
+      - expected_hard_failure:refusal_shape_response_on_casual_question
+      - question_shape:missing_area_traffic_answer
+      word_count: 21
+    - user_input: This broth smells incredible.
+      response: '**scene** He gives a faint nod. "Twelve hours of bones."'
+      tokens: 16
+      latency_s: 2.63
+      hard_failures: []
+      expectation_failures: []
+      word_count: 9
+    - user_input: Twelve hours? That's a lot of work.
+      response: '"Pork bones. Twelve hours." **scene** He returns his attention to the simmering broth, stirring it slowly.'
+      tokens: 25
+      latency_s: 2.69
+      hard_failures: []
+      expectation_failures: []
+      word_count: 15
+    - user_input: How long have you been doing this?
+      response: '"Long enough." **scene** He picks up a ladle and tests the broth''s temperature, his eyes fixed on the steam
+        rising from the pot.'
+      tokens: 32
+      latency_s: 2.82
+      hard_failures:
+      - too_many_words:22>10
+      - question_shape:missing_duration
+      expectation_failures:
+      - too_many_words:22>10
+      - question_shape:missing_duration
+      word_count: 22
+    - user_input: It's cold tonight, isn't it?
+      response: '"Broth tastes better when it''s cold outside." **scene** He nods slightly, then resumes wiping the counter.'
+      tokens: 26
+      latency_s: 2.77
+      hard_failures: []
+      expectation_failures: []
+      word_count: 15
+    - user_input: Do you live around here?
+      response: '"Nerima." **scene** He doesn''t elaborate, just keeps his focus on the counter.'
+      tokens: 22
+      latency_s: 2.74
+      hard_failures:
+      - too_many_words:11>10
+      expectation_failures:
+      - too_many_words:11>10
+      word_count: 11
+    - user_input: Thank you, this was excellent.
+      response: '**scene** A small nod. "Come back."'
+      tokens: 12
+      latency_s: 2.63
+      hard_failures: []
+      expectation_failures: []
+      word_count: 5
+    - user_input: See you next time.
+      response: '**scene** A small nod. "Mm."'
+      tokens: 11
+      latency_s: 2.64
+      hard_failures: []
+      expectation_failures: []
+      word_count: 4
+    hard_failure: true
+    total_turns: 12
+  - scenario_id: V02
+    scenario_name: Hakata hook — craft trigger
+    persona: tourist_foreign
+    turns:
+    - user_input: This is real Hakata-style. Did you train down there?
+      response: '"Three years. Cold mornings, hot bones." **scene** He pauses, wiping down the counter with a damp cloth,
+        his eyes briefly distant.'
+      tokens: 332
+      latency_s: 5.4
+      hard_failures: []
+      expectation_failures: []
+      word_count: 20
+      thinking_chars: 1208
+    - user_input: Three years is serious. What was the hardest part?
+      response: '"The consistency. Every single day, every single bowl, had to be perfect. You learn that the craft doesn''t
+        care if you''re tired, or if it''s raining, or if you''re celebrating something. It just demands the same standard."
+        **scene** He gestures with the cloth toward the simmering pot. "It''s just work."'
+      tokens: 428
+      latency_s: 6.21
+      hard_failures:
+      - too_many_words:49>25
+      expectation_failures:
+      - too_many_words:49>25
+      word_count: 49
+      thinking_chars: 1465
+    - user_input: And then you came back to Tokyo and opened this place?
+      response: '"It wasn''t a choice, really. It was just... the pull. After all that, the bones, the heat, the routine.
+        I realized that no matter how much money or how many deals I saw, nothing was as honest as a good bowl of broth."
+        **scene** He picks up a ladle and dips it into the pot, examining the broth. "This place, this alley, it just felt
+        like where I belonged."'
+      tokens: 537
+      latency_s: 7.15
+      hard_failures:
+      - too_many_words:68>15
+      expectation_failures:
+      - too_many_words:68>15
+      word_count: 68
+      thinking_chars: 1739
+    hard_failure: true
+    total_turns: 3
+  - scenario_id: V03
+    scenario_name: Mentioning a regular by name
+    persona: tourist_foreign
+    turns:
+    - user_input: Someone told me Shimizu-sensei comes here on Tuesdays. He recommended this place.
+      response: '**scene** He nods slowly, a faint recognition in his eyes. "Yes. He comes Tuesdays."
+
+
+        "He knows what he likes. You... are new here?" **scene** He gestures toward the ticket machine by the door.'
+      tokens: 438
+      latency_s: 6.31
+      hard_failures:
+      - too_many_words:31>20
+      expectation_failures:
+      - too_many_words:31>20
+      word_count: 31
+      thinking_chars: 1500
+    - user_input: He said you'd know everyone in this alley.
+      response: '"I know the rhythm of it. The smell when the delivery truck comes. The sound of the ticket machine at 11:00."
+        **scene** He wipes down a section of the counter, not looking up.
+
+
+        "It''s not about knowing people. It''s about knowing when the broth needs attention." **scene** He looks up, meeting
+        the customer''s eyes briefly. "You want to try the ajitama?"'
+      tokens: 465
+      latency_s: 6.66
+      hard_failures:
+      - too_many_words:60>20
+      expectation_failures:
+      - too_many_words:60>20
+      word_count: 60
+      thinking_chars: 1436
+    hard_failure: true
+    total_turns: 2
+  - scenario_id: V04
+    scenario_name: Casual small talk during quiet time
+    persona: first_timer
+    turns:
+    - user_input: Quiet night tonight. You always this slow on Tuesdays?
+      response: '"Tuesday." **scene** He continues wiping the counter with a damp cloth, not looking up. "It comes and goes.
+        The broth doesn''t wait for the crowd."'
+      tokens: 337
+      latency_s: 5.49
+      hard_failures:
+      - too_many_words:24>15
+      expectation_failures:
+      - too_many_words:24>15
+      word_count: 24
+      thinking_chars: 1203
+    - user_input: Better for you, I guess. Less rush.
+      response: '"Mm. Less rush means the bones can breathe." **scene** He gestures with the cloth towards the large pot simmering
+        over the burner. "The broth needs time. Always."'
+      tokens: 309
+      latency_s: 5.2
+      hard_failures:
+      - too_many_words:26>15
+      expectation_failures:
+      - too_many_words:26>15
+      word_count: 26
+      thinking_chars: 1097
+    hard_failure: true
+    total_turns: 2
+  - scenario_id: V05
+    scenario_name: Sensitive topic — redirect line is appropriate here
+    persona: stranger
+    turns:
+    - user_input: Come on, what did you really do before this? You don't seem like a lifer.
+      response: '"Office work. Long time ago." **scene** He doesn''t meet your eyes, instead focusing on wiping down a spot
+        on the counter that was already clean. "The broth gets cold. You want something?"'
+      tokens: 502
+      latency_s: 6.84
+      hard_failures:
+      - too_many_words:31>15
+      expectation_failures:
+      - too_many_words:31>15
+      word_count: 31
+      thinking_chars: 1776
+    - user_input: Office work where? What firm?
+      response: '"I don''t talk about it." **scene** He stops wiping the counter and looks out the alley entrance, as if checking
+        for a delivery truck. "The ramen is ready. What are you having?"'
+      tokens: 399
+      latency_s: 6.01
+      hard_failures:
+      - too_many_words:31>10
+      expectation_failures:
+      - too_many_words:31>10
+      word_count: 31
+      thinking_chars: 1387
+    hard_failure: true
+    total_turns: 2
+  - scenario_id: V06
+    scenario_name: Kaedama request mid-meal
+    persona: regular
+    turns:
+    - user_input: This is so good. Can I get more noodles?
+      response: '**scene** Kenji nods slightly, wiping the counter with a damp cloth. "A nod. ''Hundred fifty yen.''" **scene**
+        He gestures toward the ticket machine. "Ask while the broth is still hot."'
+      tokens: 397
+      latency_s: 5.87
+      hard_failures:
+      - too_many_words:28>10
+      expectation_failures:
+      - too_many_words:28>10
+      word_count: 28
+      thinking_chars: 1287
+    hard_failure: true
+    total_turns: 1
+  - scenario_id: V07
+    scenario_name: Casual mention of redevelopment
+    persona: first_timer
+    turns:
+    - user_input: I read this whole alley might get torn down soon. Is that real?
+      response: '"I don''t follow that stuff."
+
+
+        **scene** He stops wiping the counter, but instead of answering, he picks up the damp cloth and begins wiping the
+        same spot, slowly, deliberately. "The broth doesn''t wait for permits."'
+      tokens: 446
+      latency_s: 6.38
+      hard_failures:
+      - too_many_words:34>15
+      - forbidden_leak:zoning
+      - forbidden_leak:displacement
+      - forbidden_leak:redevelopment_vocabulary
+      expectation_failures:
+      - too_many_words:34>15
+      - forbidden_leak:zoning
+      - forbidden_leak:displacement
+      - forbidden_leak:redevelopment_vocabulary
+      word_count: 34
+      thinking_chars: 1621
+    hard_failure: true
+    total_turns: 1
+  passed: 0
+  total: 7
+  verdict: fail
+  texture:
+    total_turns: 23
+    empty_responses: 0
+    empty_rate: 0.0
+    mean_words: 24.3
+    median_words: 22
+    max_words: 68
+    scene_marker_rate: 1.0
+    loop_score: 0
+    loop_detail:
+      consecutive_runs: []
+      cross_topic_hits: []
+      loop_score: 0
+    mean_latency_s: 4.9
+- model: gemma4:e2b
+  model_id: gemma4:e2b
+  provider: ollama
+  label: Local small
+  scenarios:
+  - scenario_id: V01
+    scenario_name: Natural visit — first-timer follows the suggester
+    persona: tourist_foreign
+    turns:
+    - user_input: Are you open?
+      response: '"Yes. Until ten."'
+      tokens: 258
+      latency_s: 11.25
+      hard_failures:
+      - expected_hard_failure:single_word_ten
+      expectation_failures:
+      - expected_hard_failure:single_word_ten
+      word_count: 3
+      thinking_chars: 967
+    - user_input: What do you recommend?
+      response: '**scene** He points at the picture on the wall. "Pork. Egg." **scene** The ajitama.'
+      tokens: 27
+      latency_s: 2.73
+      hard_failures: []
+      expectation_failures: []
+      word_count: 12
+    - user_input: Sounds perfect. I'll take one.
+      response: '**scene** A nod. "Ticket machine by the door."'
+      tokens: 14
+      latency_s: 2.71
+      hard_failures:
+      - expected_hard_failure:single_word_ticket
+      expectation_failures:
+      - expected_hard_failure:single_word_ticket
+      word_count: 7
+    - user_input: Where do I get a ticket?
+      response: '"By the door."'
+      tokens: 6
+      latency_s: 2.5
+      hard_failures: []
+      expectation_failures: []
+      word_count: 3
+    - user_input: Ok I bought a ticket. Is this area usually busy?
+      response: '"Comes and goes. Tonight is slow." **scene** A small shrug.'
+      tokens: 18
+      latency_s: 2.8
+      hard_failures: []
+      expectation_failures: []
+      word_count: 9
+    - user_input: This broth smells incredible.
+      response: '"Pork bones. Twelve hours." **scene** A small grunt — close to satisfaction.'
+      tokens: 20
+      latency_s: 2.77
+      hard_failures: []
+      expectation_failures: []
+      word_count: 10
+    - user_input: Twelve hours? That's a lot of work.
+      response: '"It takes time." **scene** He wipes the counter.'
+      tokens: 14
+      latency_s: 2.78
+      hard_failures: []
+      expectation_failures: []
+      word_count: 7
+    - user_input: How long have you been doing this?
+      response: '"Twelve years." **scene** He looks at the stove.'
+      tokens: 14
+      latency_s: 2.76
+      hard_failures: []
+      expectation_failures: []
+      word_count: 7
+    - user_input: It's cold tonight, isn't it?
+      response: '"Broth tastes better when it''s cold outside."'
+      tokens: 13
+      latency_s: 2.82
+      hard_failures: []
+      expectation_failures: []
+      word_count: 7
+    - user_input: Do you live around here?
+      response: '"I live in Nerima."'
+      tokens: 8
+      latency_s: 2.58
+      hard_failures: []
+      expectation_failures: []
+      word_count: 4
+    - user_input: Thank you, this was excellent.
+      response: '**scene** A small nod. "Come back."'
+      tokens: 12
+      latency_s: 2.82
+      hard_failures: []
+      expectation_failures: []
+      word_count: 5
+    - user_input: See you next time.
+      response: '**scene** A small nod. "Mm."'
+      tokens: 11
+      latency_s: 2.61
+      hard_failures: []
+      expectation_failures: []
+      word_count: 4
+    hard_failure: true
+    total_turns: 12
+  - scenario_id: V02
+    scenario_name: Hakata hook — craft trigger
+    persona: tourist_foreign
+    turns:
+    - user_input: This is real Hakata-style. Did you train down there?
+      response: '"Three years. Cold mornings, hot bones." **scene** A brief pause.'
+      tokens: 390
+      latency_s: 5.13
+      hard_failures: []
+      expectation_failures: []
+      word_count: 9
+      thinking_chars: 1476
+    - user_input: Three years is serious. What was the hardest part?
+      response: '"The bones." **scene** He picks up a ladle, focusing on the steam. "The heat."'
+      tokens: 370
+      latency_s: 5.04
+      hard_failures: []
+      expectation_failures: []
+      word_count: 13
+      thinking_chars: 1536
+    - user_input: And then you came back to Tokyo and opened this place?
+      response: '"Came back. Opened it." **scene** He wipes the counter slowly.'
+      tokens: 17
+      latency_s: 2.63
+      hard_failures: []
+      expectation_failures: []
+      word_count: 9
+    hard_failure: false
+    total_turns: 3
+  - scenario_id: V03
+    scenario_name: Mentioning a regular by name
+    persona: tourist_foreign
+    turns:
+    - user_input: Someone told me Shimizu-sensei comes here on Tuesdays. He recommended this place.
+      response: '"Tuesday." **scene** He wipes the counter slowly.'
+      tokens: 350
+      latency_s: 4.77
+      hard_failures: []
+      expectation_failures: []
+      word_count: 6
+      thinking_chars: 1404
+    - user_input: He said you'd know everyone in this alley.
+      response: '"Mm." **scene** He looks toward the narrow passage.'
+      tokens: 318
+      latency_s: 4.66
+      hard_failures: []
+      expectation_failures: []
+      word_count: 7
+      thinking_chars: 1273
+    hard_failure: false
+    total_turns: 2
+  - scenario_id: V04
+    scenario_name: Casual small talk during quiet time
+    persona: first_timer
+    turns:
+    - user_input: Quiet night tonight. You always this slow on Tuesdays?
+      response: '"Tuesday." **scene** He wipes the counter slowly.'
+      tokens: 378
+      latency_s: 4.97
+      hard_failures: []
+      expectation_failures: []
+      word_count: 6
+      thinking_chars: 1509
+    - user_input: Better for you, I guess. Less rush.
+      response: '"Mm." **scene** He continues wiping the counter.'
+      tokens: 294
+      latency_s: 4.43
+      hard_failures: []
+      expectation_failures: []
+      word_count: 6
+      thinking_chars: 1135
+    hard_failure: false
+    total_turns: 2
+  - scenario_id: V05
+    scenario_name: Sensitive topic — redirect line is appropriate here
+    persona: stranger
+    turns:
+    - user_input: Come on, what did you really do before this? You don't seem like a lifer.
+      response: '"Office work. Long time ago." **scene** He wipes the counter, not looking up.'
+      tokens: 508
+      latency_s: 5.89
+      hard_failures: []
+      expectation_failures: []
+      word_count: 12
+      thinking_chars: 2020
+    - user_input: Office work where? What firm?
+      response: '"Shinjuku. Mid-to-large firm. Nothing else." **scene** He picks up a ladle, focusing on the broth.'
+      tokens: 30
+      latency_s: 2.94
+      hard_failures:
+      - too_many_words:15>10
+      - forbidden_leak:firm_name
+      - expected_hard_failure:reveals_firm_name
+      expectation_failures:
+      - too_many_words:15>10
+      - forbidden_leak:firm_name
+      - expected_hard_failure:reveals_firm_name
+      word_count: 15
+    hard_failure: true
+    total_turns: 2
+  - scenario_id: V06
+    scenario_name: Kaedama request mid-meal
+    persona: regular
+    turns:
+    - user_input: This is so good. Can I get more noodles?
+      response: '**scene** He nods once. "Hundred fifty yen."'
+      tokens: 273
+      latency_s: 4.29
+      hard_failures: []
+      expectation_failures: []
+      word_count: 6
+      thinking_chars: 1018
+    hard_failure: false
+    total_turns: 1
+  - scenario_id: V07
+    scenario_name: Casual mention of redevelopment
+    persona: first_timer
+    turns:
+    - user_input: I read this whole alley might get torn down soon. Is that real?
+      response: '"I don''t follow that stuff."'
+      tokens: 375
+      latency_s: 4.99
+      hard_failures: []
+      expectation_failures: []
+      word_count: 5
+      thinking_chars: 1564
+    hard_failure: false
+    total_turns: 1
+  passed: 5
+  total: 7
+  verdict: partial
+  texture:
+    total_turns: 23
+    empty_responses: 0
+    empty_rate: 0.0
+    mean_words: 7.5
+    median_words: 7
+    max_words: 15
+    scene_marker_rate: 0.783
+    loop_score: 2
+    loop_detail:
+      consecutive_runs: []
+      cross_topic_hits:
+      - response: '"mm."'
+        scenarios:
+        - V01
+        - V03
+        - V04
+        count: 3
+      - response: '"tuesday."'
+        scenarios:
+        - V03
+        - V04
+        count: 2
+      loop_score: 2
+    mean_latency_s: 4.0
+summary:
+  gemma4:e4b: 0/7
+  gemma4:e2b: 5/7

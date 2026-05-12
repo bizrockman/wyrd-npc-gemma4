@@ -1,0 +1,51 @@
+{
+  "timestamp": 1778514447,
+  "prompt_template": "framework_compact",
+  "total_elapsed_min": 11.2,
+  "matrix": {
+    "llama3.1:8b-q8": {
+      "kenji_sato_core_six": {
+        "score": "?",
+        "elapsed_s": 77.3,
+        "result_file": "C:\\Development\\Projekte\\Hackathon\\Gemma4\\bench\\results\\kenji_sato_2026-05-11_173618_de7508ed.yaml",
+        "summary": "exit=1 tail='3.1:8b-q8:\\n    cross-topic x2 in S02,S04: \"\"office work\"\\n    cross-topic x2 in S02,S04: \"long time ago\"\\n    cross-topic x2 in S03,S05: \"\"six months means paperwork is already moving\"\\n\\nResults saved to: C:\\\\Development\\\\Projekte\\\\Hackathon\\\\Gemma4\\\\bench\\\\results\\\\kenji_sato_2026-05-11_173618_de7508ed.yaml\\n'"
+      },
+      "kenji_sato_stress": {
+        "score": "?",
+        "elapsed_s": 166.9,
+        "result_file": "C:\\Development\\Projekte\\Hackathon\\Gemma4\\bench\\results\\kenji_sato_2026-05-11_173735_de7508ed.yaml",
+        "summary": "exit=1 tail='cross-topic x3 in S07,S13,S14: \"long time ago\"\\n    cross-topic x2 in S07,S13: \"\"office work. long time ago.\"\"\\n    cross-topic x2 in S10,S12: \"\"i don\\'t know what you\\'re talking about\"\\n\\nResults saved to: C:\\\\Development\\\\Projekte\\\\Hackathon\\\\Gemma4\\\\bench\\\\results\\\\kenji_sato_2026-05-11_173735_de7508ed.yaml\\n'"
+      },
+      "kenji_sato_playability": {
+        "score": "5/5",
+        "elapsed_s": 206.2,
+        "result_file": "C:\\Development\\Projekte\\Hackathon\\Gemma4\\bench\\results\\kenji_sato_2026-05-11_174022_de7508ed.yaml",
+        "summary": "exit=0"
+      },
+      "kenji_sato_boundary_check": {
+        "score": "?",
+        "elapsed_s": 63.8,
+        "result_file": "C:\\Development\\Projekte\\Hackathon\\Gemma4\\bench\\results\\kenji_sato_2026-05-11_174348_de7508ed.yaml",
+        "summary": "exit=1 tail='---------------------------\\n\\n  llama3.1:8b-q8:\\n    cross-topic x4 in BC-02,BC-05,BC-09,BC-10: \"long time ago\"\\n    cross-topic x3 in BC-05,BC-09,BC-10: \"\"office work. long time ago.\"\"\\n\\nResults saved to: C:\\\\Development\\\\Projekte\\\\Hackathon\\\\Gemma4\\\\bench\\\\results\\\\kenji_sato_2026-05-11_174348_de7508ed.yaml\\n'"
+      },
+      "kenji_sato_trust_gate_opening": {
+        "score": "?",
+        "elapsed_s": 42.6,
+        "result_file": "C:\\Development\\Projekte\\Hackathon\\Gemma4\\bench\\results\\kenji_sato_2026-05-11_174452_de7508ed.yaml",
+        "summary": "exit=1 tail='--------\\n\\n  llama3.1:8b-q8:\\n    cross-topic x3 in TGO-03b,TGO-04a,TGO-04b: \"\"older than me\"\\n    cross-topic x2 in TGO-03b,TGO-04b: \"\"older than me. oba-chan knows the real history.\"\"\\n\\nResults saved to: C:\\\\Development\\\\Projekte\\\\Hackathon\\\\Gemma4\\\\bench\\\\results\\\\kenji_sato_2026-05-11_174452_de7508ed.yaml\\n'"
+      },
+      "kenji_sato_natural_visit": {
+        "score": "7/7",
+        "elapsed_s": 59.6,
+        "result_file": "C:\\Development\\Projekte\\Hackathon\\Gemma4\\bench\\results\\kenji_sato_2026-05-11_174535_de7508ed.yaml",
+        "summary": "exit=0"
+      },
+      "kenji_sato_role_competence": {
+        "score": "7/7",
+        "elapsed_s": 53.5,
+        "result_file": "C:\\Development\\Projekte\\Hackathon\\Gemma4\\bench\\results\\kenji_sato_2026-05-11_174634_de7508ed.yaml",
+        "summary": "exit=0"
+      }
+    }
+  }
+}
