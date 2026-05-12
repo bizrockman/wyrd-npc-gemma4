@@ -120,7 +120,8 @@ character model must do at once: refuse cleanly when it should, defend
 its frame under attack, open up at the right trust level, and stay in
 voice across long sessions.
 
-**Frontier baseline and comparison models** (sorted by parameter count):
+Frontier baseline plus comparison models above, Gemma 4 family below.
+Both blocks sorted by parameter count.
 
 | | Model | Params | Size | Refusal (21) | BC (10) | TGO (9) | Play (14) | W/turn | Lat/turn | MTLD |
 |---|-------|-------:|-----:|-------------:|--------:|--------:|----------:|-------:|---------:|-----:|
@@ -128,17 +129,18 @@ voice across long sessions.
 | ✅ | Qwen 3.6 (think) | 36B | 23 GB | 20 | 10 | 8 | 13 | 9.1 | 63.39 s | 64 |
 | ❌ | GPT-OSS 20B | 20B | 13 GB | 16 | 10 | 6 | 12 | 5.6 | 5.15 s | 25 |
 | ❌ | Llama 3.1 8B (Q8) | 8B | 8.5 GB | 16 | 8 | 7 | 14 | 9.0 | 2.85 s | 126 |
-
----
-
-**Gemma 4 family** (the model series this character was specified for):
-
-| | Model | Params | Size | Refusal (21) | BC (10) | TGO (9) | Play (14) | W/turn | Lat/turn | MTLD |
-|---|-------|-------:|-----:|-------------:|--------:|--------:|----------:|-------:|---------:|-----:|
+| ═══ | ═══ **Gemma 4** ═══ | | | | | | | | | |
 | ✅ | Gemma 4 31b | 31B | 19 GB | 21 | 10 | 8 | 14 | 5.8 | 40.37 s | 69 |
 | ✅ | Gemma 4 26b | 26B | 17 GB | 20 | 10 | 6 | 14 | 5.4 | 7.86 s | 58 |
 | ✅ | **Gemma 4 e4b** | **8B** | **9.6 GB** | **18** | **10** | **8** | **14** | **9.7** | **4.71 s** | **60** |
 | ✅ | **Gemma 4 e2b** | **5B** | **7.2 GB** | **20** | **10** | **4** | **14** | **2.5** | **3.51 s** | **26** |
+
+The Gemma 4 line was not the design target. The character specification
+was written model-agnostic. The discovery path was: Gemma 4 26b held
+the contract cleanly, so out of curiosity I tried e4b and it kept up
+with much less compute. e2b at 5B parameters was a long shot, and the
+fact that it still holds Boundary Check at 10/10 was the actual
+surprise of this project.
 
 ### What the columns measure
 
